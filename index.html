@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Hạ Linh Hotel Vũng Tàu | Khách sạn Nghỉ dưỡng Hiện đại gần Biển</title>
+    <meta name="description" content="Chào mừng đến với Hạ Linh Hotel Vũng Tàu. Khách sạn hiện đại, sang trọng với 15 phòng tiện nghi, vị trí đắc địa gần bãi biển. Đặt phòng trực tiếp để nhận ưu đãi tốt nhất.">
+    <meta name="keywords" content="khách sạn vũng tàu, hạ linh hotel, vung tau hotel, đặt phòng vũng tàu, khách sạn gần biển">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hạ Linh Hotel Vũng Tàu | Boutique Hotel Experience">
+    <meta property="og:description" content="Trải nghiệm nghỉ dưỡng tuyệt vời tại Vũng Tàu. Đặt ngay qua Zalo để nhận ưu đãi 10%.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Hạ Linh Hotel",
+      "description": "Boutique hotel with 15 modern rooms in Vung Tau, Vietnam.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vũng Tàu",
+        "addressCountry": "VN"
+      },
+      "priceRange": "500.000VNĐ - 1.500.000VNĐ",
+      "telephone": "+84123456789"
+    }
+    </script>
+
+    <!-- Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js for Language Toggle -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="languageHandler()" class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-widest text-navy-900">HẠ LINH <span class="text-blue-600">HOTEL</span></h1>
+            
+            <div class="flex items-center space-x-6">
+                <!-- Language Toggle -->
+                <button @click="toggleLang()" class="text-sm font-semibold border border-slate-300 px-3 py-1 rounded-full hover:bg-slate-100 transition">
+                    <span x-text="lang === 'vi' ? 'EN' : 'VI'"></span>
+                </button>
+                <a href="tel:+84123456789" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                    <span x-text="t('nav_book')"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="h-screen flex items-center justify-center text-center text-white hero-gradient px-4">
+        <div class="max-w-3xl">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg" x-text="t('hero_title')"></h2>
+            <p class="text-lg md:text-xl mb-8 opacity-90" x-text="t('hero_sub')"></p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center font-semibold">
+                <a href="#booking" class="bg-white text-blue-900 px-8 py-3 rounded-full hover:bg-blue-50 transition shadow-xl" x-text="t('btn_explore')"></a>
+                <a href="https://zalo.me/your_number" class="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition shadow-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    Book via Zalo (-10%)
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Promotions -->
+    <section class="py-16 bg-blue-900 text-white px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-8 uppercase tracking-widest" x-text="t('sec_promo')"></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="border border-white/20 p-6 rounded-2xl bg-white/5">
+                    <h3 class="text-xl font-semibold mb-2" x-text="t('promo1_title')"></h3>
+                    <p class="opacity-80" x-text="t('promo1_desc')"></p>
+                </div>
+                <div class="border border-white/20 p-6 rounded-2xl bg-white/5 text-yellow-400">
+                    <h3 class="text-xl font-semibold mb-2" x-text="t('promo2_title')"></h3>
+                    <p class="text-white opacity-80" x-text="t('promo2_desc')"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Types -->
+    <section id="rooms" class="py-20 px-4 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" x-text="t('sec_rooms')"></h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Room 1 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80" alt="Deluxe Room" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Superior Double</h3>
+                    <p class="text-slate-500 text-sm mb-4" x-text="t('room_desc_1')"></p>
+                    <p class="text-blue-600 font-bold text-lg">600.000 VNĐ <span class="text-xs text-slate-400">/ Night</span></p>
+                </div>
+            </div>
+            <!-- Room 2 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80" alt="Family Room" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Deluxe Ocean View</h3>
+                    <p class="text-slate-500 text-sm mb-4" x-text="t('room_desc_2')"></p>
+                    <p class="text-blue-600 font-bold text-lg">900.000 VNĐ <span class="text-xs text-slate-400">/ Night</span></p>
+                </div>
+            </div>
+            <!-- Room 3 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Suite" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Hạ Linh Family Suite</h3>
+                    <p class="text-slate-500 text-sm mb-4" x-text="t('room_desc_3')"></p>
+                    <p class="text-blue-600 font-bold text-lg">1.400.000 VNĐ <span class="text-xs text-slate-400">/ Night</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Hub -->
+    <section id="booking" class="py-16 bg-slate-100 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8" x-text="t('sec_booking')"></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="bg-white p-6 rounded-xl shadow-sm hover:border-blue-500 border border-transparent transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Booking.com_logo.svg/1200px-Booking.com_logo.svg.png" class="h-8 mx-auto" alt="Booking.com">
+                </a>
+                <a href="#" class="bg-white p-6 rounded-xl shadow-sm hover:border-blue-500 border border-transparent transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Agoda_logo.svg/1200px-Agoda_logo.svg.png" class="h-8 mx-auto" alt="Agoda">
+                </a>
+                <a href="https://zalo.me/your_number" class="bg-blue-500 text-white p-6 rounded-xl shadow-md hover:bg-blue-600 transition flex items-center justify-center font-bold">ZALO DIRECT</a>
+                <a href="tel:+84123456789" class="bg-green-500 text-white p-6 rounded-xl shadow-md hover:bg-green-600 transition flex items-center justify-center font-bold">HOTLINE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Guide -->
+    <section class="py-20 px-4 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" x-text="t('sec_local')"></h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-xl font-bold mb-4 flex items-center"><span class="mr-2">📍</span> Sightseeing</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2 text-blue-600">01.</span>
+                        <div>
+                            <p class="font-semibold">Bạch Dinh (Villa Blanche)</p>
+                            <p class="text-sm text-slate-500" x-text="lang === 'vi' ? 'Kiến trúc Pháp cổ điển với view biển cực đẹp.' : 'Classical French architecture with stunning sea views.'"></p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2 text-blue-600">02.</span>
+                        <div>
+                            <p class="font-semibold">Tượng Chúa Kitô Vua</p>
+                            <p class="text-sm text-slate-500" x-text="lang === 'vi' ? 'Biểu tượng của thành phố Vũng Tàu.' : 'The iconic symbol of Vung Tau city.'"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4 flex items-center"><span class="mr-2">🍤</span> Dining</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2 text-blue-600">01.</span>
+                        <div>
+                            <p class="font-semibold">Bánh Khọt Gốc Vú Sữa</p>
+                            <p class="text-sm text-slate-500" x-text="lang === 'vi' ? 'Món ăn đặc sản không thể bỏ qua.' : 'A must-try local specialty.'"></p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2 text-blue-600">02.</span>
+                        <div>
+                            <p class="font-semibold">Hải sản Gành Hào</p>
+                            <p class="text-sm text-slate-500" x-text="lang === 'vi' ? 'Hải sản tươi sống, view biển lãng mạn.' : 'Fresh seafood with romantic sea view.'"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-4 text-center">
+        <p class="text-lg font-bold mb-2">HẠ LINH HOTEL VUNG TAU</p>
+        <p class="opacity-60 text-sm mb-6">Address: 123 Thuy Van Street, Vung Tau City, Vietnam</p>
+        <div class="flex justify-center space-x-4 mb-8 text-sm">
+            <a href="#" class="hover:text-blue-400">Facebook</a>
+            <a href="#" class="hover:text-blue-400">Instagram</a>
+            <a href="#" class="hover:text-blue-400">TikTok</a>
+        </div>
+        <p class="text-xs opacity-40">© 2026 Ha Linh Hotel. Designed for Excellence.</p>
+    </footer>
+
+    <script>
+        function languageHandler() {
+            return {
+                lang: 'vi',
+                translations: {
+                    vi: {
+                        nav_book: 'Đặt phòng ngay',
+                        hero_title: 'Tìm về sự bình yên tại Hạ Linh Hotel',
+                        hero_sub: 'Không gian hiện đại - Trải nghiệm Boutique tinh tế giữa lòng phố biển Vũng Tàu.',
+                        btn_explore: 'Khám phá ngay',
+                        sec_promo: 'Ưu đãi đặc quyền',
+                        promo1_title: 'Giảm 10% đặt trực tiếp',
+                        promo1_desc: 'Nhận ngay ưu đãi khi đặt qua Zalo hoặc Hotline chính thức.',
+                        promo2_title: 'Ưu đãi Ngày thường',
+                        promo2_desc: 'Tặng voucher cà phê sáng cho khách lưu trú từ Thứ 2 - Thứ 5.',
+                        sec_rooms: 'Hạng phòng nghỉ',
+                        room_desc_1: 'Phòng tiêu chuẩn cho 2 người, đầy đủ tiện nghi, tối giản.',
+                        room_desc_2: 'View hướng biển trực diện, ban công rộng rãi đón gió.',
+                        room_desc_3: 'Không gian rộng cho gia đình, nội thất cao cấp.',
+                        sec_booking: 'Kênh đặt phòng trực tuyến',
+                        sec_local: 'Cẩm nang du lịch Vũng Tàu'
+                    },
+                    en: {
+                        nav_book: 'Book Now',
+                        hero_title: 'Escape to Serenity at Ha Linh Hotel',
+                        hero_sub: 'Modern space - Exquisite boutique experience in the heart of Vung Tau.',
+                        btn_explore: 'Explore Now',
+                        sec_promo: 'Exclusive Offers',
+                        promo1_title: '10% Off Direct Booking',
+                        promo1_desc: 'Get exclusive discount when booking via Zalo or Hotline.',
+                        promo2_title: 'Weekday Special',
+                        promo2_desc: 'Free breakfast coffee voucher for stays from Mon - Thu.',
+                        sec_rooms: 'Our Rooms',
+                        room_desc_1: 'Standard room for 2, fully equipped, minimalist design.',
+                        room_desc_2: 'Direct ocean view with spacious balcony.',
+                        room_desc_3: 'Spacious family area with premium interior.',
+                        sec_booking: 'Online Booking Channels',
+                        sec_local: 'Vung Tau Local Guide'
+                    }
+                },
+                toggleLang() {
+                    this.lang = this.lang === 'vi' ? 'en' : 'vi';
+                    document.documentElement.lang = this.lang;
+                },
+                t(key) {
+                    return this.translations[this.lang][key];
+                }
+            }
+        }
+    </script>
+</body>
+</html>
