@@ -1,143 +1,121 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
+<!-- SEO CORE -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hạ Linh Hotel - Boutique Vũng Tàu</title>
 
+<title>Khách sạn Hạ Linh Vũng Tàu | Gần biển | Giá tốt</title>
+
+<meta name="description" content="Khách sạn Hạ Linh Vũng Tàu gần biển, phòng sạch đẹp, giá tốt. Đặt phòng nhanh qua Zalo hoặc Booking.">
+
+<meta name="keywords" content="khách sạn Vũng Tàu, hotel Vung Tau, khách sạn gần biển, hotel near beach Vung Tau">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Hạ Linh Hotel Vũng Tàu">
+<meta property="og:description" content="Khách sạn gần biển, giá tốt, phòng đẹp">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542314831">
+<meta property="og:type" content="website">
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
+<!-- Schema JSON-LD -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Hotel",
+ "name": "Hạ Linh Hotel",
+ "address": {
+   "@type": "PostalAddress",
+   "addressLocality": "Vũng Tàu",
+   "addressCountry": "VN"
+ },
+ "telephone": "+84365203109"
+}
+</script>
+
 <style>
-body { font-family: 'Segoe UI', sans-serif; }
-
-/* HERO */
 .hero {
-  background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-  url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920');
-  background-size: cover;
-  background-position: center;
-}
-
-/* FADE ANIMATION */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all .8s ease;
-}
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* SLIDER */
-.slider img { display:none; }
-.slider img.active { display:block; }
-
-/* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  inset:0;
-  background: rgba(0,0,0,.9);
-  display:none;
-  align-items:center;
-  justify-content:center;
-}
-.lightbox img {
-  max-width:90%;
-  max-height:90%;
+background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920');
+background-size: cover;
+background-position: center;
 }
 </style>
+
 </head>
 
 <body class="bg-white text-gray-800">
 
 <!-- NAV -->
-<nav class="fixed w-full bg-white/80 backdrop-blur z-50 px-6 py-4 flex justify-between shadow-sm">
-  <b class="tracking-wide">Hạ Linh Hotel</b>
-  <div class="space-x-6 text-sm">
-    <a href="#rooms">Phòng</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#map">Vị trí</a>
-    <a href="#booking">Liên hệ</a>
-  </div>
+<nav class="fixed w-full bg-white/80 backdrop-blur z-50 px-6 py-3 flex justify-between shadow">
+<b>Hạ Linh Hotel</b>
+<div class="space-x-4 text-sm">
+<a href="#rooms">Phòng</a>
+<a href="#guide">Ăn chơi</a>
+<a href="#booking">Đặt phòng</a>
+</div>
 </nav>
 
 <!-- HERO -->
-<header class="hero h-screen flex items-center justify-center text-white text-center">
-  <div class="fade">
-    <h1 class="text-5xl md:text-6xl font-light tracking-wide mb-4">
-      Hạ Linh Hotel
-    </h1>
-    <p class="mb-6 text-lg opacity-90">
-      Boutique stay gần biển Vũng Tàu
-    </p>
-    <a href="#rooms" class="bg-white text-black px-8 py-3 rounded-full">
-      Khám phá
-    </a>
-  </div>
+<header class="hero h-screen flex items-center justify-center text-white text-center px-4">
+<div>
+<h1 class="text-5xl font-bold mb-4">Khách sạn Hạ Linh Vũng Tàu</h1>
+<p class="mb-6">Gần biển · Giá tốt · Phòng sạch</p>
+<a href="#rooms" class="bg-white text-black px-6 py-3 rounded-full">
+Xem phòng
+</a>
+</div>
 </header>
 
 <!-- ROOMS -->
-<section id="rooms" class="py-24 max-w-6xl mx-auto px-4">
-<h2 class="text-3xl font-light text-center mb-16">Hạng phòng</h2>
+<section id="rooms" class="py-20 max-w-6xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">Các hạng phòng</h2>
 
-<div class="grid md:grid-cols-3 gap-10">
+<div class="grid md:grid-cols-3 gap-8">
 
-<!-- ROOM -->
-<div class="fade">
-<div class="slider" onclick="nextSlide(this)">
-<img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304" class="active w-full h-64 object-cover">
-<img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" class="w-full h-64 object-cover">
-</div>
-<div class="mt-4">
-<h3 class="font-semibold">Superior</h3>
-<p class="text-sm text-gray-500">✔ Giá tốt · ❌ Không view</p>
-<button onclick="openRoom('Superior')" class="text-sm mt-2 underline">Xem chi tiết</button>
-</div>
+<div class="shadow rounded p-4">
+<h3 class="font-bold">Superior</h3>
+<p>Phòng tiêu chuẩn giá tốt, phù hợp 2 người.</p>
 </div>
 
-<div class="fade">
-<div class="slider" onclick="nextSlide(this)">
-<img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39" class="active w-full h-64 object-cover">
-<img src="https://images.unsplash.com/photo-1582719478250" class="w-full h-64 object-cover">
-</div>
-<div class="mt-4">
-<h3 class="font-semibold">Deluxe Ocean</h3>
-<p class="text-sm text-gray-500">✔ View biển · ✔ Ban công</p>
-<button onclick="openRoom('Deluxe')" class="text-sm mt-2 underline">Xem chi tiết</button>
-</div>
+<div class="shadow rounded p-4">
+<h3 class="font-bold">Deluxe Ocean</h3>
+<p>View biển, ban công rộng, phù hợp cặp đôi.</p>
 </div>
 
-<div class="fade">
-<div class="slider" onclick="nextSlide(this)">
-<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" class="active w-full h-64 object-cover">
-<img src="https://images.unsplash.com/photo-1505691938895" class="w-full h-64 object-cover">
-</div>
-<div class="mt-4">
-<h3 class="font-semibold">Family</h3>
-<p class="text-sm text-gray-500">✔ Rộng · ✔ Gia đình</p>
-<button onclick="openRoom('Family')" class="text-sm mt-2 underline">Xem chi tiết</button>
-</div>
+<div class="shadow rounded p-4">
+<h3 class="font-bold">Family</h3>
+<p>Phòng rộng, phù hợp gia đình.</p>
 </div>
 
 </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery" class="py-20 bg-gray-50">
-<h2 class="text-3xl font-light text-center mb-12">Gallery</h2>
+<!-- LOCAL GUIDE -->
+<section id="guide" class="py-16 bg-gray-100 px-4">
+<h2 class="text-2xl font-bold text-center mb-8">Ăn chơi Vũng Tàu</h2>
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto px-4">
-<img onclick="openImg(this)" src="https://images.unsplash.com/photo-1566073771259" class="rounded cursor-pointer">
-<img onclick="openImg(this)" src="https://images.unsplash.com/photo-1582719478250" class="rounded cursor-pointer">
-<img onclick="openImg(this)" src="https://images.unsplash.com/photo-1611892440504" class="rounded cursor-pointer">
-<img onclick="openImg(this)" src="https://images.unsplash.com/photo-1590490360182" class="rounded cursor-pointer">
+<div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+
+<div>
+<h3 class="font-bold">Bánh khọt Gốc Vú Sữa</h3>
+<p class="text-sm text-gray-500">Đặc sản nổi tiếng</p>
+</div>
+
+<div>
+<h3 class="font-bold">Bãi Sau</h3>
+<p class="text-sm text-gray-500">Bãi biển đẹp gần khách sạn</p>
+</div>
+
 </div>
 </section>
 
 <!-- MAP -->
-<section id="map" class="py-20">
-<h2 class="text-2xl text-center mb-6">Vị trí khách sạn</h2>
+<section class="py-16">
+<h2 class="text-center text-2xl mb-6">Vị trí</h2>
 
 <div class="max-w-5xl mx-auto px-4">
 <iframe src="https://www.google.com/maps?q=Vung+Tau&output=embed"
@@ -145,11 +123,23 @@ class="w-full h-96 rounded"></iframe>
 </div>
 </section>
 
+<!-- OTA -->
+<section class="py-16 bg-gray-100 text-center">
+<h2 class="text-2xl font-bold mb-6">Đặt phòng</h2>
+
+<div class="flex justify-center gap-6 flex-wrap">
+<a href="#" class="bg-white px-6 py-3 shadow rounded">Booking.com</a>
+<a href="#" class="bg-white px-6 py-3 shadow rounded">Agoda</a>
+<a href="https://zalo.me/0365203109" class="bg-blue-500 text-white px-6 py-3 rounded">Zalo</a>
+<a href="tel:0365203109" class="bg-green-500 text-white px-6 py-3 rounded">Hotline</a>
+</div>
+</section>
+
 <!-- BOOKING -->
-<section id="booking" class="py-20 bg-gray-50">
+<section id="booking" class="py-16 bg-gray-50 px-4">
 <div class="max-w-lg mx-auto bg-white p-6 shadow rounded">
 
-<h2 class="text-center text-xl mb-4">Gửi yêu cầu</h2>
+<h2 class="text-xl font-bold mb-4 text-center">Gửi yêu cầu</h2>
 
 <form onsubmit="sendZalo(event)" class="space-y-3">
 <input id="name" placeholder="Tên" class="w-full border p-2">
@@ -160,47 +150,22 @@ class="w-full h-96 rounded"></iframe>
 <option>Family</option>
 </select>
 
-<button class="bg-black text-white w-full py-2">Gửi Zalo</button>
+<button class="bg-black text-white w-full py-2">
+Gửi Zalo
+</button>
 </form>
 
 </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox" onclick="this.style.display='none'">
-<img id="lightbox-img">
-</div>
-
 <!-- FOOTER -->
 <footer class="bg-black text-white py-10 text-center">
 <p>Hạ Linh Hotel</p>
 <p class="text-sm opacity-60">Vũng Tàu</p>
+<p class="text-xs opacity-40 mt-4">© 2026</p>
 </footer>
 
 <script>
-// slider
-function nextSlide(el){
-let imgs = el.querySelectorAll('img');
-let i = [...imgs].findIndex(img=>img.classList.contains('active'));
-imgs[i].classList.remove('active');
-imgs[(i+1)%imgs.length].classList.add('active');
-}
-
-// fade on scroll
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting) e.target.classList.add('show');
-});
-});
-document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
-
-// lightbox
-function openImg(img){
-document.getElementById('lightbox').style.display='flex';
-document.getElementById('lightbox-img').src=img.src;
-}
-
-// zalo
 function sendZalo(e){
 e.preventDefault();
 let name = document.getElementById('name').value;
@@ -209,11 +174,6 @@ let room = document.getElementById('room').value;
 
 let msg = `Booking:%0A${name}%0A${phone}%0A${room}`;
 window.open(`https://zalo.me/0365203109?text=${msg}`);
-}
-
-// room popup (basic)
-function openRoom(name){
-alert('Chi tiết phòng: ' + name);
 }
 </script>
 
