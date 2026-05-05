@@ -36,53 +36,56 @@
         .room-card .info-overlay { opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
         .room-card:hover .info-overlay { opacity: 1; transform: translateY(0); }
         .popup { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.6); backdrop-filter: blur(4px); z-index: 9999; }
-        #backToTop { display: none; position: fixed; bottom: 80px; right: 20px; z-index: 40; }
-        @media (max-width: 768px) { body { padding-bottom: 60px; } #backToTop { bottom: 70px; } }
+        #backToTop { display: none; position: fixed; bottom: 100px; right: 20px; z-index: 40; }
+        @media (max-width: 768px) { 
+            body { padding-bottom: 80px; } 
+            #backToTop { bottom: 90px; right: 15px; }
+        }
     </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans">
 
-    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-white p-3 rounded-full shadow-lg border border-ocean-100 text-ocean-600 hover:bg-ocean-50 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-ocean-100 text-ocean-600 hover:bg-ocean-50 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
 
-    <nav class="fixed w-full bg-white/95 backdrop-blur-sm px-4 py-3 flex justify-between items-center shadow-md z-50 border-b border-ocean-100">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm px-4 py-2.5 flex justify-between items-center shadow-md z-50 border-b border-ocean-100">
         <a href="#" class="flex items-center gap-2">
-            <img src="https://i.ibb.co/s9Wyb0wz/Logo-Hotel.png" alt="Logo" class="h-10 w-auto">
-            <span class="font-extrabold text-ocean-950 text-xl tracking-tight">Hạ Linh Hotel</span>
+            <img src="https://i.ibb.co/s9Wyb0wz/Logo-Hotel.png" alt="Logo" class="h-8 md:h-10 w-auto">
+            <span class="font-extrabold text-ocean-950 text-lg md:text-xl tracking-tight">Hạ Linh Hotel</span>
         </a>
-        <div class="flex items-center gap-3">
-            <div class="flex bg-slate-100 p-1 rounded-lg text-xs font-bold border border-slate-200">
-                <button onclick="changeLang('vi')" id="btn-vi" class="px-2 py-1 rounded bg-white shadow-sm text-ocean-600">VI</button>
-                <button onclick="changeLang('en')" id="btn-en" class="px-2 py-1 rounded text-slate-400">EN</button>
+        <div class="flex items-center gap-2 md:gap-3">
+            <div class="flex bg-slate-100 p-1 rounded-lg text-[10px] md:text-xs font-bold border border-slate-200">
+                <button onclick="changeLang('vi')" id="btn-vi" class="px-2 py-0.5 rounded bg-white shadow-sm text-ocean-600">VI</button>
+                <button onclick="changeLang('en')" id="btn-en" class="px-2 py-0.5 rounded text-slate-400">EN</button>
             </div>
-            <a href="#booking" data-t="nav_btn" class="bg-ocean-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-ocean-700 transition">Đặt ngay</a>
+            <a href="#booking" data-t="nav_btn" class="bg-ocean-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-bold hover:bg-ocean-700 transition">Đặt ngay</a>
         </div>
     </nav>
 
-    <header class="hero h-[90vh] flex items-center justify-center text-white text-center px-4 relative">
+    <header class="hero h-[85vh] md:h-[90vh] flex items-center justify-center text-white text-center px-6 relative">
         <div class="max-w-4xl">
-            <h2 class="text-white font-extrabold tracking-[0.2em] uppercase mb-4 text-2xl md:text-4xl drop-shadow-lg">Hạ Linh Hotel Vũng Tàu</h2>
-            <h1 data-t="hero_title" class="text-4xl md:text-7xl font-extrabold mb-8 drop-shadow-2xl leading-tight">Tuyệt tác nghỉ dưỡng<br>Giữa lòng biển xanh</h1>
-            <p data-t="hero_sub" class="mb-10 text-lg md:text-2xl drop-shadow-md text-ocean-50 font-medium opacity-90">Dịch vụ chuẩn 5 sao · Không gian đẳng cấp · Vị trí đắc địa</p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#booking" data-t="hero_btn" class="bg-white text-ocean-950 font-extrabold px-10 py-5 rounded-full hover:bg-ocean-50 transition shadow-2xl text-xl">Xem giá & Đặt phòng</a>
-                <a href="#gallery" data-t="gallery_title" class="bg-transparent border-2 border-white text-white font-extrabold px-10 py-5 rounded-full hover:bg-white/10 transition text-xl">Thư Viện Ảnh</a>
+            <h2 class="text-white font-bold tracking-[0.15em] uppercase mb-3 text-sm md:text-3xl drop-shadow-lg opacity-90">Hạ Linh Hotel Vũng Tàu</h2>
+            <h1 data-t="hero_title" class="text-3xl md:text-7xl font-extrabold mb-6 drop-shadow-2xl leading-tight">Tuyệt tác nghỉ dưỡng<br>Giữa lòng biển xanh</h1>
+            <p data-t="hero_sub" class="mb-8 text-sm md:text-2xl drop-shadow-md text-ocean-50 font-medium opacity-80 max-w-2xl mx-auto">Dịch vụ chuẩn 5 sao · Không gian đẳng cấp · Vị trí đắc địa</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#booking" data-t="hero_btn" class="w-full sm:w-auto bg-white text-ocean-950 font-extrabold px-8 py-3.5 md:px-10 md:py-5 rounded-full hover:bg-ocean-50 transition shadow-xl text-base md:text-xl">Xem giá & Đặt phòng</a>
+                <a href="#gallery" data-t="gallery_title" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-extrabold px-8 py-3.5 md:px-10 md:py-5 rounded-full hover:bg-white/10 transition text-base md:text-xl">Thư Viện Ảnh</a>
             </div>
         </div>
     </header>
 
-    <section class="py-16 bg-white border-b border-slate-100">
+    <section class="py-12 md:py-16 bg-white border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center justify-center gap-3 mb-8">
-                <div class="h-1 w-12 bg-ocean-500 rounded-full"></div>
-                <h3 data-t="weather_head" class="text-center font-bold text-ocean-950 text-lg uppercase tracking-widest">Dự báo thời tiết Vũng Tàu (10 ngày)</h3>
-                <div class="h-1 w-12 bg-ocean-500 rounded-full"></div>
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <div class="h-0.5 w-8 bg-ocean-500 rounded-full"></div>
+                <h3 data-t="weather_head" class="text-center font-bold text-ocean-950 text-xs md:text-lg uppercase tracking-widest">Dự báo thời tiết Vũng Tàu (10 ngày)</h3>
+                <div class="h-0.5 w-8 bg-ocean-500 rounded-full"></div>
             </div>
-            <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-50 min-h-[250px]">
+            <div class="rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-slate-50 min-h-[220px]">
                 <a class="weatherwidget-io" href="https://forecast7.com/vi/103510712/vung-tau/" data-label_1="VŨNG TÀU" data-label_2="HẠ LINH HOTEL" data-font="Roboto" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >VŨNG TÀU Thời tiết</a>
                 <script>
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
@@ -91,228 +94,222 @@
         </div>
     </section>
 
-    <section class="py-20 max-w-6xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 data-t="room_title" class="text-4xl font-extrabold text-ocean-950">Hạng Phòng Nghỉ</h2>
-            <p class="text-slate-500 mt-3 text-lg" data-t="room_desc">Mỗi không gian được thiết kế để mang lại sự thoải mái nhất</p>
+    <section class="py-16 md:py-20 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 data-t="room_title" class="text-2xl md:text-4xl font-extrabold text-ocean-950">Hạng Phòng Nghỉ</h2>
+            <p class="text-slate-500 mt-2 text-sm md:text-lg" data-t="room_desc">Mỗi không gian được thiết kế để mang lại sự thoải mái nhất</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div onclick="openRoom('Superior')" class="room-card group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl cursor-pointer transition-all duration-500 relative border border-slate-100">
-                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800" class="h-72 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div onclick="openRoom('Superior')" class="room-card group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl cursor-pointer transition-all duration-500 relative border border-slate-100">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800" class="h-60 md:h-72 w-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="info-overlay absolute inset-0 bg-ocean-950/85 flex flex-col justify-center items-center text-white p-6 text-center">
-                    <p class="font-bold text-2xl mb-2">Superior Room</p>
-                    <p class="text-sm opacity-90 mb-6" data-t="room_sup_info">20m² · View nội khu · 1 Giường đôi lớn</p>
-                    <span data-t="room_view_btn" class="bg-white/20 px-6 py-2 rounded-full border border-white/30 text-sm font-bold">Xem chi tiết</span>
+                    <p class="font-bold text-xl md:text-2xl mb-1">Superior Room</p>
+                    <p class="text-xs md:text-sm opacity-90 mb-4" data-t="room_sup_info">20m² · View nội khu · 1 Giường đôi lớn</p>
+                    <span data-t="room_view_btn" class="bg-white/20 px-5 py-1.5 rounded-full border border-white/30 text-xs font-bold">Xem chi tiết</span>
                 </div>
-                <div class="p-6 flex justify-between items-center bg-white border-t">
-                    <h3 class="font-bold text-ocean-950 text-xl">Superior</h3>
-                    <div class="bg-ocean-50 text-ocean-600 px-3 py-1 rounded-lg font-bold text-sm">20m²</div>
+                <div class="p-4 md:p-6 flex justify-between items-center bg-white border-t">
+                    <h3 class="font-bold text-ocean-950 text-lg md:text-xl">Superior</h3>
+                    <div class="bg-ocean-50 text-ocean-600 px-2 py-0.5 rounded-lg font-bold text-[10px] md:text-sm">20m²</div>
                 </div>
             </div>
             
-            <div onclick="openRoom('Deluxe')" class="room-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl cursor-pointer transition-all duration-500 relative border-2 border-ocean-500">
-                <span data-t="room_popular" class="absolute top-4 left-4 bg-red-500 text-white text-xs font-black px-4 py-1.5 rounded-full z-10 shadow-lg">ĐƯỢC CHỌN NHIỀU</span>
-                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800" class="h-72 w-full object-cover group-hover:scale-110 transition duration-700">
+            <div onclick="openRoom('Deluxe')" class="room-card group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl cursor-pointer transition-all duration-500 relative border-2 border-ocean-500">
+                <span data-t="room_popular" class="absolute top-3 left-3 bg-red-500 text-white text-[9px] md:text-xs font-black px-3 py-1 rounded-full z-10 shadow-lg">ĐƯỢC CHỌN NHIỀU</span>
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800" class="h-60 md:h-72 w-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="info-overlay absolute inset-0 bg-ocean-950/85 flex flex-col justify-center items-center text-white p-6 text-center">
-                    <p class="font-bold text-2xl mb-2">Deluxe Room</p>
-                    <p class="text-sm opacity-90 mb-6" data-t="room_del_info">25m² · View phố nhộn nhịp · Ban công</p>
-                    <span data-t="room_view_btn" class="bg-white/20 px-6 py-2 rounded-full border border-white/30 text-sm font-bold">Xem chi tiết</span>
+                    <p class="font-bold text-xl md:text-2xl mb-1">Deluxe Room</p>
+                    <p class="text-xs md:text-sm opacity-90 mb-4" data-t="room_del_info">25m² · View phố nhộn nhịp · Ban công</p>
+                    <span data-t="room_view_btn" class="bg-white/20 px-5 py-1.5 rounded-full border border-white/30 text-xs font-bold">Xem chi tiết</span>
                 </div>
-                <div class="p-6 flex justify-between items-center bg-ocean-50">
-                    <h3 class="font-bold text-ocean-950 text-xl">Deluxe ⭐</h3>
-                    <div class="bg-ocean-500 text-white px-3 py-1 rounded-lg font-bold text-sm shadow-sm">25m²</div>
+                <div class="p-4 md:p-6 flex justify-between items-center bg-ocean-50">
+                    <h3 class="font-bold text-ocean-950 text-lg md:text-xl">Deluxe ⭐</h3>
+                    <div class="bg-ocean-500 text-white px-2 py-0.5 rounded-lg font-bold text-[10px] md:text-sm shadow-sm">25m²</div>
                 </div>
             </div>
 
-            <div onclick="openRoom('Family')" class="room-card group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl cursor-pointer transition-all duration-500 relative border border-slate-100">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800" class="h-72 w-full object-cover group-hover:scale-110 transition duration-700">
+            <div onclick="openRoom('Family')" class="room-card group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl cursor-pointer transition-all duration-500 relative border border-slate-100">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800" class="h-60 md:h-72 w-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="info-overlay absolute inset-0 bg-ocean-950/85 flex flex-col justify-center items-center text-white p-6 text-center">
-                    <p class="font-bold text-2xl mb-2">Family Room</p>
-                    <p class="text-sm opacity-90 mb-6" data-t="room_fam_info">35m² · Rộng rãi · 2 Giường đôi</p>
-                    <span data-t="room_view_btn" class="bg-white/20 px-6 py-2 rounded-full border border-white/30 text-sm font-bold">Xem chi tiết</span>
+                    <p class="font-bold text-xl md:text-2xl mb-1">Family Room</p>
+                    <p class="text-xs md:text-sm opacity-90 mb-4" data-t="room_fam_info">35m² · Rộng rãi · 2 Giường đôi</p>
+                    <span data-t="room_view_btn" class="bg-white/20 px-5 py-1.5 rounded-full border border-white/30 text-xs font-bold">Xem chi tiết</span>
                 </div>
-                <div class="p-6 flex justify-between items-center bg-white border-t">
-                    <h3 class="font-bold text-ocean-950 text-xl">Family</h3>
-                    <div class="bg-ocean-50 text-ocean-600 px-3 py-1 rounded-lg font-bold text-sm">35m²</div>
+                <div class="p-4 md:p-6 flex justify-between items-center bg-white border-t">
+                    <h3 class="font-bold text-ocean-950 text-lg md:text-xl">Family</h3>
+                    <div class="bg-ocean-50 text-ocean-600 px-2 py-0.5 rounded-lg font-bold text-[10px] md:text-sm">35m²</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-100 border-y border-slate-200">
+    <section class="py-16 md:py-20 bg-slate-100 border-y border-slate-200">
         <div class="max-w-4xl mx-auto px-4 overflow-x-auto">
-            <h2 data-t="comp_title" class="text-3xl font-extrabold text-center text-ocean-950 mb-10">So Sánh Tiện Ích</h2>
-            <table class="w-full text-sm text-center border-collapse overflow-hidden rounded-2xl shadow-xl bg-white">
+            <h2 data-t="comp_title" class="text-xl md:text-3xl font-extrabold text-center text-ocean-950 mb-8">So Sánh Tiện Ích</h2>
+            <table class="w-full text-[10px] md:text-sm text-center border-collapse overflow-hidden rounded-xl md:rounded-2xl shadow-lg bg-white">
                 <tr class="bg-ocean-950 text-white">
-                    <th class="p-5 text-left border-r border-ocean-900" data-t="table_feature">Tiện ích</th>
-                    <th class="p-5">Superior</th>
-                    <th class="p-5 bg-ocean-700">Deluxe</th>
-                    <th class="p-5">Family</th>
+                    <th class="p-3 md:p-5 text-left border-r border-ocean-900" data-t="table_feature">Tiện ích</th>
+                    <th class="p-3 md:p-5">Superior</th>
+                    <th class="p-3 md:p-5 bg-ocean-700">Deluxe</th>
+                    <th class="p-3 md:p-5">Family</th>
                 </tr>
                 <tr class="border-b">
-                    <td class="p-5 text-left font-bold border-r bg-slate-50 text-ocean-900" data-t="table_size">Diện tích</td>
+                    <td class="p-3 md:p-5 text-left font-bold border-r bg-slate-50 text-ocean-900" data-t="table_size">Diện tích</td>
                     <td>20m²</td><td class="bg-ocean-50 font-bold">25m²</td><td>35m²</td>
                 </tr>
                 <tr class="border-b">
-                    <td class="p-5 text-left font-bold border-r bg-slate-50 text-ocean-900" data-t="table_balcony">Ban công</td>
-                    <td class="text-slate-300">✖</td><td class="bg-ocean-50 text-ocean-600 font-black text-xl">✔</td><td class="text-ocean-600 font-black text-xl">✔</td>
+                    <td class="p-3 md:p-5 text-left font-bold border-r bg-slate-50 text-ocean-900" data-t="table_balcony">Ban công</td>
+                    <td class="text-slate-300">✖</td><td class="bg-ocean-50 text-ocean-600 font-black text-base md:text-xl">✔</td><td class="text-ocean-600 font-black text-base md:text-xl">✔</td>
                 </tr>
                 <tr class="border-b">
-                    <td class="p-5 text-left font-bold border-r bg-slate-50 text-ocean-900" data-t="table_view">Tầm nhìn</td>
+                    <td class="p-3 md:p-5 text-left font-bold border-r bg-slate-50 text-ocean-900" data-t="table_view">Tầm nhìn</td>
                     <td data-t="v_city">Nội khu</td><td class="bg-ocean-50 font-bold" data-t="v_street">Phố/Biển</td><td data-t="v_street">Phố</td>
                 </tr>
                 <tr>
-                    <td class="p-5 border-r bg-slate-50"></td>
-                    <td class="p-5"><button onclick="selectRoomDirect('Superior')" class="bg-slate-100 px-5 py-2 rounded-lg font-bold hover:bg-slate-200 transition" data-t="btn_select">Chọn</button></td>
-                    <td class="p-5 bg-ocean-50"><button onclick="selectRoomDirect('Deluxe')" class="bg-ocean-600 text-white px-6 py-2 rounded-lg font-black shadow-lg hover:bg-ocean-700 transition scale-110" data-t="btn_select">Chọn</button></td>
-                    <td class="p-5"><button onclick="selectRoomDirect('Family')" class="bg-slate-100 px-5 py-2 rounded-lg font-bold hover:bg-slate-200 transition" data-t="btn_select">Chọn</button></td>
+                    <td class="p-3 border-r bg-slate-50"></td>
+                    <td class="p-3 md:p-5"><button onclick="selectRoomDirect('Superior')" class="bg-slate-100 px-3 py-1 md:px-5 md:py-2 rounded-lg font-bold hover:bg-slate-200 transition" data-t="btn_select">Chọn</button></td>
+                    <td class="p-3 md:p-5 bg-ocean-50"><button onclick="selectRoomDirect('Deluxe')" class="bg-ocean-600 text-white px-4 py-1.5 md:px-6 md:py-2 rounded-lg font-black shadow-md hover:bg-ocean-700 transition" data-t="btn_select">Chọn</button></td>
+                    <td class="p-3 md:p-5"><button onclick="selectRoomDirect('Family')" class="bg-slate-100 px-3 py-1 md:px-5 md:py-2 rounded-lg font-bold hover:bg-slate-200 transition" data-t="btn_select">Chọn</button></td>
                 </tr>
             </table>
         </div>
     </section>
 
-    <section id="gallery" class="py-20 bg-white">
-        <h2 data-t="gallery_title" class="text-3xl font-extrabold text-center text-ocean-950 mb-12 uppercase tracking-wider">Hành trình trải nghiệm qua ảnh</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
-            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1566073771259?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-2xl shadow-lg">
-                <img src="https://images.unsplash.com/photo-1566073771259?auto=format&fit=crop&w=400" class="w-full h-64 object-cover hover:scale-110 transition duration-700">
+    <section id="gallery" class="py-16 bg-white">
+        <h2 data-t="gallery_title" class="text-2xl md:text-3xl font-extrabold text-center text-ocean-950 mb-10 uppercase tracking-wider">Thư Viện Ảnh</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto px-4">
+            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1566073771259?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-xl shadow-md">
+                <img src="https://images.unsplash.com/photo-1566073771259?auto=format&fit=crop&w=400" class="w-full h-48 md:h-64 object-cover hover:scale-110 transition duration-700">
             </a>
-            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1582719478250?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-2xl shadow-lg">
-                <img src="https://images.unsplash.com/photo-1582719478250?auto=format&fit=crop&w=400" class="w-full h-64 object-cover hover:scale-110 transition duration-700">
+            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1582719478250?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-xl shadow-md">
+                <img src="https://images.unsplash.com/photo-1582719478250?auto=format&fit=crop&w=400" class="w-full h-48 md:h-64 object-cover hover:scale-110 transition duration-700">
             </a>
-            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1611892440504?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-2xl shadow-lg">
-                <img src="https://images.unsplash.com/photo-1611892440504?auto=format&fit=crop&w=400" class="w-full h-64 object-cover hover:scale-110 transition duration-700">
+            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1611892440504?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-xl shadow-md">
+                <img src="https://images.unsplash.com/photo-1611892440504?auto=format&fit=crop&w=400" class="w-full h-48 md:h-64 object-cover hover:scale-110 transition duration-700">
             </a>
-            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-2xl shadow-lg">
-                <img src="https://images.unsplash.com/photo-1590490360182?auto=format&fit=crop&w=400" class="w-full h-64 object-cover hover:scale-110 transition duration-700">
+            <a data-fslightbox="gallery" href="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200" class="overflow-hidden rounded-xl shadow-md">
+                <img src="https://images.unsplash.com/photo-1590490360182?auto=format&fit=crop&w=400" class="w-full h-48 md:h-64 object-cover hover:scale-110 transition duration-700">
             </a>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-100">
-        <h2 data-t="map_title" class="text-3xl font-extrabold text-center text-ocean-950 mb-10">Vị trí Hạ Linh Hotel</h2>
-        <div class="max-w-5xl mx-auto px-4">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62744.1166668388!2d107.05436668725892!3d10.345869400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756f18374d6c49%3A0x6713788730b20140!2zVnVuZyBUYXUsIEJhIFJpYSAtIFZ1bmcgVGF1LCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1714545000000!5m2!1sen!2s" class="w-full h-[450px] rounded-[2.5rem] shadow-2xl border-8 border-white" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-
-    <section id="booking" class="py-24 bg-ocean-950 px-4 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-ocean-600 rounded-full blur-[150px] opacity-20 -mr-32 -mt-32"></div>
-        <div class="max-w-xl mx-auto bg-white p-10 md:p-14 shadow-2xl rounded-[3rem] relative z-10 border border-white/20">
-            <div class="text-center mb-10">
-                <h2 data-t="book_title" class="text-4xl font-black text-ocean-950 mb-3">Đặt phòng ngay</h2>
-                <p class="text-slate-500 font-medium">Nhận ưu đãi tốt nhất khi đặt trực tiếp</p>
+    <section id="booking" class="py-16 md:py-24 bg-ocean-950 px-4 relative overflow-hidden">
+        <div class="max-w-xl mx-auto bg-white p-8 md:p-14 shadow-2xl rounded-[2rem] md:rounded-[3rem] relative z-10">
+            <div class="text-center mb-8">
+                <h2 data-t="book_title" class="text-2xl md:text-4xl font-black text-ocean-950 mb-2">Đặt phòng ngay</h2>
+                <p class="text-slate-500 font-medium text-xs md:text-base">Nhận ưu đãi tốt nhất khi đặt trực tiếp</p>
             </div>
-            <form onsubmit="handleBooking(event)" class="space-y-6">
+            <form onsubmit="handleBooking(event)" class="space-y-4 md:space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input id="name" data-p="name" placeholder="Tên khách hàng" class="w-full border border-slate-200 p-4 rounded-2xl focus:ring-2 focus:ring-ocean-500 outline-none transition bg-slate-50">
-                    <input id="phone" data-p="phone" placeholder="Số điện thoại *" required class="w-full border border-slate-200 p-4 rounded-2xl focus:ring-2 focus:ring-ocean-500 outline-none transition bg-slate-50">
+                    <input id="name" data-p="name" placeholder="Tên khách hàng" class="w-full border border-slate-200 p-3 md:p-4 rounded-xl md:rounded-2xl text-sm outline-none bg-slate-50">
+                    <input id="phone" data-p="phone" placeholder="Số điện thoại *" required class="w-full border border-slate-200 p-3 md:p-4 rounded-xl md:rounded-2xl text-sm outline-none bg-slate-50">
                 </div>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-3 md:gap-4">
                     <div class="relative">
-                        <span class="absolute top-2 left-4 text-[10px] text-ocean-600 font-black uppercase tracking-widest" data-t="checkin_label">Nhận phòng</span>
-                        <input id="checkin" class="w-full border border-slate-200 pt-7 pb-3 px-4 rounded-2xl bg-slate-50 cursor-pointer font-bold" readonly>
+                        <span class="absolute top-1.5 left-3 text-[8px] md:text-[10px] text-ocean-600 font-black uppercase" data-t="checkin_label">Nhận phòng</span>
+                        <input id="checkin" class="w-full border border-slate-200 pt-5 md:pt-7 pb-2 md:pb-3 px-3 md:px-4 rounded-xl md:rounded-2xl bg-slate-50 text-xs md:text-sm font-bold" readonly>
                     </div>
                     <div class="relative">
-                        <span class="absolute top-2 left-4 text-[10px] text-ocean-600 font-black uppercase tracking-widest" data-t="checkout_label">Trả phòng</span>
-                        <input id="checkout" class="w-full border border-slate-200 pt-7 pb-3 px-4 rounded-2xl bg-slate-50 cursor-pointer font-bold" readonly>
+                        <span class="absolute top-1.5 left-3 text-[8px] md:text-[10px] text-ocean-600 font-black uppercase" data-t="checkout_label">Trả phòng</span>
+                        <input id="checkout" class="w-full border border-slate-200 pt-5 md:pt-7 pb-2 md:pb-3 px-3 md:px-4 rounded-xl md:rounded-2xl bg-slate-50 text-xs md:text-sm font-bold" readonly>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <select id="room" required class="w-full border border-slate-200 p-4 rounded-2xl bg-slate-50 appearance-none font-bold text-ocean-900">
+                    <select id="room" required class="w-full border border-slate-200 p-3 md:p-4 rounded-xl md:rounded-2xl bg-slate-50 text-sm font-bold">
                         <option value="" data-t="opt_room">Chọn hạng phòng</option>
                         <option value="Superior">Superior</option><option value="Deluxe">Deluxe</option><option value="Family">Family</option>
                     </select>
-                    <select id="quantity" required class="w-full border border-slate-200 p-4 rounded-2xl bg-slate-50 appearance-none font-bold text-ocean-900">
+                    <select id="quantity" required class="w-full border border-slate-200 p-3 md:p-4 rounded-xl md:rounded-2xl bg-slate-50 text-sm font-bold">
                         <option value="" data-t="opt_qty">Số lượng</option>
                         <option value="1">1</option><option value="2">2</option><option value="3">3</option>
                     </select>
                 </div>
-                <textarea id="note" data-p="note" rows="3" placeholder="Yêu cầu khác..." class="w-full border border-slate-200 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-ocean-500 transition bg-slate-50"></textarea>
-                <button type="submit" data-t="book_submit" class="w-full bg-ocean-600 hover:bg-ocean-700 text-white font-black py-5 rounded-[2rem] shadow-xl transition transform active:scale-95 text-xl tracking-widest">ĐẶT PHÒNG QUA ZALO</button>
+                <textarea id="note" data-p="note" rows="2" placeholder="Yêu cầu khác..." class="w-full border border-slate-200 p-3 md:p-4 rounded-xl md:rounded-2xl text-sm outline-none bg-slate-50"></textarea>
+                <button type="submit" data-t="book_submit" class="w-full bg-ocean-600 hover:bg-ocean-700 text-white font-black py-4 md:py-5 rounded-xl md:rounded-[2rem] shadow-lg text-sm md:text-xl tracking-widest transition">ĐẶT PHÒNG QUA ZALO</button>
             </form>
         </div>
     </section>
 
-    <footer class="bg-ocean-950 text-white pt-20 pb-12 px-4 border-t border-white/5">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left mb-16">
+    <footer class="bg-ocean-950 text-white pt-16 pb-8 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center md:text-left mb-10">
             <div>
-                <h3 class="text-3xl font-black mb-4">Hạ Linh Hotel</h3>
-                <p class="text-ocean-300 font-medium">Trải nghiệm kỳ nghỉ tuyệt vời và ấm cúng như chính ngôi nhà của bạn tại trung tâm Vũng Tàu.</p>
+                <h3 class="text-2xl font-black mb-3">Hạ Linh Hotel</h3>
+                <p class="text-ocean-300 text-sm">Trải nghiệm kỳ nghỉ tuyệt vời và ấm cúng tại trung tâm Vũng Tàu.</p>
+            </div>
+            <div class="text-sm">
+                <h4 class="font-bold text-ocean-400 mb-3">Liên hệ</h4>
+                <p>📍 Vũng Tàu, Việt Nam</p>
+                <p>📞 0365 203 109</p>
             </div>
             <div>
-                <h4 class="font-bold text-xl mb-4 text-ocean-400">Liên hệ</h4>
-                <p class="mb-2">📍 Vũng Tàu, Việt Nam</p>
-                <p class="mb-2">📞 0365 203 109</p>
-                <p>✉️ info@halinhhotel.vn</p>
-            </div>
-            <div>
-                <h4 class="font-bold text-xl mb-4 text-ocean-400">Theo dõi chúng tôi</h4>
-                <div class="flex justify-center md:justify-start gap-4">
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-ocean-500 transition cursor-pointer">Fb</div>
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-ocean-500 transition cursor-pointer">Ig</div>
-                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-ocean-500 transition cursor-pointer">Tk</div>
+                <h4 class="font-bold text-ocean-400 mb-3 text-sm">Mạng xã hội</h4>
+                <div class="flex justify-center md:justify-start gap-3">
+                    <div class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-[10px]">Fb</div>
+                    <div class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-[10px]">Ig</div>
                 </div>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto pt-8 border-t border-white/10 text-center text-sm text-ocean-400">
-            &copy; 2024 Hạ Linh Hotel Vũng Tàu. All rights reserved.
+        <div class="max-w-6xl mx-auto pt-6 border-t border-white/10 text-center text-[10px] md:text-xs text-ocean-400">
+            © 2024 Hạ Linh Hotel Vũng Tàu. All rights reserved.
         </div>
     </footer>
 
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-sm flex items-center gap-2 md:hidden z-50">
+        <a href="tel:0365203109" class="flex-1 bg-white shadow-2xl rounded-2xl py-3 text-center border border-slate-100 flex items-center justify-center gap-2 group active:scale-95 transition">
+            <div class="bg-ocean-50 p-2 rounded-full text-ocean-600 group-active:bg-ocean-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+            </div>
+            <span class="text-ocean-950 font-bold text-xs" data-t="stick_call">Hotline</span>
+        </a>
+        <a href="https://zalo.me/0365203109" target="_blank" class="flex-1 bg-ocean-600 shadow-2xl rounded-2xl py-3 text-center flex items-center justify-center gap-2 active:scale-95 transition">
+            <div class="bg-white/20 p-2 rounded-full text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+            </div>
+            <span class="text-white font-bold text-xs">Zalo Chat</span>
+        </a>
+    </div>
+
     <div id="popup" class="popup" onclick="closeRoom()">
-        <div class="bg-white p-10 rounded-[2.5rem] max-w-md w-[92%] relative shadow-2xl border-4 border-ocean-50" onclick="event.stopPropagation()">
-            <div class="absolute -top-4 -right-4">
-                <button onclick="closeRoom()" class="bg-white text-ocean-950 rounded-full w-10 h-10 flex items-center justify-center shadow-xl border border-slate-100 font-bold hover:bg-red-50 hover:text-red-500 transition">✖</button>
+        <div class="bg-white p-8 rounded-3xl max-w-sm w-[90%] relative shadow-2xl" onclick="event.stopPropagation()">
+            <h3 id="roomTitle" class="text-2xl font-black text-ocean-950 border-b-2 border-ocean-500 pb-3 mb-6"></h3>
+            <div class="space-y-3 text-xs md:text-sm font-medium">
+                <div class="flex items-center gap-3"><span>📶</span> <span data-t="feat_wifi">Wi-Fi Tốc độ cao</span></div>
+                <div class="flex items-center gap-3"><span>❄️</span> <span data-t="feat_ac">Điều hòa (Máy lạnh)</span></div>
+                <div class="flex items-center gap-3"><span>🚿</span> <span data-t="feat_water">Nước nóng 24/7</span></div>
+                <div class="flex items-center gap-3"><span>📺</span> <span data-t="feat_tv">Smart TV</span></div>
             </div>
-            <h3 id="roomTitle" class="text-3xl font-black text-ocean-950 border-b-4 border-ocean-500 pb-4 mb-8"></h3>
-            <div class="grid grid-cols-1 gap-5">
-                <div class="flex items-center gap-5 text-slate-700 p-3 bg-slate-50 rounded-2xl">
-                    <span class="text-3xl">📶</span> <span data-t="feat_wifi" class="font-bold">Wi-Fi Tốc độ cao</span>
-                </div>
-                <div class="flex items-center gap-5 text-slate-700 p-3 bg-slate-50 rounded-2xl">
-                    <span class="text-3xl">❄️</span> <span data-t="feat_ac" class="font-bold">Điều hòa (Máy lạnh)</span>
-                </div>
-                <div class="flex items-center gap-5 text-slate-700 p-3 bg-slate-50 rounded-2xl">
-                    <span class="text-3xl">🚿</span> <span data-t="feat_water" class="font-bold">Nước nóng 24/7</span>
-                </div>
-                <div class="flex items-center gap-5 text-slate-700 p-3 bg-slate-50 rounded-2xl">
-                    <span class="text-3xl">📺</span> <span data-t="feat_tv" class="font-bold">Smart TV Truyền hình cáp</span>
-                </div>
-            </div>
-            <button onclick="selectRoom()" data-t="pop_select" class="bg-ocean-600 text-white w-full py-5 rounded-[2rem] mt-10 font-black shadow-xl hover:bg-ocean-700 transition tracking-wider">CHỌN PHÒNG NÀY</button>
+            <button onclick="selectRoom()" data-t="pop_select" class="bg-ocean-600 text-white w-full py-4 rounded-2xl mt-8 font-black shadow-lg hover:bg-ocean-700 transition">CHỌN PHÒNG NÀY</button>
         </div>
     </div>
 
-    <div class="fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_25px_rgba(0,0,0,0.15)] flex md:hidden z-50">
-        <a href="tel:0365203109" class="flex-1 py-5 text-center text-ocean-950 font-black border-r border-slate-100 flex items-center justify-center gap-3">📞 <span data-t="stick_call">Gọi ngay</span></a>
-        <a href="https://zalo.me/0365203109" target="_blank" class="flex-1 py-5 text-center bg-ocean-600 text-white font-black flex items-center justify-center gap-3">💬 Nhắn Zalo</a>
-    </div>
-
     <script>
+        // JS logic keeps same as before but adapted for cleaner sizes
         const i18n = {
             vi: {
                 nav_btn: "Đặt ngay", hero_title: "Tuyệt tác nghỉ dưỡng Giữa lòng biển xanh", hero_sub: "Dịch vụ chuẩn 5 sao · Không gian đẳng cấp · Vị trí đắc địa", hero_btn: "Xem giá & Đặt phòng",
                 weather_head: "Dự báo thời tiết Vũng Tàu (10 ngày)", room_title: "Hạng Phòng Nghỉ", room_desc: "Mỗi không gian được thiết kế để mang lại sự thoải mái nhất", room_view_btn: "Xem chi tiết",
                 room_popular: "ĐƯỢC CHỌN NHIỀU", comp_title: "So Sánh Tiện Ích", table_feature: "Tiện ích", table_size: "Diện tích", table_balcony: "Ban công", table_view: "Tầm nhìn",
-                v_city: "Nội khu", v_street: "Phố/Biển", btn_select: "Chọn", gallery_title: "Thư Viện Ảnh", map_title: "Vị trí Hạ Linh Hotel", book_title: "Đặt phòng ngay",
-                opt_room: "Chọn hạng phòng", opt_qty: "Số lượng", book_submit: "ĐẶT PHÒNG QUA ZALO", stick_call: "Gọi ngay", pop_select: "CHỌN PHÒNG NÀY",
+                v_city: "Nội khu", v_street: "Phố/Biển", btn_select: "Chọn", gallery_title: "Thư Viện Ảnh", book_title: "Đặt phòng ngay",
+                opt_room: "Chọn hạng phòng", opt_qty: "Số lượng", book_submit: "ĐẶT PHÒNG QUA ZALO", stick_call: "Hotline", pop_select: "CHỌN PHÒNG NÀY",
                 placeholder_name: "Tên khách hàng", placeholder_phone: "Số điện thoại *", placeholder_note: "Yêu cầu khác...",
                 room_sup_info: "20m² · View nội khu · 1 Giường đôi lớn", room_del_info: "25m² · View phố nhộn nhịp · Ban công", room_fam_info: "35m² · Rộng rãi · 2 Giường đôi",
                 checkin_label: "Nhận phòng", checkout_label: "Trả phòng", msg_alert: "Đã sao chép nội dung đặt phòng! Đang mở Zalo của Hạ Linh Hotel, bạn chỉ cần dán nội dung vào nhé.",
-                feat_wifi: "Wi-Fi Tốc độ cao", feat_ac: "Điều hòa (Máy lạnh)", feat_water: "Nước nóng 24/7", feat_tv: "Smart TV Truyền hình cáp"
+                feat_wifi: "Wi-Fi Tốc độ cao", feat_ac: "Điều hòa (Máy lạnh)", feat_water: "Nước nóng 24/7", feat_tv: "Smart TV"
             },
             en: {
                 nav_btn: "Book Now", hero_title: "A Masterpiece of Coastal Luxury", hero_sub: "5-Star Service · Premium Space · Prime Location", hero_btn: "Check Price & Book",
                 weather_head: "Vung Tau Weather Forecast (10 Days)", room_title: "Our Guest Rooms", room_desc: "Every space is designed for your ultimate comfort", room_view_btn: "View Details",
                 room_popular: "MOST POPULAR", comp_title: "Amenities Comparison", table_feature: "Amenity", table_size: "Room Size", table_balcony: "Balcony", table_view: "View",
-                v_city: "Courtyard", v_street: "City/Sea", btn_select: "Select", gallery_title: "Photo Gallery", map_title: "Hạ Linh Hotel Location", book_title: "Quick Booking",
-                opt_room: "Select Room Type", opt_qty: "Quantity", book_submit: "BOOK VIA ZALO", stick_call: "Call Now", pop_select: "SELECT THIS ROOM",
+                v_city: "Courtyard", v_street: "City/Sea", btn_select: "Select", gallery_title: "Photo Gallery", book_title: "Quick Booking",
+                opt_room: "Select Room Type", opt_qty: "Quantity", book_submit: "BOOK VIA ZALO", stick_call: "Hotline", pop_select: "SELECT THIS ROOM",
                 placeholder_name: "Guest Name", placeholder_phone: "Phone Number *", placeholder_note: "Special requests...",
                 room_sup_info: "20m² · Courtyard view · 1 Queen bed", room_del_info: "25m² · Vibrant city view · Balcony", room_fam_info: "35m² · Spacious · 2 Queen beds",
-                checkin_label: "Check-in", checkout_label: "Check-out", msg_alert: "Booking details copied! Opening Zalo, just paste the message to start chat.",
-                feat_wifi: "High-speed Wi-Fi", feat_ac: "Air Conditioning", feat_water: "Hot Water 24/7", feat_tv: "Smart TV / Cable TV"
+                checkin_label: "Check-in", checkout_label: "Check-out", msg_alert: "Booking details copied! Opening Zalo, just paste the message.",
+                feat_wifi: "High-speed Wi-Fi", feat_ac: "Air Conditioning", feat_water: "Hot Water 24/7", feat_tv: "Smart TV"
             }
         };
 
@@ -321,8 +318,8 @@
 
         function changeLang(lang) {
             currentLang = lang;
-            document.getElementById('btn-vi').className = lang === 'vi' ? 'px-2 py-1 rounded bg-white shadow-sm text-ocean-600' : 'px-2 py-1 rounded text-slate-400';
-            document.getElementById('btn-en').className = lang === 'en' ? 'px-2 py-1 rounded bg-white shadow-sm text-ocean-600' : 'px-2 py-1 rounded text-slate-400';
+            document.getElementById('btn-vi').className = lang === 'vi' ? 'px-2 py-0.5 rounded bg-white shadow-sm text-ocean-600' : 'px-2 py-0.5 rounded text-slate-400';
+            document.getElementById('btn-en').className = lang === 'en' ? 'px-2 py-0.5 rounded bg-white shadow-sm text-ocean-600' : 'px-2 py-0.5 rounded text-slate-400';
             document.querySelectorAll('[data-t]').forEach(el => { el.innerText = i18n[lang][el.getAttribute('data-t')]; });
             document.querySelectorAll('[data-p]').forEach(el => { el.placeholder = i18n[lang]['placeholder_' + el.getAttribute('data-p')]; });
             flatCheckin.set("locale", lang === 'vi' ? "vn" : "default");
@@ -338,34 +335,19 @@
         flatCheckout = flatpickr("#checkout", { dateFormat: "d/m/Y", defaultDate: new Date().getTime() + 86400000, minDate: "today", locale: "vn" });
 
         let selectedRoomType = "";
-        function openRoom(name) {
-            selectedRoomType = name;
-            document.getElementById('roomTitle').innerText = name;
-            document.getElementById('popup').style.display = 'flex';
-        }
+        function openRoom(name) { selectedRoomType = name; document.getElementById('roomTitle').innerText = name; document.getElementById('popup').style.display = 'flex'; }
         function closeRoom() { document.getElementById('popup').style.display = 'none'; }
         function selectRoom() { document.getElementById('room').value = selectedRoomType; closeRoom(); document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); }
         function selectRoomDirect(room) { document.getElementById('room').value = room; document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); }
 
         async function handleBooking(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const room = document.getElementById('room').value;
-            const qty = document.getElementById('quantity').value;
-            const inDate = document.getElementById('checkin').value;
-            const outDate = document.getElementById('checkout').value;
-            const note = document.getElementById('note').value;
-
-            const msg = `[HẠ LINH HOTEL - ĐẶT PHÒNG]\n- Khách hàng: ${name}\n- Số điện thoại: ${phone}\n- Hạng phòng: ${room}\n- Số lượng: ${qty}\n- Ngày ở: ${inDate} - ${outDate}\n- Ghi chú: ${note}`;
-            
+            const msg = `[HẠ LINH HOTEL]\n- Khách: ${document.getElementById('name').value}\n- SĐT: ${document.getElementById('phone').value}\n- Phòng: ${document.getElementById('room').value}\n- SL: ${document.getElementById('quantity').value}\n- Ngày: ${document.getElementById('checkin').value} - ${document.getElementById('checkout').value}`;
             try {
                 await navigator.clipboard.writeText(msg);
                 alert(i18n[currentLang].msg_alert);
                 window.open(`https://zalo.me/0365203109`, '_blank');
-            } catch (err) {
-                window.open(`https://zalo.me/0365203109`, '_blank');
-            }
+            } catch (err) { window.open(`https://zalo.me/0365203109`, '_blank'); }
         }
     </script>
 </body>
