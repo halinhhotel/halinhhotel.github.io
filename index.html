@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hạ Linh Hotel</title>
+<title>Hạ Linh Hotel Vũng Tàu</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
-body { font-family: sans-serif; }
+body { font-family: 'Segoe UI', sans-serif; }
 .hero {
-  background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+  background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
   url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920');
   background-size: cover;
   background-position: center;
@@ -19,116 +18,184 @@ body { font-family: sans-serif; }
 </style>
 </head>
 
-<body x-data="app()" class="bg-slate-50">
+<body class="bg-white text-gray-800">
 
 <!-- NAV -->
-<nav class="fixed top-0 w-full bg-white/80 backdrop-blur px-4 py-3 flex justify-between">
-  <b>Hạ Linh Hotel</b>
-  <button @click="toggleLang()" class="border px-3 py-1 rounded">
-    <span x-text="lang==='vi'?'EN':'VI'"></span>
-  </button>
+<nav class="fixed w-full bg-white/80 backdrop-blur z-50 px-6 py-3 flex justify-between">
+  <b class="text-lg">Hạ Linh Hotel</b>
+  <div class="space-x-4 text-sm">
+    <a href="#rooms">Phòng</a>
+    <a href="#guide">Ăn chơi</a>
+    <a href="#booking">Đặt phòng</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero h-screen flex items-center justify-center text-white text-center px-4">
   <div>
-    <h1 class="text-4xl md:text-6xl font-bold mb-4" x-text="t('title')"></h1>
-    <p class="mb-6" x-html="t('subtitle')"></p>
-    <a href="#booking" class="bg-blue-600 px-6 py-3 rounded" x-text="t('book')"></a>
+    <h1 class="text-5xl font-bold mb-4">Hạ Linh Hotel</h1>
+    <p class="mb-6 text-lg">Khách sạn boutique gần biển tại Vũng Tàu</p>
+    <a href="#rooms" class="bg-white text-black px-6 py-3 rounded-full">Khám phá phòng</a>
   </div>
 </header>
 
 <!-- ROOMS -->
-<section class="py-16 max-w-6xl mx-auto px-4">
-<h2 class="text-2xl font-bold text-center mb-8" x-text="t('rooms')"></h2>
+<section id="rooms" class="py-20 max-w-6xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">Hạng phòng</h2>
 
-<div class="grid md:grid-cols-3 gap-6">
-  <div class="bg-white p-4 rounded shadow">
-    <h3>Superior</h3>
-    <p>600.000đ</p>
-  </div>
-  <div class="bg-white p-4 rounded shadow">
-    <h3>Deluxe</h3>
-    <p>900.000đ</p>
-  </div>
-  <div class="bg-white p-4 rounded shadow">
-    <h3>Family</h3>
-    <p>1.400.000đ</p>
-  </div>
+<div class="grid md:grid-cols-3 gap-8">
+
+<!-- ROOM -->
+<div class="shadow rounded overflow-hidden">
+<img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304" class="h-60 w-full object-cover">
+<div class="p-5">
+<h3 class="font-bold text-xl mb-2">Superior</h3>
+<p class="text-sm text-gray-500 mb-3">✔ Giá tốt<br>❌ Không view biển</p>
+<p class="font-bold text-blue-600">600.000đ</p>
+</div>
+</div>
+
+<div class="shadow rounded overflow-hidden">
+<img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39" class="h-60 w-full object-cover">
+<div class="p-5">
+<h3 class="font-bold text-xl mb-2">Deluxe Ocean</h3>
+<p class="text-sm text-gray-500 mb-3">✔ View biển<br>✔ Ban công</p>
+<p class="font-bold text-blue-600">900.000đ</p>
+</div>
+</div>
+
+<div class="shadow rounded overflow-hidden">
+<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" class="h-60 w-full object-cover">
+<div class="p-5">
+<h3 class="font-bold text-xl mb-2">Family Suite</h3>
+<p class="text-sm text-gray-500 mb-3">✔ Rộng<br>✔ Gia đình</p>
+<p class="font-bold text-blue-600">1.400.000đ</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- COMPARE -->
+<section class="py-16 bg-gray-50 px-4">
+<h2 class="text-2xl font-bold text-center mb-8">So sánh phòng</h2>
+
+<div class="overflow-auto">
+<table class="w-full max-w-4xl mx-auto text-sm border">
+<tr class="bg-gray-200">
+<th class="p-2">Phòng</th>
+<th>Giá</th>
+<th>View</th>
+<th>Diện tích</th>
+</tr>
+
+<tr class="text-center border-t">
+<td>Superior</td><td>600k</td><td>❌</td><td>20m²</td>
+</tr>
+
+<tr class="text-center border-t">
+<td>Deluxe</td><td>900k</td><td>✅</td><td>30m²</td>
+</tr>
+
+<tr class="text-center border-t">
+<td>Family</td><td>1.4tr</td><td>✅</td><td>45m²</td>
+</tr>
+
+</table>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="py-20 max-w-6xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-10">Gallery thực tế</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<img src="https://images.unsplash.com/photo-1566073771259" class="rounded">
+<img src="https://images.unsplash.com/photo-1582719478250" class="rounded">
+<img src="https://images.unsplash.com/photo-1611892440504" class="rounded">
+<img src="https://images.unsplash.com/photo-1590490360182" class="rounded">
+</div>
+</section>
+
+<!-- OTA -->
+<section class="py-16 bg-gray-100 text-center">
+<h2 class="text-2xl font-bold mb-6">Đặt phòng qua đối tác</h2>
+
+<div class="flex justify-center gap-6">
+<a href="#" class="bg-white px-6 py-3 shadow rounded">Booking.com</a>
+<a href="#" class="bg-white px-6 py-3 shadow rounded">Agoda</a>
+<a href="https://zalo.me" class="bg-blue-500 text-white px-6 py-3 rounded">Zalo</a>
+<a href="tel:0365203109" class="bg-green-500 text-white px-6 py-3 rounded">Hotline</a>
+</div>
+</section>
+
+<!-- LOCAL GUIDE -->
+<section id="guide" class="py-20 max-w-6xl mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-10">Ăn chơi Vũng Tàu</h2>
+
+<div class="grid md:grid-cols-2 gap-8">
+
+<div>
+<h3 class="font-bold">📍 Bạch Dinh</h3>
+<p class="text-sm text-gray-500">View biển đẹp</p>
+</div>
+
+<div>
+<h3 class="font-bold">🍤 Bánh Khọt Gốc Vú Sữa</h3>
+<p class="text-sm text-gray-500">Đặc sản nổi tiếng</p>
+</div>
+
 </div>
 </section>
 
 <!-- BOOKING -->
-<section id="booking" class="py-16 bg-slate-100 px-4">
-<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+<section id="booking" class="py-16 bg-gray-50 px-4">
+<div class="max-w-lg mx-auto bg-white p-6 shadow rounded">
 
-<h2 class="text-xl font-bold mb-4" x-text="t('form')"></h2>
+<h2 class="text-xl font-bold mb-4 text-center">Gửi yêu cầu đặt phòng</h2>
 
-<form @submit.prevent="submitBooking()" class="space-y-3">
-  <input x-model="form.name" required placeholder="Name" class="w-full border p-2">
-  <input x-model="form.phone" required placeholder="Phone" class="w-full border p-2">
-  <input x-model="form.checkin" type="date" required class="w-full border p-2">
-  <input x-model="form.checkout" type="date" required class="w-full border p-2">
+<form onsubmit="sendZalo(event)" class="space-y-3">
+<input id="name" placeholder="Tên" class="w-full border p-2">
+<input id="phone" placeholder="SĐT" class="w-full border p-2">
+<select id="room" class="w-full border p-2">
+<option>Superior</option>
+<option>Deluxe</option>
+<option>Family</option>
+</select>
 
-  <select x-model="form.room" class="w-full border p-2">
-    <option>Superior</option>
-    <option>Deluxe</option>
-    <option>Family</option>
-  </select>
-
-  <button class="bg-blue-600 text-white w-full py-2 rounded">
-    <span x-text="t('submit')"></span>
-  </button>
+<button class="bg-blue-600 text-white w-full py-2 rounded">
+Gửi yêu cầu
+</button>
 </form>
-
-<p x-show="success" class="text-green-600 mt-3">✔ Đã gửi booking!</p>
 
 </div>
 </section>
 
+<!-- FOOTER -->
+<footer class="bg-black text-white py-10 text-center">
+<p class="font-bold">Hạ Linh Hotel</p>
+<p class="text-sm opacity-60">Vũng Tàu, Việt Nam</p>
+
+<div class="mt-4 space-x-4">
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+</div>
+
+<p class="text-xs mt-4 opacity-40">© 2026</p>
+</footer>
+
 <script>
-function app(){
-return{
-lang:'vi',
-success:false,
+function sendZalo(e){
+e.preventDefault();
 
-form:{name:'',phone:'',checkin:'',checkout:'',room:''},
+let name = document.getElementById('name').value;
+let phone = document.getElementById('phone').value;
+let room = document.getElementById('room').value;
 
-translations:{
-vi:{
-title:'Hạ Linh Hotel',
-subtitle:'Khách sạn tiện nghi tại Vũng Tàu',
-book:'Đặt phòng',
-rooms:'Hạng phòng',
-form:'Đặt phòng nhanh',
-submit:'Gửi'
-},
-en:{
-title:'Ha Linh Hotel',
-subtitle:'Comfort stay in Vung Tau',
-book:'Book now',
-rooms:'Rooms',
-form:'Booking',
-submit:'Submit'
-}
-},
+let msg = `Khách đặt phòng:%0AName: ${name}%0APhone: ${phone}%0APhòng: ${room}`;
 
-toggleLang(){this.lang=this.lang==='vi'?'en':'vi'},
-t(k){return this.translations[this.lang][k]},
-
-async submitBooking(){
-
-const url = "YOUR_GOOGLE_SCRIPT_URL";
-
-await fetch(url,{
-method:"POST",
-body:JSON.stringify(this.form)
-});
-
-this.success=true;
-this.form={name:'',phone:'',checkin:'',checkout:'',room:''}
-}
-}
+window.open(`https://zalo.me/0365203109?text=${msg}`);
 }
 </script>
 
