@@ -17,21 +17,6 @@ url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=c
 background-size:cover;
 background-position:center;
 }
-.popup{
-position:fixed; inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-background:rgba(0,0,0,.6);
-z-index:999;
-}
-.popup-box{
-background:white;
-padding:20px;
-border-radius:10px;
-max-width:400px;
-width:90%;
-}
 </style>
 </head>
 
@@ -40,7 +25,7 @@ width:90%;
 <!-- NAV -->
 <nav class="fixed w-full bg-white/90 backdrop-blur px-4 py-3 flex items-center justify-between shadow z-50">
 <a href="#" class="flex items-center gap-2">
-<img src="/mnt/data/Logo Hotel.png" class="h-8">
+<img src="https://i.ibb.co/s9Wyb0wz/Logo-Hotel.png" class="h-8">
 <span class="font-bold">Hạ Linh Hotel</span>
 </a>
 </nav>
@@ -54,81 +39,61 @@ width:90%;
 </div>
 </header>
 
-<!-- ROOMS -->
-<section class="py-16 px-4 max-w-5xl mx-auto">
-<h2 class="text-center mb-6">Hạng phòng</h2>
-
-<div class="grid md:grid-cols-3 gap-4">
-
-<div onclick="openRoom('Superior')" class="shadow cursor-pointer">
-<img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304" class="h-40 w-full object-cover">
-<div class="p-2">Superior</div>
-</div>
-
-<div onclick="openRoom('Deluxe')" class="shadow cursor-pointer">
-<img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39" class="h-40 w-full object-cover">
-<div class="p-2">Deluxe</div>
-</div>
-
-<div onclick="openRoom('Family')" class="shadow cursor-pointer">
-<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" class="h-40 w-full object-cover">
-<div class="p-2">Family</div>
-</div>
-
-</div>
-</section>
-
 <!-- BOOKING -->
 <section id="booking" class="py-16 bg-gray-50 px-4">
+
 <div class="max-w-md mx-auto bg-white p-5 shadow rounded">
 
-<h2 class="text-center font-bold mb-4">Đặt phòng ngay!</h2>
+<h2 class="text-center font-bold mb-4 text-lg">Đặt phòng ngay!</h2>
 
-<form onsubmit="sendZalo(event)" class="space-y-3">
+<form onsubmit="handleBooking(event)" class="space-y-4 text-sm">
 
-<input id="name" placeholder="Tên" class="w-full border p-2">
-<input id="phone" placeholder="SĐT Zalo *" class="w-full border p-2">
+<input id="name" placeholder="Tên" class="w-full border p-3 rounded">
+
+<input id="phone" placeholder="SĐT Zalo *" class="w-full border p-3 rounded">
 
 <div>
 <label class="text-xs text-gray-500">Check-in *</label>
-<input id="checkin" class="w-full border p-2">
+<input id="checkin" class="w-full border p-3 rounded mt-1">
 </div>
 
 <div>
 <label class="text-xs text-gray-500">Check-out *</label>
-<input id="checkout" class="w-full border p-2">
+<input id="checkout" class="w-full border p-3 rounded mt-1">
 </div>
 
-<select id="room" class="w-full border p-2">
+<select id="room" class="w-full border p-3 rounded">
 <option value="">Chọn hạng phòng *</option>
 <option>Superior</option>
 <option>Deluxe</option>
 <option>Family</option>
 </select>
 
-<button class="bg-black text-white w-full py-2">Gửi thông tin</button>
+<!-- SỐ LƯỢNG PHÒNG -->
+<select id="quantity" class="w-full border p-3 rounded">
+<option value="">Số lượng phòng *</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+
+<button class="bg-black text-white w-full py-3 rounded text-sm font-semibold">
+Copy thông tin và đặt qua Zalo ngay!
+</button>
 
 </form>
 
 </div>
+
 </section>
 
-<!-- POPUP -->
-<div id="popup" class="popup" onclick="closeRoom()">
-<div class="popup-box" onclick="event.stopPropagation()">
-<h3 id="roomTitle"></h3>
-<p id="roomDesc"></p>
-
-<button onclick="selectRoom()" class="bg-black text-white w-full py-2 mt-3">
-Chọn phòng này
-</button>
-
-<button onclick="closeRoom()" class="mt-2 text-sm text-gray-500">
-Đóng
-</button>
-
-</div>
-</div>
+<!-- FOOTER -->
+<footer class="bg-black text-white text-center py-8">
+<p class="font-semibold">Hạ Linh Hotel</p>
+<p class="text-sm opacity-60">Vũng Tàu</p>
+</footer>
 
 <script>
 
@@ -140,46 +105,8 @@ tomorrow.setDate(today.getDate()+1);
 flatpickr("#checkin",{dateFormat:"d/m/Y",defaultDate:today});
 flatpickr("#checkout",{dateFormat:"d/m/Y",defaultDate:tomorrow});
 
-// ROOM DATA
-let selectedRoom = "";
-
-function openRoom(name){
-selectedRoom = name;
-
-document.getElementById('popup').style.display='flex';
-document.getElementById('roomTitle').innerText=name;
-
-let desc={
-Superior:"Phòng giá tốt",
-Deluxe:"View đẹp, ban công",
-Family:"Phòng rộng"
-};
-
-document.getElementById('roomDesc').innerText=desc[name];
-}
-
-function closeRoom(){
-document.getElementById('popup').style.display='none';
-}
-
-// AUTO SELECT ROOM
-function selectRoom(){
-closeRoom();
-
-let roomSelect = document.getElementById('room');
-roomSelect.value = selectedRoom;
-
-// scroll
-document.getElementById('booking').scrollIntoView({behavior:'smooth'});
-
-// focus phone
-setTimeout(()=>{
-document.getElementById('phone').focus();
-},500);
-}
-
-// ZALO
-function sendZalo(e){
+// HANDLE BOOKING
+function handleBooking(e){
 e.preventDefault();
 
 let name=document.getElementById('name').value||"";
@@ -187,21 +114,37 @@ let phone=document.getElementById('phone').value;
 let checkin=document.getElementById('checkin').value;
 let checkout=document.getElementById('checkout').value;
 let room=document.getElementById('room').value;
+let quantity=document.getElementById('quantity').value;
 
 if(!phone){
-alert("Vui lòng điền số điện thoại");
+alert("Vui lòng điền số điện thoại liên hệ");
+return;
+}
+if(!checkin||!checkout){
+alert("Vui lòng chọn ngày");
+return;
+}
+if(!room){
+alert("Vui lòng chọn hạng phòng");
+return;
+}
+if(!quantity){
+alert("Vui lòng chọn số lượng phòng");
 return;
 }
 
-let msg=
-`Thông tin khách đặt phòng:%0A%0A
-Tên: ${name}%0A
-SĐT Zalo: ${phone}%0A
-Check-in: ${checkin}%0A
-Check-out: ${checkout}%0A
-Hạng phòng: ${room}`;
+let msg =
+`Người đặt: ${name} - SĐT ${phone}
+Tôi muốn đặt ${quantity} phòng ${room}, check-in ngày ${checkin} và check-out ngày ${checkout}.`;
 
-window.open(`https://zalo.me/0365203109?text=${msg}`);
+// COPY
+navigator.clipboard.writeText(msg).then(()=>{
+alert("Đã copy nội dung! Mở Zalo và dán để gửi nhé 👍");
+});
+
+// OPEN ZALO
+window.open("https://zalo.me/0365203109","_blank");
+
 }
 
 </script>
