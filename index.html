@@ -429,6 +429,22 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
+    // Logic hiển thị và nhấn nút quay về đầu trang
+const scrollBtn = document.getElementById("scrollToTop");
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        scrollBtn.classList.remove("opacity-0", "invisible");
+        scrollBtn.classList.add("opacity-100", "visible");
+    } else {
+        scrollBtn.classList.add("opacity-0", "invisible");
+        scrollBtn.classList.remove("opacity-100", "visible");
+    }
+};
+
+scrollBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};    
     </script>
 
     <style>
@@ -512,5 +528,8 @@
         createStars();
         setInterval(createFloatingIcon, 3000); 
     </script>
+<button id="scrollToTop" class="fixed bottom-28 right-4 md:bottom-8 md:right-8 z-[120] bg-gold-500 text-ocean-900 w-12 h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-gold-400 active:scale-95">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>    
 </body>
 </html>
