@@ -31,7 +31,6 @@
         }
     </script>
     <style>
-        /* 1. Thiết lập nền Deep Ocean và tối ưu font chữ */
         body {
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             color: #f8f9fa;
@@ -43,7 +42,6 @@
             flex-direction: column;
         }
 
-        /* 2. Hiệu ứng Glassmorphism cho các khối */
         .glass-box {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
@@ -52,12 +50,10 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
-        /* 3. Fix triệt để lỗi chiều cao ảo trên mobile */
         @supports (-webkit-touch-callout: none) {
             body { min-height: -webkit-fill-available; }
             html { height: -webkit-fill-available; }
         }
-        body > *:last-child { margin-bottom: 0 !important; }
 
         html { scroll-behavior: smooth; }
         .glass-nav { background: rgba(15, 32, 39, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -68,19 +64,45 @@
         .room-card .info-overlay { opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
         .room-card:hover .info-overlay { opacity: 1; transform: translateY(0); }
         
-        /* Tối ưu select và input cho mobile */
         select, input { color: #0f172a !important; background-color: white !important; -webkit-appearance: none; }
         .table-container::-webkit-scrollbar { height: 4px; }
         .table-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
-        /* Responsive fonts cho form */
         @media (max-width: 640px) {
             .booking-label { font-size: 0.7rem !important; }
             .booking-input { font-size: 0.85rem !important; padding: 0.75rem 1rem !important; }
         }
+
+        /* Hiệu ứng nút Hotline Desktop */
+        .hotline-btn:hover .hotline-number {
+            max-width: 200px;
+            margin-left: 10px;
+            opacity: 1;
+        }
+        .hotline-number {
+            max-width: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body class="font-sans pb-24 md:pb-0">
+
+    <div class="hidden md:flex fixed right-6 bottom-24 flex-col gap-4 z-[110]">
+        <div onclick="window.location.href='tel:0365203109'" class="hotline-btn flex items-center bg-gold-500 text-ocean-900 p-3 rounded-full shadow-2xl cursor-pointer hover:scale-105 transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span class="hotline-number font-bold">0365 203 109</span>
+        </div>
+        <a href="https://zalo.me/0365203109" target="_blank" class="bg-white p-3 rounded-full shadow-2xl hover:scale-110 transition-transform">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="w-6 h-6" alt="Zalo">
+        </a>
+    </div>
+
+    <button id="scrollToTop" class="fixed bottom-28 right-4 md:bottom-8 md:right-8 z-[120] bg-white/20 backdrop-blur-md text-white w-12 h-12 rounded-full border border-white/20 shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-gold-500 hover:text-ocean-900 active:scale-95">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
 
     <div class="fixed bottom-4 left-4 right-4 z-[110] glass-contact p-2 flex md:hidden gap-2 rounded-3xl shadow-2xl">
         <a href="tel:0365203109" class="flex-1 bg-gold-500 text-ocean-900 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold active:scale-95 transition shadow-inner">
@@ -194,7 +216,7 @@
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold mb-1 text-white">New Moon</h3>
                         <p class="text-xs text-white/70 mb-4" data-i18n="room_1_desc">Phòng đơn tiêu chuẩn cho 2 người</p>
-                        <span class="text-xl font-bold text-gold-400">350k<span class="text-xs font-normal text-white/60">/đêm</span></span>
+                        <span class="text-xl font-bold text-gold-400">250k<span class="text-xs font-normal text-white/60">/đêm</span></span>
                     </div>
                 </div>
 
@@ -209,7 +231,7 @@
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold mb-1 text-white">Half Moon</h3>
                         <p class="text-xs text-white/70 mb-4" data-i18n="room_2_desc">Phòng đôi hiện đại, thoáng mát</p>
-                        <span class="text-xl font-bold text-gold-400">450k<span class="text-xs font-normal text-white/60">/đêm</span></span>
+                        <span class="text-xl font-bold text-gold-400">280k<span class="text-xs font-normal text-white/60">/đêm</span></span>
                     </div>
                 </div>
 
@@ -225,7 +247,7 @@
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold mb-1 text-white">Full Moon</h3>
                         <p class="text-xs text-white/70 mb-4" data-i18n="room_3_desc">Phòng gia đình cho 4 người lớn</p>
-                        <span class="text-xl font-bold text-gold-400">650k<span class="text-xs font-normal text-white/60">/đêm</span></span>
+                        <span class="text-xl font-bold text-gold-400">350k<span class="text-xs font-normal text-white/60">/đêm</span></span>
                     </div>
                 </div>
 
@@ -240,7 +262,7 @@
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold mb-1 text-white">Eclipse VIP</h3>
                         <p class="text-xs text-white/70 mb-4" data-i18n="room_4_desc">Phòng VIP cao cấp nhất</p>
-                        <span class="text-xl font-bold text-gold-400">800k<span class="text-xs font-normal text-white/60">/đêm</span></span>
+                        <span class="text-xl font-bold text-gold-400">380k<span class="text-xs font-normal text-white/60">/đêm</span></span>
                     </div>
                 </div>
             </div>
@@ -271,10 +293,10 @@
                         </tr>
                         <tr class="hover:bg-white/5 transition">
                             <td class="p-6 bg-white/5" data-i18n="th_price">Giá Ưu Đãi</td>
-                            <td class="p-6 text-center">350k</td>
-                            <td class="p-6 text-center">450k</td>
-                            <td class="p-6 text-center bg-gold-500/10 border-x border-gold-500/20 font-bold text-gold-400">650k</td>
-                            <td class="p-6 text-center">800k</td>
+                            <td class="p-6 text-center">250k</td>
+                            <td class="p-6 text-center">280k</td>
+                            <td class="p-6 text-center bg-gold-500/10 border-x border-gold-500/20 font-bold text-gold-400">350k</td>
+                            <td class="p-6 text-center">380k</td>
                         </tr>
                     </tbody>
                 </table>
@@ -291,7 +313,7 @@
             
             <div class="rounded-[40px] overflow-hidden glass-box border-[4px] border-white/20 h-[400px] md:h-[500px] relative p-1">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.464673641215!2d107.0818274758509!3d10.344715567000806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756f91754020c1%3A0xc07f59d43526315!2zNDQtNDYgUGhhbiBWxINuIFRyaSwgUGjGsOG7nW5nIDIsIFRow6BuaCBwaOG7kSBWxaluZyBUw6B1LCBCw6AgUuG7i2EgLSBWxaluZyBUw6B1LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.048590858882!2d107.08630717590806!3d10.338006889785863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756fed183e9383%3A0xe1043f1396a92892!2zNDQgUGhhbiBWxINuIFRy4buLLCBQaMaw4budbmcgMiwgVGjDoG5oIHBo4buRIFZbmcgVMOgdSwgQsOgIFLhu4thIC0gVsWpbmcgVMOgdSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1714800000000!5m2!1sen!2s" 
                     width="100%" height="100%" style="border:0; border-radius: 35px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
@@ -417,10 +439,32 @@
             const msg = `[LUNAR PASS BOOKING]%0A- Khách: ${document.getElementById('name').value}%0A- SĐT: ${document.getElementById('phone').value}%0A- Phòng: ${document.getElementById('room').value}%0A- Số người: ${document.getElementById('guests').value}%0A- Ngày: ${document.getElementById('checkin').value} đến ${document.getElementById('checkout').value}`;
             window.open(`https://zalo.me/0365203109?text=${msg}`, '_blank');
         }
+
+        // Logic Quay về đầu trang
+        const scrollBtn = document.getElementById("scrollToTop");
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 400) {
+                scrollBtn.classList.remove("opacity-0", "invisible");
+                scrollBtn.classList.add("opacity-100", "visible");
+            } else {
+                scrollBtn.classList.add("opacity-0", "invisible");
+                scrollBtn.classList.remove("opacity-100", "visible");
+            }
+        });
+        scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     </script>
 
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // Tối ưu vị trí bóng chat tawk.to để không đè lên nút Zalo mobile
+    Tawk_API.customStyle = {
+        visibility : {
+            desktop : { xOffset : 20, yOffset : 20 },
+            mobile : { xOffset : 10, yOffset : 80 } // Đẩy lên 80px để tránh thanh contact
+        }
+    };
+
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
     s1.async=true;
@@ -429,76 +473,24 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-    // Logic hiển thị và nhấn nút quay về đầu trang
-const scrollBtn = document.getElementById("scrollToTop");
-
-window.onscroll = function() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        scrollBtn.classList.remove("opacity-0", "invisible");
-        scrollBtn.classList.add("opacity-100", "visible");
-    } else {
-        scrollBtn.classList.add("opacity-0", "invisible");
-        scrollBtn.classList.remove("opacity-100", "visible");
-    }
-};
-
-scrollBtn.onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};    
     </script>
 
     <style>
-        #lunar-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1; /* Để hiệu ứng nằm dưới nội dung web */
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle var(--duration) ease-in-out infinite;
-        }
-        .moon-icon {
-            position: absolute;
-            color: rgba(251, 191, 36, 0.4); /* Màu vàng gold nhạt */
-            font-size: 1.2rem;
-            pointer-events: none;
-            animation: float-up var(--duration) linear forwards;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-        }
-
-        @keyframes float-up {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
+        #lunar-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0; animation: twinkle var(--duration) ease-in-out infinite; }
+        .moon-icon { position: absolute; color: rgba(251, 191, 36, 0.4); font-size: 1.2rem; pointer-events: none; animation: float-up var(--duration) linear forwards; }
+        @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.7; transform: scale(1.2); } }
+        @keyframes float-up { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.5; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
     </style>
-
     <div id="lunar-container"></div>
-
     <script>
         const lunarContainer = document.getElementById('lunar-container');
-        
-        // Tạo sao lấp lánh cố định
         function createStars() {
             for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 const size = Math.random() * 3 + 1 + 'px';
-                star.style.width = size;
-                star.style.height = size;
+                star.style.width = size; star.style.height = size;
                 star.style.top = Math.random() * 100 + 'vh';
                 star.style.left = Math.random() * 100 + 'vw';
                 star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
@@ -506,30 +498,19 @@ scrollBtn.onclick = function() {
                 lunarContainer.appendChild(star);
             }
         }
-
-        // Tạo icon mặt trăng trôi nhẹ
         const icons = ['🌙', '⭐', '✨'];
         function createFloatingIcon() {
             const icon = document.createElement('div');
             icon.className = 'moon-icon';
             icon.innerText = icons[Math.floor(Math.random() * icons.length)];
             icon.style.left = Math.random() * 100 + 'vw';
-            const duration = Math.random() * 10 + 15 + 's';
-            icon.style.setProperty('--duration', duration);
+            icon.style.setProperty('--duration', Math.random() * 10 + 15 + 's');
             icon.style.fontSize = Math.random() * 10 + 10 + 'px';
-            
             lunarContainer.appendChild(icon);
-            
-            setTimeout(() => {
-                icon.remove();
-            }, 25000);
+            setTimeout(() => icon.remove(), 25000);
         }
-
         createStars();
         setInterval(createFloatingIcon, 3000); 
     </script>
-<button id="scrollToTop" class="fixed bottom-28 right-4 md:bottom-8 md:right-8 z-[120] bg-gold-500 text-ocean-900 w-12 h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-gold-400 active:scale-95">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-</button>    
 </body>
 </html>
