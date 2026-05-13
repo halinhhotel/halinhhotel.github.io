@@ -9,7 +9,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    function toggleHub() {
+        const menu = document.getElementById('hubMenu');
+        const btn = document.getElementById('hubMainBtn');
+        menu.classList.toggle('active');
+        if(menu.classList.contains('active')) {
+            btn.style.transform = 'rotate(90deg) scale(0.9)';
+            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+        } else {
+            btn.style.transform = 'rotate(0deg) scale(1)';
+            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
+        }
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const container = document.querySelector('.contact-hub-container');
+        const menu = document.getElementById('hubMenu');
+        const btn = document.getElementById('hubMainBtn');
+        
+        if (!container.contains(event.target) && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            btn.style.transform = 'rotate(0deg) scale(1)';
+            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
+        }
+    });
+
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/vn.js"></script>
@@ -59,6 +86,113 @@
 
         /* Custom width cho bóng chat khi hover */
         .chat-bubble-expand:hover { width: 170px !important; }
+    
+    /* Contact Hub & Zalo Styles */
+    .contact-hub-container { 
+        position: fixed; 
+        bottom: 105px; 
+        left: 20px; 
+        z-index: 9999; 
+        display: flex; 
+        flex-direction: column-reverse; 
+        align-items: center; 
+    }
+    .hub-button { 
+        width: 55px; 
+        height: 55px; 
+        background: #0ea5e9; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: white; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+        cursor: pointer; 
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        z-index: 10; 
+    }
+    .hub-button:hover { transform: scale(1.1); background: #0284c7; }
+    .hub-menu { 
+        position: absolute; 
+        bottom: 65px; 
+        left: 0; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 12px; 
+        opacity: 0; 
+        visibility: hidden; 
+        transition: all 0.3s ease; 
+        transform: translateY(20px); 
+    }
+    .hub-menu.active { 
+        opacity: 1; 
+        visibility: visible; 
+        transform: translateY(0); 
+    }
+    .hub-item { 
+        width: 48px; 
+        height: 48px; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: white; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+        transition: transform 0.2s; 
+        position: relative; 
+        text-decoration: none;
+    }
+    .hub-item:hover { transform: scale(1.15); }
+    .hub-item svg { width: 24px; height: 24px; }
+    
+    .hub-item .label { 
+        position: absolute; 
+        left: 60px; 
+        background: rgba(15, 23, 42, 0.9); 
+        color: white; 
+        padding: 5px 12px; 
+        border-radius: 6px; 
+        font-size: 13px; 
+        font-weight: 500; 
+        white-space: nowrap; 
+        pointer-events: none; 
+        opacity: 0; 
+        transition: opacity 0.2s; 
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(4px);
+    }
+    .hub-item:hover .label { opacity: 1; }
+    
+    .bg-messenger { background: #0084FF; }
+    .bg-hotline { background: #ff4757; }
+    .bg-telegram { background: #0088cc; }
+    .bg-whatsapp { background: #25D366; }
+
+    .zalo-fixed { 
+        position: fixed; 
+        bottom: 30px; 
+        left: 20px; 
+        width: 60px; 
+        height: 60px; 
+        background: #0068ff; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        box-shadow: 0 4px 20px rgba(0,104,255,0.4); 
+        z-index: 9999; 
+        transition: all 0.3s; 
+        animation: pulse-zalo 2s infinite; 
+    }
+    .zalo-fixed:hover { transform: scale(1.1); }
+    .zalo-fixed img { width: 35px; height: 35px; }
+    
+    @keyframes pulse-zalo { 
+        0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.5); } 
+        70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); } 
+        100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } 
+    }
+
     </style>
 </head>
 <body class="font-sans">
@@ -66,12 +200,7 @@
     <div id="lunar-container" class="fixed inset-0 pointer-events-none z-0"></div>
 
     <div class="fixed left-4 bottom-6 z-[120] flex flex-col gap-3">
-        <a href="https://zalo.me/0365203109" target="_blank" class="chat-bubble-expand group flex items-center glass-btn h-12 w-12 rounded-full shadow-2xl transition-all duration-500 overflow-hidden bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 justify-start">
-            <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="w-7 h-7" alt="Zalo">
-            </div>
-            <span class="font-bold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">Chat Zalo</span>
-        </a>
+        
         <a href="tel:0365203109" class="chat-bubble-expand group flex items-center glass-btn h-12 w-12 rounded-full shadow-2xl transition-all duration-500 overflow-hidden bg-gold-500/10 hover:bg-gold-500/20 border border-gold-500/30 justify-start">
             <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-gold-500">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -88,7 +217,7 @@
         <div class="max-w-7xl mx-auto px-4 flex justify-between h-16 md:h-20 items-center">
             <a href="#" class="text-lg md:text-2xl font-black text-gold-500 tracking-tighter uppercase">🌙 HẠ LINH HOTEL</a>
             <div class="hidden lg:flex space-x-8 font-bold text-slate-400 text-sm">
-                <a href="#rooms" class="hover:text-gold-500 transition" data-i18n="nav_rooms">Phòng nghỉ</a>
+                <a href="#rooms" class="hover:text-gold-500 transition" data-i18n="nav_rooms">Xem phòng</a>
                 <a href="#reviews" class="hover:text-gold-500 transition" data-i18n="nav_reviews">Đánh giá</a>
                 <a href="#booking" class="hover:text-gold-500 transition" data-i18n="nav_contact">Liên hệ</a>
             </div>
@@ -116,7 +245,7 @@
             <h2 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6" data-i18n="rooms_title">Hạng Phòng Lunar</h2>
             <div class="inline-block bg-red-500/10 border border-red-500/50 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl">
                 <p class="text-red-400 font-bold text-xs md:text-base" data-i18n="price_alert">
-                    ⚠️ Không bao gồm ngày Cuối tuần & Lễ/Tết. Liên hệ Zalo để được báo giá thời điểm hiện tại.
+                    ⚠️ Giá áp dụng ngày thường, không áp dụng Cuối tuần & Lễ/Tết. Liên hệ để được báo giá thời điểm hiện tại.
                 </p>
             </div>
         </div>
@@ -247,7 +376,7 @@
                     <p class="text-slate-300 italic mb-6 md:mb-10 text-xs md:text-sm">"Phòng sạch sẽ, ngay trung tâm thuận tiện ăn uống. Chủ khách sạn nhiệt tình chỉ dẫn chỗ ăn ngon."</p>
                     <div class="flex items-center gap-4 border-t border-white/5 pt-4 md:pt-6">
                         <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center font-black text-lunar-950 text-xs">AN</div>
-                        <div><p class="font-bold text-sm">Anh Nguyễn</p><p class="text-[10px] text-slate-500 uppercase">Khách từ TP.HCM</p></div>
+                        <div><p class="font-bold text-sm">Anh Nguyên</p><p class="text-[10px] text-slate-500 uppercase">Khách từ TP.HCM</p></div>
                     </div>
                 </div>
                 <div class="review-card glass-box p-6 md:p-8 rounded-3xl flex flex-col justify-between">
@@ -314,9 +443,9 @@
 
     <footer class="bg-black py-12 md:py-16 text-center border-t border-white/5">
         <h2 class="text-2xl md:text-3xl font-black text-gold-500 font-lucky mb-4 uppercase">HẠ LINH HOTEL 🌙</h2>
-        <p class="text-slate-500 text-xs md:text-sm">44-46 Phan Văn Trị, Phường 2, Vũng Tàu</p>
+        <p class="text-slate-500 text-xs md:text-sm">XX Phan Văn Trị, Phường 2, Vũng Tàu</p>
         <p class="text-gold-500 font-bold text-xl md:text-2xl mt-4">0365 203 109</p>
-        <p class="text-slate-800 text-[8px] md:text-[10px] mt-10 tracking-[0.4em] uppercase">© 2026 Developed by Steve AI</p>
+        <p class="text-slate-800 text-[8px] md:text-[10px] mt-10 tracking-[0.4em] uppercase">© 2026 Developed by Ander</p>
     </footer>
 
     <script type="text/javascript">
