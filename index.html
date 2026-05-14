@@ -176,7 +176,7 @@
     </p>
 
     <p class="text-[11px] md:text-sm text-white/70 font-semibold tracking-[0.2em] uppercase">
-        Khách sạn giá tốt gần Bãi Sau Vũng Tàu
+        Khách sạn giá tốt tại Bãi sau Vũng Tàu
     </p>
 </div>
     </section>
@@ -409,9 +409,44 @@
         });
 
         // Language & UI Logic (Giữ nguyên gốc)
-        const i18n = {
-            vi: { nav_rooms: "Phòng nghỉ", nav_reviews: "Đánh giá", nav_contact: "Liên hệ", nav_book: "Đặt ngay", hero_sub: '"Nghỉ ngơi êm ái - Trọn vẹn niềm vui"', rooms_title: "Hạng Phòng Lunar", price_alert: "⚠️ Không bao gồm ngày Cuối tuần & Lễ/Tết. Liên hệ Zalo để được báo giá.", guests: "Người lớn", weekday: "Ngày thường", btn_choose: "CHỌN PHÒNG", btn_book_now: "ĐẶT PHÒNG NGAY", popular: "PHỔ BIẾN NHẤT", review_title: "Khách Hàng Đánh Giá", form_title: "ĐẶT PHÒNG NHANH", f_name: "Họ và Tên", f_phone: "Số điện thoại", f_room: "Hạng phòng", f_guests: "Số người", f_checkin: "Ngày nhận", f_checkout: "Ngày trả", f_submit: "XÁC NHẬN & MỞ CHAT ZALO", p_unit: "Người", r1_name: "New Moon (Trăng Non)", r1_type: "Phòng Đơn - 1 Giường Đôi", r2_name: "Half Moon (Trăng Khuyết)", r2_type: "Phòng Đôi - 2 Giường Đơn", r3_name: "Full Moon (Trăng Tròn)", r3_type: "Phòng Gia Đình - 2 Giường Đôi", r4_name: "Eclipse (Nguyệt Thực)", r4_type: "VIP - Ban Công Biển" },
-            en: { nav_rooms: "Rooms", nav_reviews: "Reviews", nav_contact: "Contact", nav_book: "Book Now", hero_sub: '"Soft Sleep - Pure Joy"', rooms_title: "Lunar Rooms", price_alert: "⚠️ Weekends & Holidays excluded. Contact Zalo for rates.", guests: "Adults", weekday: "Weekdays", btn_choose: "CHOOSE ROOM", btn_book_now: "BOOK NOW", popular: "MOST POPULAR", review_title: "Guest Reviews", form_title: "QUICK BOOKING", f_name: "Full Name", f_phone: "Phone", f_room: "Room Type", f_guests: "Guests", f_checkin: "Check-in", f_checkout: "Check-out", f_submit: "CONFIRM & CHAT ZALO", p_unit: "Guests", r1_name: "New Moon", r1_type: "Standard Single", r2_name: "Half Moon", r2_type: "Modern Twin", r3_name: "Full Moon", r3_type: "Family Room", r4_name: "Eclipse", r4_type: "VIP Suite" }
+const i18n = {
+            vi: { 
+                nav_rooms: "Phòng nghỉ", nav_reviews: "Đánh giá", nav_contact: "Liên hệ", nav_book: "Đặt ngay", 
+                hero_sub: '"Nghỉ ngơi êm ái - Trọn vẹn niềm vui"', rooms_title: "Hạng Phòng Lunar", 
+                price_alert: "⚠️ Không bao gồm ngày Cuối tuần & Lễ/Tết. Liên hệ Zalo để được báo giá.", 
+                guests: "Người lớn", weekday: "Ngày thường", btn_choose: "CHỌN PHÒNG", btn_book_now: "ĐẶT PHÒNG NGAY", 
+                popular: "PHỔ BIẾN NHẤT", review_title: "Khách Hàng Đánh Giá", form_title: "ĐẶT PHÒNG NHANH", 
+                f_name: "Họ và Tên", f_phone: "Số điện thoại", f_room: "Hạng phòng", f_guests: "Số người", 
+                f_checkin: "Ngày nhận", f_checkout: "Ngày trả", f_submit: "XÁC NHẬN & MỞ CHAT ZALO", 
+                p_unit: "Người", r1_name: "New Moon (Trăng Non)", r1_type: "Phòng Đơn - 1 Giường Đôi", 
+                r2_name: "Half Moon (Trăng Khuyết)", r2_type: "Phòng Đôi - 2 Giường Đơn", 
+                r3_name: "Full Moon (Trăng Tròn)", r3_type: "Phòng Gia Đình - 2 Giường Đôi", 
+                r4_name: "Eclipse (Nguyệt Thực)", r4_type: "VIP - Ban Công Biển",
+                // Thêm mới phần bạn yêu cầu
+                header_sub: "Khách sạn giá tốt tại Bãi sau Vũng Tàu",
+                f_note: "(*) Sau khi nhấn, thông tin đã được tự động sao chép.<br>Bạn chỉ cần \"Dán\" (Paste) vào ô chat Zalo khách sạn.",
+                c1_text: "Phòng sạch sẽ, gần biển, chủ khách sạn rất nhiệt tình. Sẽ quay lại!",
+                c2_text: "Giá cả hợp lý, vị trí thuận tiện ngay trung tâm bãi sau. Rất hài lòng.",
+                c3_text: "Không gian yên tĩnh, deco phòng rất xinh và ấm cúng."
+            },
+            en: { 
+                nav_rooms: "Rooms", nav_reviews: "Reviews", nav_contact: "Contact", nav_book: "Book Now", 
+                hero_sub: '"Soft Sleep - Pure Joy"', rooms_title: "Lunar Rooms", 
+                price_alert: "⚠️ Weekends & Holidays excluded. Contact Zalo for rates.", 
+                guests: "Adults", weekday: "Weekdays", btn_choose: "CHOOSE ROOM", btn_book_now: "BOOK NOW", 
+                popular: "MOST POPULAR", review_title: "Guest Reviews", form_title: "QUICK BOOKING", 
+                f_name: "Full Name", f_phone: "Phone", f_room: "Room Type", f_guests: "Guests", 
+                f_checkin: "Check-in", f_checkout: "Check-out", f_submit: "CONFIRM & CHAT ZALO", 
+                p_unit: "Guests", r1_name: "New Moon", r1_type: "Standard Single", 
+                r2_name: "Half Moon", r2_type: "Modern Twin", r3_name: "Full Moon", r3_type: "Family Room", 
+                r4_name: "Eclipse", r4_type: "VIP Suite",
+                // Thêm mới phần dịch tiếng Anh
+                header_sub: "Affordable hotels in Vung Tau's Back Beach area",
+                f_note: "(*) After clicking confirm, info is automatically copied.<br>Just \"Paste\" it into the Hotel's Zalo chat.",
+                c1_text: "Clean rooms, near the beach, very enthusiastic host. Will come back!",
+                c2_text: "Reasonable price, convenient location in the center of Back Beach. Very satisfied.",
+                c3_text: "Quiet space, very pretty and cozy room decor."
+            }
         };
 
         let currentLang = 'vi';
