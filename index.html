@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Khách Sạn Hạ Linh Bãi Sau - Ha Linh Hotel Vũng Tàu Gần Biển</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,13 @@
     </script>
 
     <style>
+        input, select, textarea {
+        font-size: 16px !important;
+        touch-action: manipulation;
+        }
+        @media screen and (max-width: 768px) {
+        input, select { font-size: 16px !important; }
+        }
         :root { scroll-behavior: smooth; }
         body { background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%); color: #f1f5f9; }
 
@@ -319,7 +326,7 @@
 
     <section id="booking" class="py-20 max-w-4xl mx-auto px-4 relative z-10">
         <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-black font-lucky text-gold-500 uppercase tracking-widest" data-i18n="form_title">ĐẶT PHÒNG NHANH</h2></div>
-        <form onsubmit="handleBooking(event)" class="glass-box p-6 md:p-14 rounded-[50px] border border-white/10 shadow-2xl">
+        <form onsubmit="handleBooking(event)" class="glass-box p-4 md:p-14 rounded-[50px] border border-white/10 shadow-2xl">
             <div class="grid grid-cols-2 gap-8">
                 <div class="col-span-2 md:col-span-1">
                     <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_name">Tên của bạn</label>
@@ -467,8 +474,14 @@ const i18n = {
         function slideRev(dir) { const c = document.getElementById('review-container'); c.scrollBy({ left: dir * c.clientWidth, behavior: 'smooth' }); }
         function selectRoom(name) { document.getElementById('room').value = name; document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); }
 
-        flatpickr("#checkin", { dateFormat: "d/m/Y", minDate: "today", locale: "vn", defaultDate: "today" });
-        flatpickr("#checkout", { dateFormat: "d/m/Y", minDate: "today", locale: "vn", defaultDate: new Date().getTime() + 86400000 });
+const fpConfig = {
+    locale: "vn",
+    minDate: "today",
+    dateFormat: "d/m/Y",
+    disableMobile: true // QUAN TRỌNG: Ép dùng giao diện của web, không dùng của hệ thống
+};
+flatpickr("#checkin", fpConfig);
+flatpickr("#checkout", fpConfig);
 
         async function handleBooking(e) {
             e.preventDefault();
