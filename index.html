@@ -19,22 +19,39 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['"Be Vietnam Pro"', 'sans-serif'], lucky: ['Quicksand', 'sans-serif'] },
-                    colors: { lunar: { 800: '#1e293b', 900: '#0f172a', 950: '#020617' }, gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' } }
+                    colors: { 
+                        lunar: { 800: '#1e1b4b', 900: '#312e81', 950: '#1e1b4b' }
+                    }
                 }
             }
         }
     </script>
 
     <style>
+        /* Fix lỗi trình duyệt tự động zoom khi chọn ngày trên mobile */
+@media screen and (max-width: 768px) {
+    input, select {
+        font-size: 16px !important;
+    }
+}
         input, select, textarea {
         font-size: 16px !important;
         touch-action: manipulation;
-        }
-        @media screen and (max-width: 768px) {
-        input, select { font-size: 16px !important; }
-        }
+    }
         :root { scroll-behavior: smooth; }
-        body { background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%); color: #f1f5f9; }
+        
+        /* Hiệu ứng nền Hologram chuyển động mượt mà */
+        body { 
+            background: linear-gradient(125deg, #fffbeb, #fbcfe8, #bae6fd, #e9d5ff);
+            background-size: 400% 400%;
+            animation: gradientMove 16s ease infinite;
+            color: #1e1b4b; 
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
         @media (max-width: 768px) {
             h1 { font-size: 3rem !important; }
@@ -42,39 +59,47 @@
             p, label, input, select { font-size: 0.85rem !important; }
         }
 
+        /* Chữ phủ Gradient màu Hologram nổi bật */
         .mirror-text {
-            background: linear-gradient(to bottom, #fff 50%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-bottom: 0.2em;
+            padding-bottom: 0.1em;
             line-height: 1.2;
             display: inline-block;
         }
 
-        .glass-btn { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; }
-        .glass-box { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        /* Định nghĩa các khối Glassmorphism kính mờ ngọc trai cao cấp */
+        .glass-btn { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); display: flex; align-items: center; justify-content: center; }
+        .glass-box { 
+            background: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.05);
+        }
 
-        .thumb-img { border: 2px solid transparent; cursor: pointer; transition: 0.3s; width: 65px; height: 45px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-        .thumb-img.active { border-color: #f59e0b; transform: scale(1.05); }
+        .thumb-img { border: 2px solid transparent; cursor: pointer; transition: 0.3s; width: 65px; height: 45px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+        .thumb-img.active { border-color: #ec4899; transform: scale(1.05); }
 
         #review-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 1rem; }
         #review-container::-webkit-scrollbar { display: none; }
         .review-card { min-width: 100%; scroll-snap-align: start; }
         @media (min-width: 1024px) { .review-card { min-width: calc(33.333% - 0.7rem); } }
 
-        /* Hiệu ứng sao bay gốc */
-        .star { position: absolute; background: #fff; border-radius: 50%; opacity: 0; animation: twinkle var(--duration) ease-in-out infinite; }
-        @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.7; transform: scale(1.2); } }
+        /* Hạt sáng lung linh hồng/tím bay trên nền sáng */
+        .star { position: absolute; background: #ec4899; border-radius: 50%; opacity: 0; animation: twinkle var(--duration) ease-in-out infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.4); } 50% { opacity: 0.5; transform: scale(1.2); } }
         
-        .moon-icon { position: absolute; color: rgba(255, 255, 255, 0.2); pointer-events: none; animation: floatUp var(--duration) linear infinite; opacity: 0; }
+        .moon-icon { position: absolute; color: rgba(139, 92, 246, 0.25); pointer-events: none; animation: floatUp var(--duration) linear infinite; opacity: 0; }
         @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
 
-        /* --- CẬP NHẬT: BÓNG CHAT LIÊN HỆ (Dễ ấn hơn, Icon mới) --- */
+        /* --- BÓNG CHAT LIÊN HỆ HOLOGRAM --- */
         .contact-hub-container { position: fixed; bottom: 105px; left: 20px; z-index: 9999; }
         .hub-button { 
-            width: 60px; height: 60px; background: #f59e0b; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; color: #0f172a; 
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4); cursor: pointer; 
+            width: 60px; height: 60px; background: #ec4899; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; color: white; 
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4); cursor: pointer; 
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             z-index: 10; border: 2px solid white;
             animation: ring-shake 4s infinite;
@@ -92,10 +117,10 @@
         .hub-menu { position: absolute; bottom: 75px; left: 0; display: flex; flex-direction: column; gap: 15px; opacity: 0; visibility: hidden; transition: all 0.4s ease; transform: translateY(20px); }
         .hub-menu.active { opacity: 1; visibility: visible; transform: translateY(0); }
         
-        .hub-item { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.2s; position: relative; border: 1px solid rgba(255,255,255,0.3); }
+        .hub-item { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: all 0.2s; position: relative; border: 1px solid rgba(255,255,255,0.5); }
         .hub-item:hover { transform: scale(1.1) translateX(5px); }
         
-        .hub-item .label { position: absolute; left: 65px; background: #1e293b; color: white; padding: 6px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; white-space: nowrap; opacity: 0; transition: 0.3s; pointer-events: none; border: 1px solid #f59e0b; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .hub-item .label { position: absolute; left: 65px; background: #1e1b4b; color: white; padding: 6px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; white-space: nowrap; opacity: 0; transition: 0.3s; pointer-events: none; border: 1px solid #ec4899; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
         .hub-item:hover .label { opacity: 1; }
 
         .bg-facebook { background: linear-gradient(135deg, #00B2FF, #006AFF); }
@@ -103,17 +128,17 @@
         .bg-telegram { background: linear-gradient(135deg, #26A5E4, #2481CC); }
         .bg-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
 
-        .zalo-fixed { position: fixed; bottom: 30px; left: 20px; width: 60px; height: 60px; background: #0068ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,104,255,0.4); z-index: 9999; animation: pulse-zalo 2s infinite; border: 2px solid white; }
-        @keyframes pulse-zalo { 0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } }
+        .zalo-fixed { position: fixed; bottom: 30px; left: 20px; width: 60px; height: 60px; background: #0068ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,104,255,0.3); z-index: 9999; animation: pulse-zalo 2s infinite; border: 2px solid white; }
+        @keyframes pulse-zalo { 0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); } }
 
-        /* --- CẬP NHẬT: MAP DỄ NHÌN --- */
-        .map-container { position: relative; border-radius: 40px; overflow: hidden; border: 1px solid rgba(245, 158, 11, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5); background: #0f172a; }
+        /* --- MAP SÁNG PHÙ HỢP GIAO DIỆN --- */
+        .map-container { position: relative; border-radius: 40px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 20px 50px rgba(99, 102, 241, 0.05); background: #ffffff; }
         .map-container iframe { 
-            width: 100%; height: 100%; filter: grayscale(1) invert(92%) contrast(85%) opacity(0.7); 
-            transition: all 0.8s ease; 
+            width: 100%; height: 100%; filter: grayscale(0.1) opacity(0.9); 
+            transition: all 0.6s ease; 
         }
-        .map-container:hover iframe { filter: grayscale(0.2) invert(0%) contrast(100%) opacity(1); }
-        .map-overlay { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle, transparent 50%, rgba(15,23,42,0.4) 100%); }
+        .map-container:hover iframe { filter: grayscale(0) opacity(1); }
+        .map-overlay { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle, transparent 60%, rgba(255,255,255,0.2) 100%); }
     </style>
 </head>
 <body class="font-sans">
@@ -124,7 +149,7 @@
         <div class="hub-button" onclick="toggleHub()" id="hubMainBtn" title="Liên hệ hỗ trợ">
             <svg id="hubIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
         </div>
- <div class="hub-menu" id="hubMenu">
+        <div class="hub-menu" id="hubMenu">
             <a href="https://www.facebook.com/halinhhotelvt/" target="_blank" class="hub-item" style="background-color: #1877F2;">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 <span class="label">Facebook</span>
@@ -150,54 +175,54 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="w-[35px]" alt="Zalo">
     </a>
 
-    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed left-1/2 -translate-x-1/2 bottom-6 z-[120] glass-btn w-12 h-12 rounded-full text-white/50 hover:text-gold-500 hover:bg-white/10 transition-all duration-500 opacity-0 pointer-events-none flex items-center justify-center shadow-lg border border-white/20">
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed left-1/2 -translate-x-1/2 bottom-6 z-[120] glass-btn w-12 h-12 rounded-full text-indigo-950/40 hover:text-pink-500 hover:bg-white/90 transition-all duration-500 opacity-0 pointer-events-none flex items-center justify-center shadow-lg border border-white/60">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-    <nav class="sticky top-0 z-[100] bg-lunar-950/90 backdrop-blur-xl border-b border-white/5">
+    <nav class="sticky top-0 z-[100] bg-white/60 backdrop-blur-xl border-b border-white/50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 flex justify-between h-16 md:h-20 items-center">
-            <a href="#" class="text-lg md:text-2xl font-black text-gold-500 tracking-tighter uppercase">🌙 HẠ LINH HOTEL</a>
-            <div class="hidden lg:flex space-x-8 font-bold text-slate-400 text-sm">
-                <a href="#rooms" class="hover:text-gold-500 transition" data-i18n="nav_rooms">Xem phòng</a>
-                <a href="#reviews" class="hover:text-gold-500 transition" data-i18n="nav_reviews">Đánh giá</a>
-                <a href="#booking" class="hover:text-gold-500 transition" data-i18n="nav_contact">Liên hệ</a>
+            <a href="#" class="text-lg md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 tracking-tighter uppercase font-lucky">🌙 HẠ LINH HOTEL</a>
+            <div class="hidden lg:flex space-x-8 font-bold text-indigo-950/70 text-sm">
+                <a href="#rooms" class="hover:text-pink-600 transition" data-i18n="nav_rooms">Xem phòng</a>
+                <a href="#offers" class="hover:text-pink-600 transition" data-i18n="nav_offers">Khuyến mãi</a>
+                <a href="#reviews" class="hover:text-pink-600 transition" data-i18n="nav_reviews">Đánh giá</a>
             </div>
             <div class="flex items-center gap-2 md:gap-4">
-                <button onclick="toggleLang()" class="bg-white/5 border border-white/10 px-2 md:px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-2 hover:bg-white/10 transition">
+                <button onclick="toggleLang()" class="bg-white/80 border border-purple-100 px-2 md:px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-2 hover:bg-white transition text-indigo-950 shadow-sm">
                     <img id="flag-icon" src="https://flagcdn.com/w20/vn.png" class="w-4 h-3 object-cover rounded-[2px]"> 
                     <span id="lang-text">VI</span>
                 </button>
-                <a href="#booking" class="bg-gold-500 text-lunar-950 px-4 py-2 rounded-full font-black text-[10px] md:text-sm hover:scale-105 transition shadow-lg uppercase" data-i18n="nav_book">Đặt ngay</a>
+                <a href="https://zalo.me/0365203109" target="_blank" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-xl font-bold text-sm hidden md:block" data-i18n="btn_book">ĐẶT NGAY</a>
             </div>
         </div>
     </nav>
 
     <section class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-4 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070" class="absolute inset-0 w-full h-full object-cover opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-lunar-950/50 to-lunar-950"></div>
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/30"></div>
         <div class="relative z-10">
             <h1 class="text-4xl md:text-9xl font-black mirror-text tracking-tighter font-lucky">HẠ LINH HOTEL</h1>
-<div class="mt-4 space-y-2">
-    <p class="text-lg md:text-3xl italic text-gold-400 font-medium" data-i18n="hero_sub">
-        "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
-    </p>
-
-<p class="..." data-i18n="header_sub">Khách sạn giá tốt tại Bãi sau Vũng Tàu</p>
-</div>
+            <div class="mt-4 space-y-2">
+                <p class="text-lg md:text-3xl italic text-purple-600 font-bold" data-i18n="hero_sub">
+                    "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
+                </p>
+                <p class="text-xs md:text-base font-semibold text-indigo-950/60 uppercase tracking-widest" data-i18n="header_sub">Khách sạn giá tốt tại Bãi sau Vũng Tàu</p>
+            </div>
+        </div>
     </section>
 
     <section id="rooms" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
         <div class="mb-10 md:mb-16 text-center">
-            <h2 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6" data-i18n="rooms_title">Hạng Phòng Lunar</h2>
-            <div class="inline-block bg-red-500/10 border border-red-500/50 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl">
-                <p class="text-red-400 font-bold text-xs md:text-base" data-i18n="price_alert">⚠️ Giá ngày thường, không áp dụng Cuối tuần & Lễ/Tết.</p>
+            <h2 class="text-3xl md:text-6xl font-extrabold text-indigo-950 mb-4 md:mb-6 tracking-tight" data-i18n="rooms_title">Hạng Phòng</h2>
+            <div class="inline-block bg-rose-50 border border-rose-200 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl shadow-sm">
+                <p class="text-rose-600 font-bold text-xs md:text-base" data-i18n="price_alert">⚠️ Giá ngày thường, không áp dụng Cuối tuần & Lễ/Tết.</p>
             </div>
         </div>
 
         <div class="grid gap-12 md:gap-16">
-            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border border-white/5">
+            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner">
                         <img id="img-new" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
@@ -206,20 +231,26 @@
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold" data-i18n="r1_name">New Moon (Trăng Non)</h3>
-                    <p class="text-gold-500 font-bold mt-2" data-i18n="r1_type">Phòng Đơn Tiêu Chuẩn - 1 Giường Đôi</p>
-                    <div class="my-8 h-px bg-white/10 w-full"></div>
+                    <h3 class="text-3xl font-extrabold text-indigo-950" data-i18n="r1_name">New Moon (Trăng Non)</h3>
+                    <p class="text-purple-600 font-bold mt-2 text-sm uppercase tracking-wide" data-i18n="r1_type">Phòng Đơn Tiêu Chuẩn - 1 Giường Đôi</p>
+                    <div class="my-6 h-px bg-indigo-100 w-full"></div>
                     <div class="flex justify-between items-end">
-                        <div class="text-slate-400 text-sm"><div>👥 2 <span data-i18n="guests">Người lớn</span></div><div>📐 25m²</div></div>
-                        <div class="text-right"><div class="text-3xl md:text-5xl font-black">250k</div><div class="text-[10px] text-gold-500 font-bold uppercase" data-i18n="weekday">Ngày thường</div></div>
+                        <div class="text-slate-500 text-sm font-medium space-y-1">
+                            <div>👥 2 <span data-i18n="guests">Người lớn</span></div>
+                            <div>📐 18m²</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl md:text-5xl font-black text-indigo-950 tracking-tight">225k</div>
+                            <div class="text-[10px] text-pink-600 font-bold uppercase tracking-wider mt-1" data-i18n="weekday">Ngày thường</div>
+                        </div>
                     </div>
-                    <button onclick="selectRoom('New Moon (Trăng Non)')" class="mt-8 border border-white/20 py-4 rounded-2xl font-bold hover:bg-white hover:text-lunar-950 transition text-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
+                    <button onclick="selectRoom('New Moon (Trăng Non)')" class="mt-8 border border-purple-200 text-purple-700 bg-white/50 py-4 rounded-2xl font-bold hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 text-sm shadow-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
                 </div>
             </div>
 
-            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border border-white/5">
+            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner">
                         <img id="img-half" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
@@ -228,21 +259,27 @@
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold" data-i18n="r2_name">Half Moon (Trăng Khuyết)</h3>
-                    <p class="text-gold-500 font-bold mt-2" data-i18n="r2_type">Phòng Đôi Hiện Đại - 2 Giường Đơn</p>
-                    <div class="my-8 h-px bg-white/10 w-full"></div>
+                    <h3 class="text-3xl font-extrabold text-indigo-950" data-i18n="r2_name">Half Moon (Trăng Khuyết)</h3>
+                    <p class="text-purple-600 font-bold mt-2 text-sm uppercase tracking-wide" data-i18n="r2_type">Phòng Đôi Tiêu Chuẩn - 2 Giường Đôi</p>
+                    <div class="my-6 h-px bg-indigo-100 w-full"></div>
                     <div class="flex justify-between items-end">
-                        <div class="text-slate-400 text-sm"><div>👥 2 <span data-i18n="guests">Người lớn</span></div><div>📐 28m²</div></div>
-                        <div class="text-right"><div class="text-3xl md:text-5xl font-black">280k</div><div class="text-[10px] text-gold-500 font-bold uppercase" data-i18n="weekday">Ngày thường</div></div>
+                        <div class="text-slate-500 text-sm font-medium space-y-1">
+                            <div>👥 4 <span data-i18n="guests">Người lớn</span></div>
+                            <div>📐 22m²</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl md:text-5xl font-black text-indigo-950 tracking-tight">375k</div>
+                            <div class="text-[10px] text-pink-600 font-bold uppercase tracking-wider mt-1" data-i18n="weekday">Ngày thường</div>
+                        </div>
                     </div>
-                    <button onclick="selectRoom('Half Moon (Trăng Khuyết)')" class="mt-8 border border-white/20 py-4 rounded-2xl font-bold hover:bg-white hover:text-lunar-950 transition text-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
+                    <button onclick="selectRoom('Half Moon (Trăng Khuyết)')" class="mt-8 border border-purple-200 text-purple-700 bg-white/50 py-4 rounded-2xl font-bold hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 text-sm shadow-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
                 </div>
             </div>
 
-            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border-2 border-gold-500/50 relative">
-                <div class="absolute top-6 left-6 z-20 bg-gold-500 text-lunar-950 px-3 py-1 rounded-full text-[10px] font-black" data-i18n="popular">PHỔ BIẾN NHẤT</div>
+            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border-2 border-pink-400/70 relative shadow-xl shadow-pink-500/5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
+                <div class="absolute top-6 left-6 z-20 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest shadow-md" data-i18n="popular">PHỔ BIẾN NHẤT</div>
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-md">
                         <img id="img-full" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
@@ -251,73 +288,118 @@
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold" data-i18n="r3_name">Full Moon (Trăng Tròn)</h3>
-                    <p class="text-gold-500 font-bold mt-2" data-i18n="r3_type">Phòng Gia Đình - 2 Giường Đôi</p>
-                    <div class="my-8 h-px bg-white/10 w-full"></div>
+                    <h3 class="text-3xl font-extrabold text-indigo-950" data-i18n="r3_name">Full Moon (Trăng Tròn)</h3>
+                    <p class="text-pink-600 font-bold mt-2 text-sm uppercase tracking-wide" data-i18n="r3_type">Phòng Lớn Cho Gia Đình - 2 Giường Đôi</p>
+                    <div class="my-6 h-px bg-indigo-100 w-full"></div>
                     <div class="flex justify-between items-end">
-                        <div class="text-slate-400 text-sm"><div>👥 4 <span data-i18n="guests">Người lớn</span></div><div>📐 35m²</div></div>
-                        <div class="text-right"><div class="text-3xl md:text-5xl font-black text-gold-500">350k</div><div class="text-[10px] text-white/50 font-bold uppercase" data-i18n="weekday">Ngày thường</div></div>
+                        <div class="text-slate-500 text-sm font-medium space-y-1">
+                            <div>👥 4 <span data-i18n="guests">Người lớn</span></div>
+                            <div>📐 25m²</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 tracking-tight">420k</div>
+                            <div class="text-[10px] text-indigo-950/50 font-bold uppercase tracking-wider mt-1" data-i18n="weekday">Ngày thường</div>
+                        </div>
                     </div>
-                    <button onclick="selectRoom('Full Moon (Trăng Tròn)')" class="mt-8 bg-gold-500 text-lunar-950 py-5 rounded-2xl font-black text-lg hover:bg-white transition shadow-xl" data-i18n="btn_book_now">ĐẶT PHÒNG NGAY</button>
+                    <button onclick="selectRoom('Full Moon (Trăng Tròn)')" class="mt-8 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-5 rounded-2xl font-black text-lg hover:opacity-95 hover:scale-[1.01] transition-all duration-300 shadow-lg shadow-purple-500/20 uppercase tracking-wider" data-i18n="btn_book_now">ĐẶT PHÒNG NGAY</button>
                 </div>
             </div>
 
-            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border border-white/5">
+            <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl">
-                        <img id="img-eclipse" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800" class="w-full h-full object-cover">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner">
+                        <img id="img-supernova" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
-                        <img onclick="changeImg('eclipse', this.src, this)" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=400" class="thumb-img active">
-                        <img onclick="changeImg('eclipse', this.src, this)" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400" class="thumb-img">
+                        <img onclick="changeImg('supernova', this.src, this)" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=400" class="thumb-img active">
+                        <img onclick="changeImg('supernova', this.src, this)" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400" class="thumb-img">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold" data-i18n="r4_name">Eclipse (Nguyệt Thực)</h3>
-                    <p class="text-gold-500 font-bold mt-2" data-i18n="r4_type">Hạng VIP - Ban Công Biển</p>
-                    <div class="my-8 h-px bg-white/10 w-full"></div>
+                    <h3 class="text-3xl font-extrabold text-indigo-950" data-i18n="r4_name">Supernova (Siêu Tân Tinh)</h3>
+                    <p class="text-purple-600 font-bold mt-2 text-sm uppercase tracking-wide" data-i18n="r4_type">Phòng Tập Thể - 3 Giường Đôi</p>
+                    <div class="my-6 h-px bg-indigo-100 w-full"></div>
                     <div class="flex justify-between items-end">
-                        <div class="text-slate-400 text-sm"><div>👥 2 <span data-i18n="guests">Người lớn</span></div><div>📐 40m²</div></div>
-                        <div class="text-right"><div class="text-3xl md:text-5xl font-black">380k</div><div class="text-[10px] text-gold-500 font-bold uppercase" data-i18n="weekday">Ngày thường</div></div>
+                        <div class="text-slate-500 text-sm font-medium space-y-1">
+                            <div>👥 6 <span data-i18n="guests">Người lớn</span></div>
+                            <div>📐 30m²</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl md:text-5xl font-black text-indigo-950 tracking-tight">560k</div>
+                            <div class="text-[10px] text-pink-600 font-bold uppercase tracking-wider mt-1" data-i18n="weekday">Ngày thường</div>
+                        </div>
                     </div>
-                    <button onclick="selectRoom('Eclipse (Nguyệt Thực)')" class="mt-8 border border-white/20 py-4 rounded-2xl font-bold hover:bg-white hover:text-lunar-950 transition text-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
+                    <button onclick="selectRoom('Supernova (Siêu Tân Tinh)')" class="mt-8 border border-purple-200 text-purple-700 bg-white/50 py-4 rounded-2xl font-bold hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 text-sm shadow-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
                 </div>
             </div>
         </div>
     </section>
+    
+<section id="offers" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
+    <div class="mb-10 text-center">
+        <h2 class="text-3xl md:text-6xl font-extrabold text-indigo-950 mb-4 tracking-tight" data-i18n="offers_title">Ưu Đãi Đặc Biệt</h2>
+        <p class="text-purple-600 font-bold text-sm uppercase tracking-wide" data-i18n="offers_sub">Đặt trực tiếp để nhận ngay giá tốt nhất bãi sau</p>
+    </div>
 
-    <section id="reviews" class="py-20 bg-black/40">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-pink-500 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+            <div>
+                <div class="inline-block bg-pink-100 text-pink-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_direct">ĐẶT TRỰC TIẾP</div>
+                <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo1_title">Ưu đãi đặt phòng qua Zalo & Livechat</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="promo1_desc">Giảm ngay 10% trên tổng hóa đơn phòng cho tất cả các ngày trong tuần khi liên hệ trực tiếp với chúng tôi qua nút Zalo hoặc cửa sổ Chat hỗ trợ góc màn hình.</p>
+            </div>
+            <div class="flex items-center justify-between border-t border-purple-100 pt-4">
+                <div class="text-pink-600 font-black text-xl md:text-2xl">-10% TỔNG BILL</div>
+                <a href="#booking" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-xl font-bold text-xs hover:opacity-90 transition shadow-md" data-i18n="btn_claim">NHẬN NGAY</a>
+            </div>
+        </div>
+
+        <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-indigo-400 flex flex-col justify-between opacity-80 border-dashed border-2">
+            <div>
+                <div class="inline-block bg-indigo-100 text-indigo-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_coming">SẮP DIỄN RA</div>
+                <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo2_title">Ưu đãi Mùa Du Lịch Hè / Combo Gia Đình</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6" data-i18n="promo2_desc">Chương trình tri ân dành riêng cho các hộ gia đình thuê từ 3 phòng trở lên hoặc lưu trú dài ngày tại Vũng Tàu. Hệ thống đang tối ưu hạn mức ưu đãi.</p>
+            </div>
+            <div class="flex items-center justify-between border-t border-indigo-100 pt-4">
+                <div class="text-indigo-500 font-bold text-sm italic" data-i18n="promo2_status">Đang chuẩn bị...</div>
+                <button disabled class="bg-slate-300 text-white px-5 py-2 rounded-xl font-bold text-xs cursor-not-allowed" data-i18n="btn_waiting">CHỜ KHỞI CHẠY</button>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section id="reviews" class="py-20 bg-white/20 backdrop-blur-md border-y border-white/40">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-end mb-10">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold" data-i18n="review_title">Khách Hàng Đánh Giá</h2>
-                    <p class="text-gold-500 mt-1 italic" data-i18n="review_sub">Trải nghiệm thực tế tại Hạ Linh Hotel</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-indigo-950 tracking-tight" data-i18n="review_title">Khách Hàng Đánh Giá</h2>
+                    <p class="text-purple-600 mt-1 italic font-medium" data-i18n="review_sub">Trải nghiệm thực tế tại Hạ Linh Hotel</p>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="slideRev(-1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold-500 hover:text-lunar-950 transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg></button>
-                    <button onclick="slideRev(1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-gold-500 hover:text-lunar-950 transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                    <button onclick="slideRev(-1)" class="w-10 h-10 rounded-full border border-purple-200 bg-white/80 flex items-center justify-center text-purple-600 hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg></button>
+                    <button onclick="slideRev(1)" class="w-10 h-10 rounded-full border border-purple-200 bg-white/80 flex items-center justify-center text-purple-600 hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
                 </div>
             </div>
             <div id="review-container">
-                <div class="review-card glass-box p-8 rounded-3xl flex flex-col justify-between border-t-4 border-gold-500/30">
-                    <p class="text-slate-300 italic mb-10" data-i18n="c1_text">"Phòng sạch sẽ, ngay trung tâm thuận tiện ăn uống. Chủ khách sạn nhiệt tình."</p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                        <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center font-black text-lunar-950">AN</div>
-                        <div><p class="font-bold text-sm">Anh Nguyên</p><p class="text-[10px] text-slate-500 uppercase">Khách từ TP.HCM</p></div>
+                <div class="review-card glass-box p-8 rounded-3xl flex flex-col justify-between border-t-4 border-pink-400/50">
+                    <p class="text-indigo-950/80 italic font-medium mb-10" data-i18n="c1_text">"Phòng sạch sẽ, ngay trung tâm thuận tiện ăn uống. Chủ khách sạn nhiệt tình."</p>
+                    <div class="flex items-center gap-4 border-t border-indigo-100 pt-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center font-black text-white text-sm shadow-sm">AN</div>
+                        <div><p class="font-bold text-indigo-950 text-sm">Anh Nguyên</p><p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Khách từ TP.HCM</p></div>
                     </div>
                 </div>
-                <div class="review-card glass-box p-8 rounded-3xl flex flex-col justify-between">
-                    <p class="text-slate-300 italic mb-10" data-i18n="c2_text">"Giá cả hợp lý, vị trí thuận tiện ngay trung tâm bãi sau. Rất hài lòng."</p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center font-black">LH</div>
-                        <div><p class="font-bold text-sm">Lê Hoàng</p><p class="text-[10px] text-slate-500 uppercase">Du lịch đơn</p></div>
+                <div class="review-card glass-box p-8 rounded-3xl flex flex-col justify-between border-t-4 border-transparent">
+                    <p class="text-indigo-950/80 italic font-medium mb-10" data-i18n="c2_text">"Giá cả hợp lý, vị trí thuận tiện ngay trung tâm bãi sau. Rất hài lòng."</p>
+                    <div class="flex items-center gap-4 border-t border-indigo-100 pt-6">
+                        <div class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-black text-slate-600 text-sm">LH</div>
+                        <div><p class="font-bold text-indigo-950 text-sm">Lê Hoàng</p><p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Du lịch đơn</p></div>
                     </div>
                 </div>
-                <div class="review-card glass-box p-8 rounded-3xl flex flex-col justify-between border-t-4 border-gold-500/30">
-                    <p class="text-slate-300 italic mb-10" data-i18n="c3_text">"Không gian yên tĩnh, deco phòng rất xinh và ấm cúng"</p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                        <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center font-black text-lunar-950">MT</div>
-                        <div><p class="font-bold text-sm">Minh Tâm</p><p class="text-[10px] text-slate-500 uppercase">Gia đình</p></div>
+                <div class="review-card glass-box p-8 rounded-3xl flex flex-col justify-between border-t-4 border-pink-400/50">
+                    <p class="text-indigo-950/80 italic font-medium mb-10" data-i18n="c3_text">"Không gian yên tĩnh, deco phòng rất xinh và ấm cúng"</p>
+                    <div class="flex items-center gap-4 border-t border-indigo-100 pt-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center font-black text-white text-sm shadow-sm">MT</div>
+                        <div><p class="font-bold text-indigo-950 text-sm">Hoa Lê</p><p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Gia đình</p></div>
                     </div>
                 </div>
             </div>
@@ -325,69 +407,100 @@
     </section>
 
     <section id="booking" class="py-20 max-w-4xl mx-auto px-4 relative z-10">
-        <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-black font-lucky text-gold-500 uppercase tracking-widest" data-i18n="form_title">ĐẶT PHÒNG NHANH</h2></div>
-        <form onsubmit="handleBooking(event)" class="glass-box p-4 md:p-14 rounded-[50px] border border-white/10 shadow-2xl">
-            <div class="grid grid-cols-2 gap-8">
-                <div class="col-span-2 md:col-span-1">
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_name">Tên của bạn</label>
-                    <input type="text" id="name" required class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none focus:border-gold-500 font-bold transition">
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_phone">Số điện thoại</label>
-                    <input type="tel" id="phone" required class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none focus:border-gold-500 font-bold transition">
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_room">Hạng phòng</label>
-                    <select id="room" class="w-full bg-lunar-950 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none focus:border-gold-500 font-bold">
-                        <option>New Moon (Trăng Non)</option><option>Half Moon (Trăng Khuyết)</option><option selected>Full Moon (Trăng Tròn)</option><option>Eclipse (Nguyệt Thực)</option>
-                    </select>
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_guests">Số người</label>
-                    <select id="guests" class="w-full bg-lunar-950 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none font-bold">
-                        <option value="2">2 <span data-i18n="p_unit">Người</span></option><option value="4">4 <span data-i18n="p_unit">Người</span></option><option value="6">6 <span data-i18n="p_unit">Người (Tối đa)</span></option>
-                    </select>
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_checkin">Ngày nhận phòng</label>
-                    <input id="checkin" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 font-bold cursor-pointer" readonly>
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2" data-i18n="f_checkout">Ngày trả phòng</label>
-                    <input id="checkout" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 font-bold cursor-pointer" readonly>
-                </div>
-            </div>
-            <button type="submit" class="w-full bg-gold-500 text-lunar-950 py-5 rounded-2xl font-black text-lg hover:scale-[1.02] active:scale-95 transition shadow-2xl uppercase tracking-widest" data-i18n="f_submit">
-    XÁC NHẬN & MỞ CHAT ZALO*
-</button>
+        <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-black font-lucky text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 uppercase tracking-widest" data-i18n="form_title">ĐẶT PHÒNG NHANH</h2></div>
+    <form onsubmit="handleBooking(event)" class="space-y-6">
+    <div class="grid grid-cols-2 gap-4">
+    <div class="col-span-2 md:col-span-1">
+        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_name">Tên của bạn</label>
+        <input type="text" id="name" required placeholder="Nguyễn Văn A" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+    </div>
+    
+    <div class="col-span-2 md:col-span-1">
+        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_phone">Số điện thoại</label>
+        <input type="tel" id="phone" required placeholder="090xxxxxxx" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+    </div>
 
-<p class="text-[11px] text-slate-400 mt-4 text-center italic leading-relaxed" data-i18n="f_note">
-    (*) Sau khi nhấn, thông tin đã được tự động sao chép.<br>Bạn chỉ cần "Dán" (Paste) vào ô chat Zalo khách sạn.
-</p>
+    <div class="col-span-2 md:col-span-1">
+        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_room">Hạng phòng</label>
+        <select id="room" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+            <option class="bg-white text-indigo-950" value="New Moon (Mẹo: Tối đa 2 người)" data-i18n="opt_r1">New Moon (Tối đa 2 người)</option>
+            <option class="bg-white text-indigo-950" value="Half Moon (Mẹo: Tối đa 4 người)" data-i18n="opt_r2">Half Moon (Tối đa 4 người)</option>
+            <option class="bg-white text-indigo-950" value="Full Moon (Mẹo: Tối đa 4 người)" selected data-i18n="opt_r3">Full Moon (Tối đa 4 người)</option>
+            <option class="bg-white text-indigo-950" value="Supernova (Mẹo: Tối đa 6 người)" data-i18n="opt_r4">Supernova (Tối đa 6 người)</option>
+        </select>
+    </div>
+
+    <div class="col-span-2 md:col-span-1">
+        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_pets">Mang theo vật nuôi?</label>
+        <select id="pets" onchange="checkPets()" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+            <option class="bg-white text-indigo-950" value="no" data-i18n="opt_pet_no">Không mang theo</option>
+            <option class="bg-white text-indigo-950" value="yes" data-i18n="opt_pet_yes">Có mang theo</option>
+        </select>
+    </div>
+
+    <div class="col-span-1">
+        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_checkin">Ngày nhận phòng</label>
+        <input type="text" id="checkin" required class="datepicker w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+    </div>
+    
+    <div class="col-span-1">
+        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_checkout">Ngày trả phòng</label>
+        <input type="text" id="checkout" required class="datepicker w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+    </div>
+
+    <div id="pet-warning" class="col-span-2 hidden bg-amber-50 border border-amber-200 p-4 rounded-xl shadow-sm text-amber-700 font-bold text-xs md:text-sm leading-relaxed animate-fade-in">
+        <p data-i18n="pet_warning_text">⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng.</p>
+    </div>
+</div>
+
+            <button type="submit" class="w-full bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white py-4 md:py-5 rounded-2xl font-black text-sm md:text-lg hover:opacity-95 hover:scale-[1.01] active:scale-95 transition shadow-xl shadow-purple-500/20 uppercase tracking-widest mt-6 md:mt-8" data-i18n="f_submit">
+                XÁC NHẬN & MỞ CHAT ZALO*
+            </button>
+
+            <p class="text-[10px] md:text-[11px] text-indigo-950/60 mt-4 text-center italic leading-relaxed" data-i18n="f_note">
+                (*) Sau khi nhấn, thông tin đã được tự động sao chép.<br>Bạn chỉ cần "Dán" (Paste) vào ô chat Zalo khách sạn.
+            </p>
         </form>
     </section>
 
     <section class="max-w-7xl mx-auto px-4 pb-20">
-<div class="map-container relative w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-800" style="height: 450px;">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7850.0118279039325!2d107.09212081651398!3d10.341411231523045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756f006e27d0b5%3A0x8ace2922a67f82ec!2zS2jDoWNoIFPhuqFuIER1eSBBbmg!5e0!3m2!1sen!2s!4v1779509052005!5m2!1sen!2s" 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+        <div class="map-container relative w-full rounded-2xl overflow-hidden shadow-xl border border-white/60" style="height: 450px;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7850.0118279039325!2d107.09212081651398!3d10.341411231523045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756f006e27d0b5%3A0x8ace2922a67f82ec!2zS2jDoWNoIFPhuqFuIER1eSBBbmg!5e0!3m2!1sen!2s!4v1779509052005!5m2!1sen!2s" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
             <div class="map-overlay"></div>
         </div>
     </section>
 
-    <footer class="bg-black py-16 text-center border-t border-white/5">
-        <h2 class="text-3xl font-black text-gold-500 font-lucky mb-4">HẠ LINH HOTEL🌙</h2>
-        <p class="text-slate-500 text-sm">17/10 Hồ Quý Ly, Vũng Tàu, Hồ Chí Minh</p>
-        <p class="text-gold-500 font-bold text-2xl mt-4">0365 203 109</p>
-        <p class="text-slate-800 text-[10px] mt-10 tracking-[0.4em] uppercase">© 2026 Developed by Ander</p>
+<footer class="bg-white/40 backdrop-blur-xl py-12 px-4 text-center border-t border-white/60 text-indigo-950">
+        <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 font-lucky mb-3">HẠ LINH HOTEL🌙</h2>
+        <p class="text-indigo-950/70 text-sm font-medium mb-1">17/10 Hồ Quý Ly, Vũng Tàu, Hồ Chí Minh</p>
+        <p class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 font-black text-2xl mb-6">0365 203 109</p>
+        
+        <div class="mb-8">
+            <p class="text-xs uppercase tracking-wider font-bold text-indigo-950/50 mb-3">Đặt phòng trực tuyến qua</p>
+            <div class="flex justify-center items-center gap-4">
+                <a href="CHÈN_LINK_BOOKING_VÀO_ĐÂY" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-[#003580] text-white px-5 py-2 rounded-xl shadow-md hover:bg-[#00224f] hover:shadow-lg transition-all transform hover:-translate-y-0.5 duration-200">
+                    <span class="font-sans font-extrabold text-sm tracking-tight">Booking</span>
+                </a>
+                
+                <a href="CHÈN_LINK_AGODA_VÀO_ĐÂY" target="_blank" rel="noopener noreferrer" class="flex items-center bg-white border border-gray-200/80 px-5 py-2 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 duration-200">
+                    <span class="font-sans font-black text-sm tracking-tight flex gap-[1px]">
+                        <span class="text-[#00875a]">a</span><span class="text-[#e01a22]">g</span><span class="text-[#ff9900]">o</span><span class="text-[#0055a5]">d</span><span class="text-[#7f187d]">a</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <p class="text-indigo-950/40 text-[11px] font-bold tracking-wide mt-6">
+            © 2026 Hạ Linh Hotel Vũng Tàu. All rights reserved.
+        </p>
     </footer>
 
     <script>
@@ -401,12 +514,12 @@
             
             if(menu.classList.contains('active')) {
                 btn.style.background = '#ffffff';
-                btn.style.color = '#0f172a';
+                btn.style.color = '#1e1b4b';
                 btn.style.animation = 'none';
                 icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
             } else {
-                btn.style.background = '#f59e0b';
-                btn.style.color = '#0f172a';
+                btn.style.background = '#ec4899';
+                btn.style.color = '#ffffff';
                 btn.style.animation = 'ring-shake 4s infinite';
                 icon.innerHTML = '<path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>';
             }
@@ -421,47 +534,107 @@
             }
         });
 
-        // Language & UI Logic (Giữ nguyên gốc)
+// CẬP NHẬT BIẾN ĐA NGÔN NGỮ ĐẦY ĐỦ (Bao gồm Khuyến mãi cũ, số người tối đa, vật nuôi và sửa lỗi undefined)
 const i18n = {
-            vi: { 
-                nav_rooms: "Phòng nghỉ", nav_reviews: "Đánh giá", nav_contact: "Liên hệ", nav_book: "Đặt ngay", 
-                hero_sub: '"Nghỉ ngơi êm ái - Trọn vẹn niềm vui"', rooms_title: "Hạng Phòng Lunar", 
-                price_alert: "⚠️ Không bao gồm ngày Cuối tuần & Lễ/Tết. Liên hệ Zalo để được báo giá.", 
-                guests: "Người lớn", weekday: "Ngày thường", btn_choose: "CHỌN PHÒNG", btn_book_now: "ĐẶT PHÒNG NGAY", 
-                popular: "PHỔ BIẾN NHẤT", review_title: "Khách Hàng Đánh Giá", form_title: "ĐẶT PHÒNG NHANH", 
-                f_name: "Họ và Tên", f_phone: "Số điện thoại", f_room: "Hạng phòng", f_guests: "Số người", 
-                f_checkin: "Ngày nhận", f_checkout: "Ngày trả", f_submit: "XÁC NHẬN & MỞ CHAT ZALO", 
-                p_unit: "Người", r1_name: "New Moon (Trăng Non)", r1_type: "Phòng Đơn - 1 Giường Đôi", 
-                r2_name: "Half Moon (Trăng Khuyết)", r2_type: "Phòng Đôi - 2 Giường Đơn", 
-                r3_name: "Full Moon (Trăng Tròn)", r3_type: "Phòng Gia Đình - 2 Giường Đôi", 
-                r4_name: "Eclipse (Nguyệt Thực)", r4_type: "VIP - Ban Công Biển",
-                // Thêm mới phần bạn yêu cầu
-                header_sub: "Khách sạn giá tốt tại Bãi sau Vũng Tàu",
-                f_note: "(*) Sau khi nhấn, thông tin đã được tự động sao chép.<br>Bạn chỉ cần \"Dán\" (Paste) vào ô chat Zalo khách sạn.",
-                c1_text: "Phòng sạch sẽ, gần biển, chủ khách sạn rất nhiệt tình. Sẽ quay lại!",
-                c2_text: "Giá cả hợp lý, vị trí thuận tiện ngay trung tâm bãi sau. Rất hài lòng.",
-                c3_text: "Không gian yên tĩnh, deco phòng rất xinh và ấm cúng."
-            },
-            en: { 
-                nav_rooms: "Rooms", nav_reviews: "Reviews", nav_contact: "Contact", nav_book: "Book Now", 
-                hero_sub: '"Soft Sleep - Pure Joy"', rooms_title: "Lunar Rooms", 
-                price_alert: "⚠️ Weekends & Holidays excluded. Contact Zalo for rates.", 
-                guests: "Adults", weekday: "Weekdays", btn_choose: "CHOOSE ROOM", btn_book_now: "BOOK NOW", 
-                popular: "MOST POPULAR", review_title: "Guest Reviews", form_title: "QUICK BOOKING", 
-                f_name: "Full Name", f_phone: "Phone", f_room: "Room Type", f_guests: "Guests", 
-                f_checkin: "Check-in", f_checkout: "Check-out", f_submit: "CONFIRM & CHAT ZALO", 
-                p_unit: "Guests", r1_name: "New Moon", r1_type: "Standard Single", 
-                r2_name: "Half Moon", r2_type: "Modern Twin", r3_name: "Full Moon", r3_type: "Family Room", 
-                r4_name: "Eclipse", r4_type: "VIP Suite",
-                // Thêm mới phần dịch tiếng Anh
-                header_sub: "Affordable hotels in Vung Tau's Back Beach area",
-                f_note: "(*) After clicking confirm, info is automatically copied.<br>Just \"Paste\" it into the Hotel's Zalo chat.",
-                c1_text: "Clean rooms, near the beach, very enthusiastic host. Will come back!",
-                c2_text: "Reasonable price, convenient location in the center of Back Beach. Very satisfied.",
-                c3_text: "Quiet space, very pretty and cozy room decor."
-            }
-        };
+    vi: { 
+        nav_rooms: "Phòng nghỉ", nav_offers: "Khuyến mãi", nav_reviews: "Đánh giá", nav_contact: "Đặt phòng", nav_book: "Đặt ngay", 
+        hero_sub: '"Nghỉ ngơi êm ái - Trọn vẹn niềm vui"', rooms_title: "Hạng Phòng Lunar", 
+        price_alert: "⚠️ Không bao gồm ngày Cuối tuần & Lễ/Tết. Liên hệ Zalo để được báo giá.", 
+        guests: "Người lớn", weekday: "Ngày thường", btn_choose: "CHỌN PHÒNG", btn_book_now: "ĐẶT PHÒNG NGAY", 
+        popular: "PHỔ BIẾN NHẤT", review_title: "Khách Hàng Đánh Giá", review_sub: "Trải nghiệm thực tế tại Hạ Linh Hotel", form_title: "ĐẶT PHÒNG NHANH", 
+        f_name: "Tên của bạn", f_phone: "Số điện thoại", f_room: "Hạng phòng", f_pets: "Mang theo vật nuôi?", 
+        f_checkin: "Ngày nhận", f_checkout: "Ngày trả", f_submit: "XÁC NHẬN & MỞ CHAT ZALO", 
+        p_unit: "Người", r1_name: "New Moon (Trăng Non)", r1_type: "Phòng Đơn Tiêu Chuẩn - 1 Giường Đôi", 
+        r2_name: "Half Moon (Trăng Khuyết)", r2_type: "Phòng Đôi Tiêu Chuẩn - 2 Giường Đôi", 
+        r3_name: "Full Moon (Trăng Tròn)", r3_type: "Phòng Lớn Cho Gia Đình - 2 Giường Đôi", 
+        r4_name: "Supernova (Siêu Tân Tinh)", r4_type: "Phòng Tập Thể - 3 Giường Đôi",
+        header_sub: "Khách sạn giá tốt tại Bãi sau Vũng Tàu",
+        f_note: "(*) Sau khi nhấn, thông tin đã được tự động sao chép.<br>Bạn chỉ cần \"Dán\" (Paste) vào ô chat Zalo khách sạn.",
+        c1_text: "Phòng sạch sẽ, gần biển, chủ khách sạn rất nhiệt tình. Sẽ quay lại!",
+        c2_text: "Giá cả hợp lý, vị trí thuận tiện ngay trung tâm bãi sau. Rất hài lòng.",
+        c3_text: "Phục vụ chuyên nghiệp, phòng đúng như hình.",
+        offers_title: "Ưu Đãi Đặc Biệt", offers_sub: "Đặt trực tiếp để nhận ngay giá tốt nhất bãi sau",
+        badge_direct: "ĐẶT TRỰC TIẾP", badge_coming: "SẮP DIỄN RA",
+        promo1_title: "Ưu ưu đãi đặt phòng qua Zalo & Livechat", promo1_desc: "Giảm ngay 10% trên tổng hóa đơn phòng cho tất cả các ngày trong tuần khi liên hệ trực tiếp với chúng tôi qua nút Zalo hoặc cửa sổ Chat hỗ trợ góc màn hình.",
+        promo2_title: "Ưu đãi Mùa Du Lịch Hè / Combo Gia Đình", promo2_desc: "Chương trình tri ân dành riêng cho các hộ gia đình thuê từ 3 phòng trở lên hoặc lưu trú dài ngày tại Vũng Tàu. Hệ thống đang tối ưu hạn mức ưu đãi.",
+        btn_claim: "NHẬN NGAY", btn_waiting: "CHỜ KHỞI CHẠY", promo2_status: "Đang chuẩn bị...",
+        // Từ khóa mới sửa đổi cho Form đặt phòng nhanh
+        opt_r1: "New Moon (Tối đa 2 người)", opt_r2: "Half Moon (Tối đa 4 người)", opt_r3: "Full Moon (Tối đa 4 người)", opt_r4: "Supernova (Tối đa 6 người)",
+        opt_pet_no: "Không mang theo", opt_pet_yes: "Có mang theo",
+        pet_warning_text: "⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng."
+    },
+    en: { 
+        nav_rooms: "Rooms", nav_offers: "Special Offers", nav_reviews: "Reviews", nav_contact: "Booking", nav_book: "Book Now", 
+        hero_sub: '"Soft Sleep - Pure Joy"', rooms_title: "Lunar Rooms", 
+        price_alert: "⚠️ Weekends & Holidays excluded. Contact Zalo for rates.", 
+        guests: "Adults", weekday: "Weekdays", btn_choose: "CHOOSE ROOM", btn_book_now: "BOOK NOW", 
+        popular: "MOST POPULAR", review_title: "Guest Reviews", review_sub: "Real experiences at Ha Linh Hotel", form_title: "QUICK BOOKING", 
+        f_name: "Your Name", f_phone: "Phone", f_room: "Room Type", f_pets: "Bringing Pets?", 
+        f_checkin: "Check-in", f_checkout: "Check-out", f_submit: "CONFIRM & CHAT ZALO", 
+        p_unit: "Guests", r1_name: "New Moon", r1_type: "Standard Single Room", 
+        r2_name: "Half Moon", r2_type: "Standard Double Room",
+        r3_name: "Full Moon", r3_type: "Family Deluxe",
+        r4_name: "Supernova", r4_type: "Family Suite",
+        header_sub: "Affordable hotels in Vung Tau's Back Beach area",
+        f_note: "(*) After clicking confirm, info is automatically copied.<br>Just \"Paste\" it into the Hotel's Zalo chat.",
+        c1_text: "Clean rooms, near the beach, very enthusiastic host. Will come back!",
+        c2_text: "Reasonable price, convenient location in the center of Back Beach. Very satisfied.",
+        c3_text: "Professional service, the room looked exactly like the photos.",
+        offers_title: "Special Offers", offers_sub: "Book directly to get the best rates in Back Beach",
+        badge_direct: "DIRECT BOOKING", badge_coming: "COMING SOON",
+        promo1_title: "Discount for Zalo & Livechat bookings", promo1_desc: "Get an immediate 10% discount on your total room bill for all weekdays when contacting us directly via Zalo or the Livechat window.",
+        promo2_title: "Summer Vacation / Family Combo Deal", promo2_desc: "Special appreciation program for families booking 3+ rooms or long-term stays in Vung Tau. Promotion rates are being optimized.",
+        btn_claim: "CLAIM NOW", btn_waiting: "COMING SOON", promo2_status: "Preparing...",
+        // Từ khóa tiếng Anh mới cho Form
+        opt_r1: "New Moon (Max 2 guests)", opt_r2: "Half Moon (Max 4 guests)", opt_r3: "Full Moon (Max 4 guests)", opt_r4: "Supernova (Max 6 guests)",
+        opt_pet_no: "No", opt_pet_yes: "Yes",
+        pet_warning_text: "⚠️Alert: The hotel charges an extra cleaning/disinfection fee for pets. Please specify details when confirming with our staff."
+    }
+};
 
+function checkPets() {
+    const petSelect = document.getElementById('pets');
+    const warningDiv = document.getElementById('pet-warning');
+    
+    if (petSelect && warningDiv) {
+        if (petSelect.value === "yes") {
+            warningDiv.classList.remove('hidden'); // Hiện bảng cảnh báo
+        } else {
+            warningDiv.classList.add('hidden'); // Ẩn bảng cảnh báo
+        }
+    }
+}
+
+// HÀM XỬ LÝ ĐẶT PHÒNG ĐỒNG BỘ - CHỐNG BỊ TRÌNH DUYỆT CHẶN POPUP ZALO
+function handleBooking(e) {
+    // 1. Chặn hành vi reset trang mặc định của Form
+    e.preventDefault();
+    
+    // 2. Lấy chính xác dữ liệu từ các ô nhập liệu
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const room = document.getElementById('room').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    
+    // 3. Xử lý trạng thái vật nuôi sang chữ thực chiến gửi Zalo
+    const petValue = document.getElementById('pets').value;
+    const petStatusText = (petValue === 'yes') ? "Có mang theo vật nuôi (Yêu cầu báo phí phụ thu)" : "Không mang theo vật nuôi";
+
+    // 4. Cấu trúc nội dung tin nhắn gửi đi
+    const msg = `[HẠ LINH HOTEL - ĐẶT PHÒNG NHANH]\n- Khách hàng: ${name}\n- Số điện thoại: ${phone}\n- Hạng phòng đã chọn: ${room}\n- Thú cưng đi kèm: ${petStatusText}\n- Thời gian lưu trú: Từ ngày ${checkin} đến ngày ${checkout}`;
+    
+    // 5. Thực hiện copy vào bộ nhớ tạm KHÔNG DÙNG AWAIT (Chạy ngầm đồng bộ)
+    try { 
+        navigator.clipboard.writeText(msg); 
+    } catch (err) {
+        console.log("Trình duyệt không hỗ trợ tự động copy ngầm");
+    }
+    
+    // 6. Kích hoạt mở Zalo ngay lập tức (Trình duyệt sẽ không chặn vì luồng chạy đồng bộ hoàn toàn)
+    window.open(`https://zalo.me/0365203109?text=${encodeURIComponent(msg)}`, '_blank');
+}
+        
         let currentLang = 'vi';
         function toggleLang() {
             currentLang = currentLang === 'vi' ? 'en' : 'vi';
@@ -474,27 +647,69 @@ const i18n = {
         function slideRev(dir) { const c = document.getElementById('review-container'); c.scrollBy({ left: dir * c.clientWidth, behavior: 'smooth' }); }
         function selectRoom(name) { document.getElementById('room').value = name; document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); }
 
-const fpConfig = {
+// CẤU HÌNH LỊCH THỰC CHIẾN: NHẬN PHÒNG (A) -> TRẢ PHÒNG (A + 1 trở đi)
+// 1. Khởi tạo lịch Trả Phòng trước để tạo biến tham chiếu
+const checkoutPicker = flatpickr("#checkout", {
     locale: "vn",
     minDate: "today",
     dateFormat: "d/m/Y",
-    disableMobile: true // QUAN TRỌNG: Ép dùng giao diện của web, không dùng của hệ thống
-};
-flatpickr("#checkin", fpConfig);
-flatpickr("#checkout", fpConfig);
+    disableMobile: true
+});
 
-        async function handleBooking(e) {
-            e.preventDefault();
-            const msg = `[HẠ LINH HOTEL]\n- Khách: ${document.getElementById('name').value}\n- SĐT: ${document.getElementById('phone').value}\n- Phòng: ${document.getElementById('room').value}\n- Người: ${document.getElementById('guests').value}\n- Ngày: ${document.getElementById('checkin').value} đến ${document.getElementById('checkout').value}`;
-            try { await navigator.clipboard.writeText(msg); } catch (err) {}
-            window.open(`https://zalo.me/0365203109?text=${encodeURIComponent(msg)}`, '_blank');
+// 2. Khởi tạo lịch Nhận Phòng và bắt sự kiện khóa ngày bên lịch Trả
+const checkinPicker = flatpickr("#checkin", {
+    locale: "vn",
+    minDate: "today",
+    dateFormat: "d/m/Y",
+    disableMobile: true,
+    onChange: function(selectedDates, dateStr, instance) {
+        if (selectedDates[0]) {
+            // Tính toán ngày kế tiếp (Ngày nhận phòng + 1)
+            const nextDay = new Date(selectedDates[0]);
+            nextDay.setDate(nextDay.getDate() + 1);
+            
+            // Ép lịch Trả Phòng chỉ được chọn từ ngày kế tiếp (A+1) trở đi
+            checkoutPicker.set("minDate", nextDay);
+            
+            // Nếu khách lỡ chọn ngày trả trước đó nhỏ hơn hoặc bằng ngày nhận mới, tự động xóa đi bắt chọn lại
+            if (checkoutPicker.selectedDates[0] && checkoutPicker.selectedDates[0] <= selectedDates[0]) {
+                checkoutPicker.clear();
+            }
         }
-
+    }
+});
+        
+// THAY THẾ TOÀN BỘ HÀM HANDLEBOOKING CŨ BẰNG ĐOẠN ĐỒNG BỘ NÀY:
+function handleBooking(e) {
+    // 1. Ngăn chặn hành vi tải lại trang mặc định của Form
+    e.preventDefault();
+    
+    // 2. Thu thập chính xác toàn bộ dữ liệu khách nhập
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const room = document.getElementById('room').value;
+    const pets = document.getElementById('pets').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    
+    // 3. Thiết lập nội dung tin nhắn cấu trúc sạch gửi Zalo
+    const msg = `[HẠ LINH HOTEL - ĐẶT PHÒNG NHANH]\n- Khách: ${name}\n- SĐT: ${phone}\n- Hạng phòng: ${room}\n- Vật nuôi: ${pets}\n- Ngày ở: ${checkin} đến ${checkout}`;
+    
+    // 4. Kích hoạt sao chép ngầm vào bộ nhớ tạm (Không dùng await để lách bộ chặn popup)
+    try {
+        navigator.clipboard.writeText(msg);
+    } catch (err) {
+        console.log("Trình duyệt không hỗ trợ sao chép tự động");
+    }
+    
+    // 5. Mở tab Zalo ngay lập tức - Bảo đảm mượt mà trên cả Mobile và Desktop
+    window.open(`https://zalo.me/0365203109?text=${encodeURIComponent(msg)}`, '_blank');
+}
         // Back to top logic
         const btt = document.getElementById('backToTop');
         window.addEventListener('scroll', () => { if(window.scrollY > 300) { btt.style.opacity = '1'; btt.style.pointerEvents = 'auto'; } else { btt.style.opacity = '0'; btt.style.pointerEvents = 'none'; } });
 
-        // Tạo hiệu ứng sao & trăng gốc
+        // Tạo hiệu ứng sao lung linh & trăng bay mượt mà trên nền sáng
         const lunarContainer = document.getElementById('lunar-container');
         for (let i = 0; i < 40; i++) {
             const s = document.createElement('div'); s.className = 'star';
