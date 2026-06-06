@@ -572,9 +572,12 @@
             </div>
         </div>
 
-        <p class="text-indigo-950/40 text-[11px] font-bold tracking-wide mt-6">
-            © 2026 Hạ Linh Hotel Vũng Tàu.
-        </p>
+<p class="text-xs text-slate-400 font-medium tracking-wide leading-relaxed">
+    <span data-i18n="footer_copyright">© 2026 Hạ Linh Hotel Vũng Tàu</span>
+    <br class="md:hidden"> 
+    <span class="mx-2 hidden md:inline text-slate-600">|</span> 
+    <span data-i18n="footer_design">Thiết kế & Phát triển bởi Ander</span>
+</p>
     </footer>
 
     <script>
@@ -616,7 +619,7 @@ const i18n = {
         nav_reviews: "Đánh giá",
         nav_contact: "Đặt phòng",
         btn_book: "Đặt ngay",
-        hero_sub: '"Nghỉ ngơi êm ái - Trọn vẹn niềm vui"',
+        hero_sub: '"Nghỉ ngơi 22 l ái - Trọn vẹn niềm vui"',
         header_sub: "Khách sạn giá tốt tại Bãi sau Vũng Tàu",
         rooms_title: "Hạng Phòng",
         price_alert: "⚠️ Giá ngày thường, thay đổi vào Cuối tuần & Lễ/Tết",
@@ -663,7 +666,9 @@ const i18n = {
         opt_r4: "Phòng Đại Gia Đình (6 người)",
         opt_pet_no: "Không mang theo",
         opt_pet_yes: "Có mang theo",
-        pet_warning_text: "⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng."
+        pet_warning_text: "⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng.",
+        footer_copyright: "© 2026 Hạ Linh Hotel Vũng Tàu",
+        footer_design: "Thiết kế & Phát triển bởi Ander"
     },
     en: {
         nav_rooms: "Rooms",
@@ -718,10 +723,11 @@ const i18n = {
         opt_r4: "Grand Family Room (Standard 6 guests)",
         opt_pet_no: "No",
         opt_pet_yes: "Yes",
-        pet_warning_text: "⚠️Note: The hotel charges an additional cleaning fee for pets. Please clearly inform staff upon confirmation."
+        pet_warning_text: "⚠️Note: The hotel charges an additional cleaning fee for pets. Please clearly inform staff upon confirmation.",
+        footer_copyright: "© 2026 Ha Linh Hotel Vung Tau",
+        footer_design: "Designed & Developed by Ander"
     }
 };
-
 function checkPets() {
     const petSelect = document.getElementById('pets');
     const warningDiv = document.getElementById('pet-warning');
@@ -741,18 +747,14 @@ function toggleLang() {
     document.getElementById('lang-text').innerText = currentLang.toUpperCase();
     document.getElementById('flag-icon').src = currentLang === 'vi' ? 'https://flagcdn.com/w20/vn.png' : 'https://flagcdn.com/w20/us.png';
     
-    // VÒNG LẶP DỊCH AN TOÀN - CHỐNG ĐƠ CHỨC NĂNG
-    document.querySelectorAll('[data-i18n]').forEach(el => { 
+    document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        
-        // Chỉ dịch khi từ khóa thực sự tồn tại trong bộ từ điển i18n
-        if (i18n[currentLang] && i18n[currentLang][key]) { 
-            // Nếu là thẻ input và có placeholder, tiến hành dịch placeholder
+        // Kiểm tra điều kiện nghiêm ngặt để CHỐNG ĐƠ CODE
+        if (i18n[currentLang] && i18n[currentLang][key]) {
             if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
                 el.setAttribute('placeholder', i18n[currentLang][key]);
             } else {
-                // Dùng innerHTML để dịch mượt mà cả các tag xuống dòng <br> nếu có
-                el.innerHTML = i18n[currentLang][key]; 
+                el.innerHTML = i18n[currentLang][key];
             }
         }
     });
