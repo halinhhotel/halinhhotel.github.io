@@ -858,19 +858,22 @@ window.addEventListener('scroll', () => {
             setTimeout(() => icon.remove(), 25000);
         }, 3000);
     </script>
-// SỰ KIỆN CUỘN TRANG HIỂN THỊ NÚT BACK TO TOP KHÔNG LỖI
-window.addEventListener('scroll', () => {
+    
+<script>
+    // Logic xử lý Back to top ẩn hiện chuẩn chỉ
     const btt = document.getElementById('backToTop');
     if (btt) {
-        if (window.scrollY > 300) {
-            btt.style.opacity = '1';
-            btt.style.pointerEvents = 'auto'; // Cho phép click
-        } else {
-            btt.style.opacity = '0';
-            btt.style.pointerEvents = 'none'; // Ẩn hẳn tương tác
-        }
+        window.addEventListener('scroll', () => { 
+            if(window.scrollY > 300) { 
+                btt.style.opacity = '1'; 
+                btt.style.pointerEvents = 'auto'; 
+            } else { 
+                btt.style.opacity = '0'; 
+                btt.style.pointerEvents = 'none'; 
+            } 
+        });
     }
-});
+</script>
     
 </body>
 </html>
