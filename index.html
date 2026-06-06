@@ -494,7 +494,7 @@
         <select id="room" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
             <option class="bg-white text-indigo-950" value="Phòng Đôi Tiêu Chuẩn" data-i18n="opt_r1">Phòng Đôi (2 người)</option>
             <option class="bg-white text-indigo-950" value="Phòng Bốn Tiêu Chuẩn" data-i18n="opt_r2">Phòng Bốn (4 người)</option>
-            <option class="bg-white text-indigo-950" value="Phòng Gia Đình Deluxe" selected data-i18n="opt_r3">Phòng Gia Đình (4 người)</option>
+            <option class="bg-white text-indigo-950" value="Phòng Gia Đình Deluxe" data-i18n="opt_r3">Phòng Gia Đình (4 người)</option>
             <option class="bg-white text-indigo-950" value="Phòng Đại Gia Đình" data-i18n="opt_r4">Phòng Đại Gia Đình (6 người)</option>
         </select>
     </div>
@@ -748,11 +748,17 @@ function toggleLang() {
     
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        // Kiểm tra điều kiện nghiêm ngặt để CHỐNG ĐƠ CODE
+        
+        // Kiểm tra điều kiện chống đơ code
         if (i18n[currentLang] && i18n[currentLang][key]) {
             if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
                 el.setAttribute('placeholder', i18n[currentLang][key]);
-            } else {
+            } 
+            // NẾU LÀ THẺ OPTION: Chỉ dịch phần hiển thị (text), TUYỆT ĐỐI không ghi đè innerHTML làm mất value gốc
+            else if (el.tagName === 'OPTION') {
+                el.text = i18n[currentLang][key];
+            } 
+            else {
                 el.innerHTML = i18n[currentLang][key];
             }
         }
@@ -762,8 +768,14 @@ function toggleLang() {
 // Giữ nguyên các hàm bổ trợ thực chiến khác của bro bên dưới
 function changeImg(roomId, src, el) { document.getElementById(`img-${roomId}`).src = src; el.parentElement.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active')); el.classList.add('active'); }
 function slideRev(dir) { const c = document.getElementById('review-container'); c.scrollBy({ left: dir * c.clientWidth, behavior: 'smooth' }); }
-function selectRoom(name) { document.getElementById('room').value = name; document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); }
-
+function selectRoom(name) { 
+    const roomSelect = document.getElementById('room');
+    if (roomSelect) {
+        roomSelect.value = name; 
+    }
+    document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); 
+}
+        
 // CẤU HÌNH LỊCH THỰC CHIẾN: NHẬN PHÒNG (A) -> TRẢ PHÒNG (A + 1 trở đi)
 // 1. Khởi tạo lịch Trả Phòng trước để tạo biến tham chiếu
 const checkoutPicker = flatpickr("#checkout", {
