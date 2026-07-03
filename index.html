@@ -30,15 +30,15 @@
 
     <style>
         /* Fix lỗi trình duyệt tự động zoom khi chọn ngày trên mobile */
-@media screen and (max-width: 768px) {
-    input, select {
-        font-size: 16px !important;
-    }
-}
+        @media screen and (max-width: 768px) {
+            input, select {
+                font-size: 16px !important;
+            }
+        }
         input, select, textarea {
-        font-size: 16px !important;
-        touch-action: manipulation;
-    }
+            font-size: 16px !important;
+            touch-action: manipulation;
+        }
         :root { scroll-behavior: smooth; }
         
         /* Hiệu ứng nền Hologram chuyển động mượt mà */
@@ -95,7 +95,7 @@
         .moon-icon { position: absolute; color: rgba(139, 92, 246, 0.25); pointer-events: none; animation: floatUp var(--duration) linear infinite; opacity: 0; }
         @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
 
-/* --- BÓNG CHAT LIÊN HỆ HOLOGRAM (ĐÃ DỜI SANG PHẢI & TINH GỌN) --- */
+        /* --- BÓNG CHAT LIÊN HỆ HOLOGRAM (ĐÃ DỜI SANG PHẢI & TINH GỌN) --- */
         .contact-hub-container { position: fixed; bottom: 30px; right: 20px; z-index: 9999; }
         .hub-button { 
             width: 60px; height: 60px; background: #ec4899; border-radius: 50%; 
@@ -136,11 +136,7 @@
         .map-container:hover iframe { filter: grayscale(0) opacity(1); }
         .map-overlay { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle, transparent 60%, rgba(255,255,255,0.2) 100%); }
 
-/* ==========================================================================
-           BẢN WEB DESKTOP (TỪ 1024PX TRỞ LÊN): BUNG NÚT RA LỀ PHẢI, CANH GIỮA, ICON TO
-           ========================================================================== */
         @media screen and (min-width: 1024px) {
-            /* 1. Ép menu luôn hiển thị dọc, găm cố định vào chính giữa lề phải màn hình */
             .contact-hub-container {
                 bottom: auto !important;
                 right: auto !important;
@@ -156,11 +152,10 @@
                 bottom: auto !important;
                 opacity: 1 !important;
                 visibility: visible !important;
-                gap: 20px !important; /* Khoảng cách thoáng giữa các nút liên hệ */
+                gap: 20px !important;
                 z-index: 9999 !important;
             }
 
-            /* 2. Thiết kế các vòng tròn nút to ra trông chuyên nghiệp hơn */
             .contact-hub-container .hub-item {
                 width: 60px !important;  
                 height: 60px !important;
@@ -168,12 +163,10 @@
                 transform: none !important;
             }
 
-            /* Hiệu ứng hover phóng to nhẹ khi rê chuột vào */
             .contact-hub-container .hub-item:hover {
                 transform: scale(1.15) !important;
             }
 
-            /* Làm cho các icon logo (Zalo, FB, Hotline) bên trong to rõ hơn */
             .contact-hub-container .hub-item img {
                 width: 34px !important; 
                 height: auto !important;
@@ -183,12 +176,10 @@
                 height: 28px !important;
             }
 
-            /* Đẩy nhãn chữ sang bên trái nút một chút để không đè lên icon */
             .contact-hub-container .hub-item .label {
                 right: 75px !important;
             }
 
-            /* 3. ẨN HOÀN TOÀN NÚT TRÒN TỔNG MÀU HỒNG (Vì bản Web đã bày sẵn các nút rồi) */
             .contact-hub-container .hub-button {
                 display: none !important;
             }
@@ -199,24 +190,21 @@
 
     <div id="lunar-container" class="fixed inset-0 pointer-events-none z-0"></div>
 
-<div class="contact-hub-container">
+    <div class="contact-hub-container">
         <div class="hub-button" onclick="toggleHub()" id="hubMainBtn" title="Liên hệ hỗ trợ">
             <svg id="hubIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
         </div>
         <div class="hub-menu" id="hubMenu">
-            <!-- Nút 1: Zalo -->
             <a href="https://zalo.me/4440001427389110674" target="_blank" class="hub-item" style="background-color: #0068ff;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" class="w-[28px]" alt="Zalo">
                 <span class="label">Zalo Chat</span>
             </a>
 
-            <!-- Nút 2: Facebook -->
             <a href="https://www.facebook.com/halinhhotelvt/" target="_blank" class="hub-item" style="background-color: #1877F2;">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 <span class="label">Facebook</span>
             </a>
 
-            <!-- Nút 3: Hotline -->
             <a href="tel:0365203109" class="hub-item bg-hotline">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 <span class="label">Hotline: 0365 203 109</span>
@@ -228,9 +216,9 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-<nav class="sticky top-0 z-[100] bg-white/25 backdrop-blur-md border-b border-white/40 shadow-[0_4px_30px_rgba(0,0,0,0.03)] text-indigo-950">
-    <div class="max-w-7xl mx-auto px-4 flex justify-between h-16 md:h-20 items-center">
-<a href="#" class="flex items-center space-x-2 h-full group">
+    <nav class="sticky top-0 z-[100] bg-white/25 backdrop-blur-md border-b border-white/40 shadow-[0_4px_30px_rgba(0,0,0,0.03)] text-indigo-950">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between h-16 md:h-20 items-center">
+            <a href="#" class="flex items-center space-x-2 h-full group">
                 <img src="https://i.ibb.co/99W7MMhr/Logo-tach-nen-2.png" alt="Hạ Linh Hotel Logo" class="h-10 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
                 <span class="text-lg md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 tracking-tighter uppercase font-lucky">HẠ LINH HOTEL</span>
             </a>
@@ -264,7 +252,7 @@
         </div>
     </section>
 
-   <section id="rooms" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
+    <section id="rooms" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
         <div class="mb-10 md:mb-16 text-center">
             <h2 class="text-3xl md:text-6xl font-extrabold text-indigo-950 mb-4 md:mb-6 tracking-tight" data-i18n="rooms_title">Hạng Phòng</h2>
             <div class="inline-block bg-rose-50 border border-rose-200 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl shadow-sm">
@@ -282,6 +270,7 @@
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <img onclick="changeImg('new', this.src, this)" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400" class="thumb-img active">
                         <img onclick="changeImg('new', this.src, this)" src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=400" class="thumb-img">
+                        <!-- Bro chèn thêm ảnh phòng 1 ở dưới này -->
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -302,7 +291,7 @@
                 </div>
             </div>
 
-            <!-- PHÒNG BỐN TIÊU CHUẨN (ĐÃ SỬA LỖI THIẾU THẺ ĐÓNG DIV) -->
+            <!-- PHÒNG BỐN TIÊU CHUẨN -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border-2 border-pink-400/70 relative shadow-xl shadow-pink-500/5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="absolute top-6 left-6 z-20 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest shadow-md" data-i18n="popular">PHỔ BIẾN NHẤT</div>
                 <div class="p-4 md:p-8 space-y-4">
@@ -312,6 +301,7 @@
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <img onclick="changeImg('half', this.src, this)" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=400" class="thumb-img active">
                         <img onclick="changeImg('half', this.src, this)" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400" class="thumb-img">
+                        <!-- Bro chèn thêm ảnh phòng 2 ở dưới này -->
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -341,6 +331,7 @@
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <img onclick="changeImg('full', this.src, this)" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400" class="thumb-img active">
                         <img onclick="changeImg('full', this.src, this)" src="https://images.unsplash.com/photo-1582719478250-c89cae4df85b?w=400" class="thumb-img">
+                        <!-- Bro chèn thêm ảnh phòng 3 ở dưới này -->
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -357,7 +348,7 @@
                             <div class="text-[10px] text-indigo-950/50 font-bold uppercase tracking-wider mt-1" data-i18n="weekday">Ngày thường</div>
                         </div>
                     </div>
-                <button onclick="selectRoom('Phòng Gia Đình Tiêu Chuẩn')" class="mt-8 border border-purple-200 text-purple-700 bg-white/50 py-4 rounded-2xl font-bold hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 text-sm shadow-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
+                    <button onclick="selectRoom('Phòng Gia Đình Tiêu Chuẩn')" class="mt-8 border border-purple-200 text-purple-700 bg-white/50 py-4 rounded-2xl font-bold hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 text-sm shadow-sm" data-i18n="btn_choose">CHỌN PHÒNG</button>
                 </div>
             </div>
 
@@ -370,6 +361,7 @@
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <img onclick="changeImg('supernova', this.src, this)" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=400" class="thumb-img active">
                         <img onclick="changeImg('supernova', this.src, this)" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400" class="thumb-img">
+                        <!-- Bro chèn thêm ảnh phòng 4 ở dưới này -->
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -392,50 +384,50 @@
         </div>
     </section>
     
-<section id="offers" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
-    <div class="mb-10 text-center">
-        <h2 class="text-3xl md:text-6xl font-extrabold text-indigo-950 mb-4 tracking-tight" data-i18n="offers_title">Ưu Đãi Đa Dạng</h2>
-        <p class="text-purple-600 font-bold text-sm uppercase tracking-wide" data-i18n="offers_sub">Lựa chọn ưu đãi phù hợp để được giá tốt!</p>
-    </div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-stretch">
-        <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-pink-500 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
-            <div>
-                <div class="inline-block bg-pink-100 text-pink-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_direct">ĐANG DIỄN RA</div>
-                <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo1_title">Ưu Đãi Đặt Phòng Trực Tiếp</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="promo1_desc">Giảm ngay 10% tiền phòng khi đặt qua Zalo/Facebook/TikTok/Hotline. Lưu ý: chỉ liên hệ qua các kênh hỗ trợ có hiển thị trên web để tránh bị lừa đảo!</p>
-            </div>
-            <div class="flex items-center justify-between border-t border-purple-100 pt-4">
-                <div class="text-pink-600 font-black text-xl md:text-2xl">-10% TIỀN PHÒNG</div>
-                <a href="#booking" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-xl font-bold text-xs hover:opacity-90 transition shadow-md" data-i18n="btn_claim">NHẬN NGAY</a>
-            </div>
+    <section id="offers" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
+        <div class="mb-10 text-center">
+            <h2 class="text-3xl md:text-6xl font-extrabold text-indigo-950 mb-4 tracking-tight" data-i18n="offers_title">Ưu Đãi Đa Dạng</h2>
+            <p class="text-purple-600 font-bold text-sm uppercase tracking-wide" data-i18n="offers_sub">Lựa chọn ưu đãi phù hợp để được giá tốt!</p>
         </div>
 
-<div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-indigo-400 flex flex-col justify-between opacity-80 border-dashed border-2">
-    <div>
-        <div class="inline-block bg-indigo-100 text-indigo-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_coming">SẮP DIỄN RA</div>
-        <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo2_title">Mừng Đại Lễ - Tạm Biệt Mùa Hè</h3>
-        <p class="text-slate-500 text-sm leading-relaxed mb-6" data-i18n="promo2_desc">Chương trình ưu đãi chào đón ngày Quốc Khánh - Giải phóng dân tộc. Tạm biệt mùa Hè, giảm tiền phòng lên đến 12%!</p>
-    </div>
-    <div class="flex items-center justify-between border-t border-indigo-100 pt-4">
-        <div class="text-indigo-500 font-bold text-sm italic" data-i18n="promo2_status">Đang chuẩn bị...</div>
-        <button disabled class="bg-slate-300 text-white px-5 py-2 rounded-xl font-bold text-xs cursor-not-allowed" data-i18n="btn_waiting">CHỜ KHỞI CHẠY</button>
-    </div>
-</div>
-        
-        <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-indigo-400 flex flex-col justify-between opacity-80 border-dashed border-3">
-            <div>
-                <div class="inline-block bg-indigo-100 text-indigo-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_coming">SẮP DIỄN RA</div>
-                <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo3_title">Combo Gia Đình - Không Lo Về Giá</h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-6" data-i18n="promo3_desc">Chương trình giảm sâu (lên đến 14%) dành cho các hộ gia đình thuê từ 3 phòng trở lên hoặc lưu trú dài ngày tại Vũng Tàu. Liên hệ để được tư vấn!</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-stretch">
+            <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-pink-500 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+                <div>
+                    <div class="inline-block bg-pink-100 text-pink-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_direct">ĐANG DIỄN RA</div>
+                    <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo1_title">Ưu Đãi Đặt Phòng Trực Tiếp</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6" data-i18n="promo1_desc">Giảm ngay 10% tiền phòng khi đặt qua Zalo/Facebook/TikTok/Hotline. Lưu ý: chỉ liên hệ qua các kênh hỗ trợ có hiển thị trên web để tránh bị lừa đảo!</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-purple-100 pt-4">
+                    <div class="text-pink-600 font-black text-xl md:text-2xl">-10% TIỀN PHÒNG</div>
+                    <a href="#booking" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-xl font-bold text-xs hover:opacity-90 transition shadow-md" data-i18n="btn_claim">NHẬN NGAY</a>
+                </div>
             </div>
-            <div class="flex items-center justify-between border-t border-indigo-100 pt-4">
-                <div class="text-indigo-500 font-bold text-sm italic" data-i18n="promo2_status">Đang chuẩn bị...</div>
-                <button disabled class="bg-slate-300 text-white px-5 py-2 rounded-xl font-bold text-xs cursor-not-allowed" data-i18n="btn_waiting">CHỜ KHỞI CHẠY</button>
+
+            <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-indigo-400 flex flex-col justify-between opacity-80 border-dashed border-2">
+                <div>
+                    <div class="inline-block bg-indigo-100 text-indigo-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_coming">SẮP DIỄN RA</div>
+                    <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo2_title">Mừng Đại Lễ - Tạm Biệt Mùa Hè</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6" data-i18n="promo2_desc">Chương trình ưu đãi chào đón ngày Quốc Khánh - Giải phóng dân tộc. Tạm biệt mùa Hè, giảm tiền phòng lên đến 12%!</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-indigo-100 pt-4">
+                    <div class="text-indigo-500 font-bold text-sm italic" data-i18n="promo2_status">Đang chuẩn bị...</div>
+                    <button disabled class="bg-slate-300 text-white px-5 py-2 rounded-xl font-bold text-xs cursor-not-allowed" data-i18n="btn_waiting">CHỜ KHỞI CHẠY</button>
+                </div>
+            </div>
+            
+            <div class="glass-box rounded-[30px] p-6 md:p-8 border-l-4 border-indigo-400 flex flex-col justify-between opacity-80 border-dashed border-3">
+                <div>
+                    <div class="inline-block bg-indigo-100 text-indigo-600 font-black text-xs px-3 py-1 rounded-full mb-4" data-i18n="badge_coming">SẮP DIỄN RA</div>
+                    <h3 class="text-2xl font-bold text-indigo-950 mb-3" data-i18n="promo3_title">Combo Gia Đình - Không Lo Về Giá</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6" data-i18n="promo3_desc">Chương trình giảm sâu (lên đến 14%) dành cho các hộ gia đình thuê từ 3 phòng trở lên hoặc lưu trú dài ngày tại Vũng Tàu. Liên hệ để được tư vấn!</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-indigo-100 pt-4">
+                    <div class="text-indigo-500 font-bold text-sm italic" data-i18n="promo2_status">Đang chuẩn bị...</div>
+                    <button disabled class="bg-slate-300 text-white px-5 py-2 rounded-xl font-bold text-xs cursor-not-allowed" data-i18n="btn_waiting">CHỜ KHỞI CHẠY</button>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     
     <section id="reviews" class="py-20 bg-white/20 backdrop-blur-md border-y border-white/40">
         <div class="max-w-7xl mx-auto px-4">
@@ -477,50 +469,50 @@
 
     <section id="booking" class="py-20 max-w-4xl mx-auto px-4 relative z-10">
         <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-black font-lucky text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 uppercase tracking-widest" data-i18n="form_title">ĐẶT PHÒNG NHANH</h2></div>
-    <form onsubmit="handleBooking(event)" class="space-y-6">
-    <div class="grid grid-cols-2 gap-4">
-    <div class="col-span-2 md:col-span-1">
-        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_name">Tên của bạn</label>
-        <input type="text" id="name" required placeholder="Nguyễn Văn A" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
-    </div>
-    
-    <div class="col-span-2 md:col-span-1">
-        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_phone">Số điện thoại</label>
-        <input type="tel" id="phone" required placeholder="090xxxxxxx" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
-    </div>
+        <form onsubmit="handleBooking(event)" class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="col-span-2 md:col-span-1">
+                    <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_name">Tên của bạn</label>
+                    <input type="text" id="name" required placeholder="Nguyễn Văn A" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+                </div>
+                
+                <div class="col-span-2 md:col-span-1">
+                    <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_phone">Số điện thoại</label>
+                    <input type="tel" id="phone" required placeholder="090xxxxxxx" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+                </div>
 
-    <div class="col-span-2 md:col-span-1">
-        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_room">Hạng phòng</label>
-        <select id="room" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
-            <option class="bg-white text-indigo-950" value="Phòng Đôi Tiết Kiệm" data-i18n="opt_r1">Phòng Đôi Tiết Kiệm (2 người)</option>
-            <option class="bg-white text-indigo-950" value="Phòng Đôi Tiêu Chuẩn" data-i18n="opt_r2">Phòng Đôi Tiêu Chuẩn (2 người)</option>
-            <option class="bg-white text-indigo-950" value="Phòng Gia Đình Tiêu Chuẩn" data-i18n="opt_r3">Phòng Gia Đình (4 người)</option>
-            <option class="bg-white text-indigo-950" value="Phòng Đại Gia Đình" data-i18n="opt_r4">Phòng Đại Gia Đình (6 người)</option>
-        </select>
-    </div>
+                <div class="col-span-2 md:col-span-1">
+                    <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_room">Hạng phòng</label>
+                    <select id="room" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+                        <option class="bg-white text-indigo-950" value="Phòng Đôi Tiết Kiệm" data-i18n="opt_r1">Phòng Đôi Tiết Kiệm (2 người)</option>
+                        <option class="bg-white text-indigo-950" value="Phòng Đôi Tiêu Chuẩn" data-i18n="opt_r2">Phòng Đôi Tiêu Chuẩn (2 người)</option>
+                        <option class="bg-white text-indigo-950" value="Phòng Gia Đình Tiêu Chuẩn" data-i18n="opt_r3">Phòng Gia Đình (4 người)</option>
+                        <option class="bg-white text-indigo-950" value="Phòng Đại Gia Đình" data-i18n="opt_r4">Phòng Đại Gia Đình (6 người)</option>
+                    </select>
+                </div>
 
-    <div class="col-span-2 md:col-span-1">
-        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_pets">Mang theo vật nuôi?</label>
-        <select id="pets" onchange="checkPets()" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none font-bold text-indigo-950 shadow-sm text-sm md:text-base">
-            <option class="bg-white text-indigo-950" value="no" data-i18n="opt_pet_no">Không mang theo</option>
-            <option class="bg-white text-indigo-950" value="yes" data-i18n="opt_pet_yes">Có mang theo</option>
-        </select>
-    </div>
+                <div class="col-span-2 md:col-span-1">
+                    <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_pets">Mang theo vật nuôi?</label>
+                    <select id="pets" onchange="checkPets()" class="w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+                        <option class="bg-white text-indigo-950" value="no" data-i18n="opt_pet_no">Không mang theo</option>
+                        <option class="bg-white text-indigo-950" value="yes" data-i18n="opt_pet_yes">Có mang theo</option>
+                    </select>
+                </div>
 
-    <div class="col-span-1">
-        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_checkin">Ngày nhận phòng</label>
-        <input type="text" id="checkin" required class="datepicker w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
-    </div>
-    
-    <div class="col-span-1">
-        <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_checkout">Ngày trả phòng</label>
-        <input type="text" id="checkout" required class="datepicker w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
-    </div>
+                <div class="col-span-1">
+                    <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_checkin">Ngày nhận phòng</label>
+                    <input type="text" id="checkin" required class="datepicker w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+                </div>
+                
+                <div class="col-span-1">
+                    <label class="text-[10px] font-black uppercase text-indigo-950/50 ml-2 tracking-wider" data-i18n="f_checkout">Ngày trả phòng</label>
+                    <input type="text" id="checkout" required class="datepicker w-full bg-white border border-purple-100 rounded-2xl px-4 md:px-6 py-3.5 md:py-4 mt-1.5 outline-none focus:border-pink-500 font-bold text-indigo-950 shadow-sm text-sm md:text-base">
+                </div>
 
-    <div id="pet-warning" class="col-span-2 hidden bg-amber-50 border border-amber-200 p-4 rounded-xl shadow-sm text-amber-700 font-bold text-xs md:text-sm leading-relaxed animate-fade-in">
-        <p data-i18n="pet_warning_text">⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng.</p>
-    </div>
-</div>
+                <div id="pet-warning" class="col-span-2 hidden bg-amber-50 border border-amber-200 p-4 rounded-xl shadow-sm text-amber-700 font-bold text-xs md:text-sm leading-relaxed animate-fade-in">
+                    <p data-i18n="pet_warning_text">⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng.</p>
+                </div>
+            </div>
 
             <button type="submit" class="w-full bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white py-4 md:py-5 rounded-2xl font-black text-sm md:text-lg hover:opacity-95 hover:scale-[1.01] active:scale-95 transition shadow-xl shadow-purple-500/20 uppercase tracking-widest mt-6 md:mt-8" data-i18n="f_submit">
                 XÁC NHẬN & MỞ CHAT ZALO*
@@ -533,7 +525,7 @@
     </section>
 
     <section class="max-w-7xl mx-auto px-4 pb-20">
-<div class="map-container relative w-full rounded-2xl overflow-hidden shadow-xl border border-white/60" style="height: 450px;">
+        <div class="map-container relative w-full rounded-2xl overflow-hidden shadow-xl border border-white/60" style="height: 450px;">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.032425609538!2d107.08799417569992!3d10.339290167103325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756f780404e72d%3A0xab81444bd6fe6f32!2zS2jDoWNoIFPhuqFuIEjhuqEgTGluaCBCw6NpIFNhdSAtIEhhIExpbmggSG90ZWw!5e0!3m2!1sen!2s!4v1780728380891!5m2!1sen!2s" 
                 width="100%" 
@@ -547,13 +539,12 @@
         </div>
     </section>
 
-<footer class="bg-white/40 backdrop-blur-xl py-12 px-4 text-center border-t border-white/60 text-indigo-950">
-    
-<div class="flex items-center space-x-3 mb-6 justify-center w-full">
-                        <img src="https://i.ibb.co/99W7MMhr/Logo-tach-nen-2.png" alt="Hạ Linh Hotel Logo" class="h-14 w-auto object-contain">
-                        <h3 class="text-xl md:text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 font-lucky uppercase m-0">HẠ LINH HOTEL</h3>
-</div>
-    
+    <footer class="bg-white/40 backdrop-blur-xl py-12 px-4 text-center border-t border-white/60 text-indigo-950">
+        <div class="flex items-center space-x-3 mb-6 justify-center w-full">
+            <img src="https://i.ibb.co/99W7MMhr/Logo-tach-nen-2.png" alt="Hạ Linh Hotel Logo" class="h-14 w-auto object-contain">
+            <h3 class="text-xl md:text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 font-lucky uppercase m-0">HẠ LINH HOTEL</h3>
+        </div>
+        
         <p class="text-indigo-950/70 text-sm font-medium mb-1">17/10 Hồ Quý Ly, Phường Vũng Tàu, Thành phố Hồ Chí Minh</p>
         <p class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 font-black text-2xl mb-6">0365 203 109</p>
         
@@ -572,11 +563,11 @@
             </div>
         </div>
 
-<p class="text-xs text-slate-400 font-medium tracking-wide leading-relaxed">
-    <span data-i18n="footer_copyright">© 2026 Hạ Linh Hotel Vũng Tàu</span>
-    <br> 
-    <span data-i18n="footer_design" class="mt-1 inline-block">Thiết kế & Phát triển bởi Ander🍁</span>
-</p>
+        <p class="text-xs text-slate-400 font-medium tracking-wide leading-relaxed">
+            <span data-i18n="footer_copyright">© 2026 Hạ Linh Hotel Vũng Tàu</span>
+            <br> 
+            <span data-i18n="footer_design" class="mt-1 inline-block">Thiết kế & Phát triển bởi Ander🍁</span>
+        </p>
     </footer>
 
     <script>
@@ -610,245 +601,230 @@
             }
         });
 
-// CẬP NHẬT BIẾN ĐA NGÔN NGỮ ĐẦY ĐỦ VÀ CHUẨN HÓA HÀM DỊCH
-const i18n = {
-    vi: {
-        nav_rooms: "Xem Phòng",
-        nav_offers: "Khuyến mãi",
-        nav_reviews: "Đánh giá",
-        nav_contact: "Đặt phòng",
-        btn_book: "Đặt ngay",
-        hero_sub: '"Nghỉ ngơi 22 l ái - Trọn vẹn niềm vui"',
-        header_sub: "Khách sạn giá tốt tại Bãi sau Vũng Tàu",
-        rooms_title: "Hạng Phòng",
-        price_alert: "⚠️ Giá ngày thường, thay đổi vào Cuối tuần & Lễ/Tết",
-        guests: "Người lớn",
-        weekday: "Ngày thường",
-        btn_choose: "CHỌN PHÒNG",
-        btn_book_now: "ĐẶT PHÒNG NGAY",
-        popular: "PHỔ BIẾN NHẤT",
-        review_title: "Khách Hàng Đánh Giá",
-        review_sub: "Trải nghiệm thực tế tại Hạ Linh Hotel",
-        form_title: "ĐẶT PHÒNG NHANH",
-        f_name: "Tên của bạn",
-        f_phone: "Số điện thoại",
-        f_room: "Hạng phòng",
-        f_pets: "Mang theo vật nuôi?",
-        f_checkin: "Ngày nhận",
-        f_checkout: "Ngày trả",
-        f_submit: "XÁC NHẬN & MỞ CHAT ZALO",
-        p_unit: "Người",
-        r1_name: "Phòng Đôi Tiết Kiệm",
-        r1_type: "Phòng 1 Giường Đôi",
-        r2_name: "Phòng Đôi Tiêu Chuẩn",
-        r2_type: "Phòng 1 Giường Đôi",
-        r3_name: "Phòng Gia Đình Tiêu Chuẩn",
-        r3_type: "Phòng Gia Đình - 2 Giường Đôi",
-        r4_name: "Phòng Đại Gia Đình",
-        r4_type: "Phòng Tập Thể - 3 Giường Đôi",
-        badge_direct: "ĐANG DIỄN RA",
-        badge_coming: "CHỜ KHỞI CHẠY",
-        promo1_title: "Ưu Đãi Đặt Phòng Trực Tiếp",
-        promo1_desc: "Giảm ngay 10% tiền phòng khi đặt qua Zalo/Facebook/TikTok/Hotline. Lưu ý: chỉ liên hệ qua các kênh hỗ trợ có hiển thị trên web để tránh bị lừa đảo!",
-        promo2_title: "Mừng Đại Lễ - Tạm Biệt Mùa Hè",
-        promo2_desc: "Chương trình ưu đãi chào đón ngày Quốc Khánh - Giải phóng dân tộc. Tạm biệt mùa Hè, giảm tiền phòng lên đến 12%!",
-        promo3_title: "Combo Gia Đình - Không Lo Về Giá",
-        promo3_desc: "Chương trình giảm sâu (lên đến 14%) dành cho các hộ gia đình thuê từ 3 phòng trở lên hoặc lưu trú dài ngày tại Vũng Tàu. Liên hệ để được tư vấn!",
-        btn_claim: "NHẬN NGAY",
-        btn_waiting: "CHỜ KHỞI CHẠY",
-        promo1_status: "-10% TIỀN PHÒNG",
-        promo2_status: "Đang chuẩn bị...",
-        promo3_status: "Đang chuẩn bị...",
-        opt_r1: "Phòng Đôi Tiết Kiệm (2 người)",
-        opt_r2: "Phòng Đôi Tiêu Chuẩn (2 người)",
-        opt_r3: "Phòng Gia Đình (4 người)",
-        opt_r4: "Phòng Đại Gia Đình (6 người)",
-        opt_pet_no: "Không mang theo",
-        opt_pet_yes: "Có mang theo",
-        pet_warning_text: "⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng.",
-        footer_copyright: "© 2026 Hạ Linh Hotel Vũng Tàu",
-        footer_design: "Thiết kế & Phát triển bởi Ander🍁"
-    },
-    en: {
-        nav_rooms: "Rooms",
-        nav_offers: "Promotions",
-        nav_reviews: "Reviews",
-        nav_contact: "Booking",
-        btn_book: "Book Now",
-        hero_sub: '"Cozy Rest - Complete Joy"',
-        header_sub: "Good budget hotel at Vung Tau Back Beach",
-        rooms_title: "Room Types",
-        price_alert: "⚠️ Weekday rates; prices vary on Weekends, Holidays & Festivals",
-        guests: "Adults",
-        weekday: "Weekdays",
-        btn_choose: "CHOOSE ROOM",
-        btn_book_now: "BOOK NOW",
-        popular: "MOST POPULAR",
-        review_title: "Customer Reviews",
-        review_sub: "Real experiences at Ha Linh Hotel",
-        form_title: "QUICK BOOKING",
-        f_name: "Your name",
-        f_phone: "Phone number",
-        f_room: "Room type",
-        f_pets: "Bring pets?",
-        f_checkin: "Check-in date",
-        f_checkout: "Check-out date",
-        f_submit: "CONFIRM & OPEN ZALO CHAT",
-        p_unit: "Guests",
-        r1_name: "Economy Double Room",
-        r1_type: "Standard Double - 1 Double Bed",
-        r2_name: "Standard Double Room",
-        r2_type: "Standard Double - 1 Double Bed",
-        r3_name: "Standard Family Room",
-        r3_type: "Family Room - 2 Beds",
-        r4_name: "Grand Family Room",
-        r4_type: "Group Room - 3 Double Beds",
-        badge_direct: "ONGOING",
-        badge_coming: "LAUNCHING SOON",
-        promo1_title: "Direct Booking Promotion",
-        promo1_desc: "Get an instant 10% discount on room rates when booking via Zalo/Facebook/TikTok/Hotline. Note: Only contact the support channels displayed on the website to avoid scams!",
-        promo2_title: "Celebrating the Grand Festival - Farewell to Summer",
-        promo2_desc: "Special offer to celebrate National Liberation Day. Say goodbye to summer and enjoy up to 12% off your room rate!",
-        promo3_title: "Family Combo - No Price Worries",
-        promo3_desc: "Deep discount program (up to 14%) for families renting 3 or more rooms or staying long-term in Vung Tau. Contact us for advice!",
-        btn_claim: "CLAIM NOW",
-        btn_waiting: "LAUNCHING SOON",
-        promo1_status: "-10% ROOM RATE",
-        promo2_status: "Preparing...",
-        promo3_status: "Preparing...",
-        opt_r1: "Economy Double Room (Standard 2 guests)",
-        opt_r2: "Double Room (Standard 2 guests)",
-        opt_r3: "Family Room (Standard 4 guests)",
-        opt_r4: "Grand Family Room (Standard 6 guests)",
-        opt_pet_no: "No",
-        opt_pet_yes: "Yes",
-        pet_warning_text: "⚠️Note: The hotel charges an additional cleaning fee for pets. Please clearly inform staff upon confirmation.",
-        footer_copyright: "© 2026 Ha Linh Hotel Vung Tau",
-        footer_design: "Designed & Developed by Ander🍁"
-    }
-};
-function checkPets() {
-    const petSelect = document.getElementById('pets');
-    const warningDiv = document.getElementById('pet-warning');
-    
-    if (petSelect && warningDiv) {
-        if (petSelect.value === "yes") {
-            warningDiv.classList.remove('hidden'); // Hiện bảng cảnh báo
-        } else {
-            warningDiv.classList.add('hidden'); // Ẩn bảng cảnh báo
-        }
-    }
-}
+        // CẬP NHẬT BIẾN ĐA NGÔN NGỮ ĐẦY ĐỦ VÀ CHUẨN HÓA HÀM DỊCH
+        const i18n = {
+            vi: {
+                nav_rooms: "Xem Phòng",
+                nav_offers: "Khuyến mãi",
+                nav_reviews: "Đánh giá",
+                nav_contact: "Đặt phòng",
+                btn_book: "Đặt ngay",
+                hero_sub: '"Nghỉ ngơi êm ái - Trọn vẹn niềm vui"',
+                header_sub: "Khách sạn giá tốt tại Bãi sau Vũng Tàu",
+                rooms_title: "Hạng Phòng",
+                price_alert: "⚠️ Giá ngày thường, thay đổi vào Cuối tuần & Lễ/Tết",
+                guests: "Người lớn",
+                weekday: "Ngày thường",
+                btn_choose: "CHỌN PHÒNG",
+                btn_book_now: "ĐẶT PHÒNG NGAY",
+                popular: "PHỔ BIẾN NHẤT",
+                review_title: "Khách Hàng Đánh Giá",
+                review_sub: "Trải nghiệm thực tế tại Hạ Linh Hotel",
+                form_title: "ĐẶT PHÒNG NHANH",
+                f_name: "Tên của bạn",
+                f_phone: "Số điện thoại",
+                f_room: "Hạng phòng",
+                f_pets: "Mang theo vật nuôi?",
+                f_checkin: "Ngày nhận",
+                f_checkout: "Ngày trả",
+                f_submit: "XÁC NHẬN & MỞ CHAT ZALO",
+                p_unit: "Người",
+                r1_name: "Phòng Đôi Tiết Kiệm",
+                r1_type: "Phòng 1 Giường Đôi",
+                r2_name: "Phòng Đôi Tiêu Chuẩn",
+                r2_type: "Phòng 1 Giường Đôi",
+                r3_name: "Phòng Gia Đình Tiêu Chuẩn",
+                r3_type: "Phòng Gia Đình - 2 Giường Đôi",
+                r4_name: "Phòng Đại Gia Đình",
+                r4_type: "Phòng Tập Thể - 3 Giường Đôi",
+                badge_direct: "ĐANG DIỄN RA",
+                badge_coming: "CHỜ KHỞI CHẠY",
+                promo1_title: "Ưu Đãi Đặt Phòng Trực Tiếp",
+                promo1_desc: "Giảm ngay 10% tiền phòng khi đặt qua Zalo/Facebook/TikTok/Hotline. Lưu ý: chỉ liên hệ qua các kênh hỗ trợ có hiển thị trên web để tránh bị lừa đảo!",
+                promo2_title: "Mừng Đại Lễ - Tạm Biệt Mùa Hè",
+                promo2_desc: "Chương trình ưu đãi chào đón ngày Quốc Khánh - Giải phóng dân tộc. Tạm biệt mùa Hè, giảm tiền phòng lên đến 12%!",
+                promo3_title: "Combo Gia Đình - Không Lo Về Giá",
+                promo3_desc: "Chương trình giảm sâu (lên đến 14%) dành cho các hộ gia đình thuê từ 3 phòng trở lên hoặc lưu trú dài ngày tại Vũng Tàu. Liên hệ để được tư vấn!",
+                btn_claim: "NHẬN NGAY",
+                btn_waiting: "CHỜ KHỞI CHẠY",
+                promo1_status: "-10% TIỀN PHÒNG",
+                promo2_status: "Đang chuẩn bị...",
+                promo3_status: "Đang chuẩn bị...",
+                opt_r1: "Phòng Đôi Tiết Kiệm (2 người)",
+                opt_r2: "Phòng Đôi Tiêu Chuẩn (2 người)",
+                opt_r3: "Phòng Gia Đình (4 người)",
+                opt_r4: "Phòng Đại Gia Đình (6 người)",
+                opt_pet_no: "Không mang theo",
+                opt_pet_yes: "Có mang theo",
+                pet_warning_text: "⚠️Lưu ý: Khách sạn có thu thêm phụ phí vệ sinh/khử khuẩn khi mang theo vật nuôi. Vui lòng thông báo rõ với nhân viên khi xác nhận đặt phòng.",
+                footer_copyright: "© 2026 Hạ Linh Hotel Vũng Tàu",
+                footer_design: "Thiết kế & Phát triển bởi Ander🍁"
+            },
+            en: {
+                nav_rooms: "Rooms",
+                nav_offers: "Promotions",
+                nav_reviews: "Reviews",
+                nav_contact: "Booking",
+                btn_book: "Book Now",
+                hero_sub: '"Cozy Rest - Complete Joy"',
+                header_sub: "Good budget hotel at Vung Tau Back Beach",
+                rooms_title: "Room Types",
+                price_alert: "⚠️ Weekday rates; prices vary on Weekends, Holidays & Festivals",
+                guests: "Adults",
+                weekday: "Weekdays",
+                btn_choose: "CHOOSE ROOM",
+                btn_book_now: "BOOK NOW",
+                popular: "MOST POPULAR",
+                review_title: "Customer Reviews",
+                review_sub: "Real experiences at Ha Linh Hotel",
+                form_title: "QUICK BOOKING",
+                f_name: "Your name",
+                f_phone: "Phone number",
+                f_room: "Room type",
+                f_pets: "Bring pets?",
+                f_checkin: "Check-in date",
+                f_checkout: "Check-out date",
+                f_submit: "CONFIRM & OPEN ZALO CHAT",
+                p_unit: "Guests",
+                r1_name: "Economy Double Room",
+                r1_type: "Standard Double - 1 Double Bed",
+                r2_name: "Standard Double Room",
+                r2_type: "Standard Double - 1 Double Bed",
+                r3_name: "Standard Family Room",
+                r3_type: "Family Room - 2 Beds",
+                r4_name: "Grand Family Room",
+                r4_type: "Group Room - 3 Double Beds",
+                badge_direct: "ONGOING",
+                badge_coming: "LAUNCHING SOON",
+                promo1_title: "Direct Booking Promotion",
+                promo1_desc: "Get an instant 10% discount on room rates when booking via Zalo/Facebook/TikTok/Hotline. Note: Only contact the support channels displayed on the website to avoid scams!",
+                promo2_title: "Celebrating the Grand Festival - Farewell to Summer",
+                promo2_desc: "Special offer to celebrate National Liberation Day. Say goodbye to summer and enjoy up to 12% off your room rate!",
+                promo3_title: "Family Combo - No Price Worries",
+                promo3_desc: "Deep discount program (up to 14%) for families renting 3 or more rooms or staying long-term in Vung Tau. Contact us for advice!",
+                btn_claim: "CLAIM NOW",
+                btn_waiting: "LAUNCHING SOON",
+                promo1_status: "-10% ROOM RATE",
+                promo2_status: "Preparing...",
+                promo3_status: "Preparing...",
+                opt_r1: "Economy Double Room (Standard 2 guests)",
+                opt_r2: "Double Room (Standard 2 guests)",
+                opt_r3: "Family Room (Standard 4 guests)",
+                opt_r4: "Grand Family Room (Standard 6 guests)",
+                opt_pet_no: "No",
+                opt_pet_yes: "Yes",
+                pet_warning_text: "⚠️Note: The hotel charges an additional cleaning fee for pets. Please clearly inform staff upon confirmation.",
+                footer_copyright: "© 2026 Ha Linh Hotel Vung Tau",
+                footer_design: "Designed & Developed by Ander🍁"
+            }
+        };
 
-let currentLang = 'vi';
-function toggleLang() {
-    currentLang = currentLang === 'vi' ? 'en' : 'vi';
-    document.getElementById('lang-text').innerText = currentLang.toUpperCase();
-    document.getElementById('flag-icon').src = currentLang === 'vi' ? 'https://flagcdn.com/w20/vn.png' : 'https://flagcdn.com/w20/us.png';
-    
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        
-        // Kiểm tra điều kiện chống đơ code
-        if (i18n[currentLang] && i18n[currentLang][key]) {
-            if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
-                el.setAttribute('placeholder', i18n[currentLang][key]);
-            } 
-            // NẾU LÀ THẺ OPTION: Chỉ dịch phần hiển thị (text), TUYỆT ĐỐI không ghi đè innerHTML làm mất value gốc
-            else if (el.tagName === 'OPTION') {
-                el.text = i18n[currentLang][key];
-            } 
-            else {
-                el.innerHTML = i18n[currentLang][key];
+        function checkPets() {
+            const petSelect = document.getElementById('pets');
+            const warningDiv = document.getElementById('pet-warning');
+            if (petSelect && warningDiv) {
+                if (petSelect.value === "yes") {
+                    warningDiv.classList.remove('hidden');
+                } else {
+                    warningDiv.classList.add('hidden');
+                }
             }
         }
-    });
-}
 
-// Giữ nguyên các hàm bổ trợ thực chiến khác của bro bên dưới
-function changeImg(roomId, src, el) { document.getElementById(`img-${roomId}`).src = src; el.parentElement.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active')); el.classList.add('active'); }
-function slideRev(dir) { const c = document.getElementById('review-container'); c.scrollBy({ left: dir * c.clientWidth, behavior: 'smooth' }); }
-function selectRoom(name) { 
-    const roomSelect = document.getElementById('room');
-    if (roomSelect) {
-        roomSelect.value = name; 
-    }
-    document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); 
-}
-        
-// CẤU HÌNH LỊCH THỰC CHIẾN: NHẬN PHÒNG (A) -> TRẢ PHÒNG (A + 1 trở đi)
-// 1. Khởi tạo lịch Trả Phòng trước để tạo biến tham chiếu
-const checkoutPicker = flatpickr("#checkout", {
-    locale: "vn",
-    minDate: "today",
-    dateFormat: "d/m/Y",
-    disableMobile: true
-});
-
-// 2. Khởi tạo lịch Nhận Phòng và bắt sự kiện khóa ngày bên lịch Trả
-const checkinPicker = flatpickr("#checkin", {
-    locale: "vn",
-    minDate: "today",
-    dateFormat: "d/m/Y",
-    disableMobile: true,
-    onChange: function(selectedDates, dateStr, instance) {
-        if (selectedDates[0]) {
-            // Tính toán ngày kế tiếp (Ngày nhận phòng + 1)
-            const nextDay = new Date(selectedDates[0]);
-            nextDay.setDate(nextDay.getDate() + 1);
+        let currentLang = 'vi';
+        function toggleLang() {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            document.getElementById('lang-text').innerText = currentLang.toUpperCase();
+            document.getElementById('flag-icon').src = currentLang === 'vi' ? 'https://flagcdn.com/w20/vn.png' : 'https://flagcdn.com/w20/us.png';
             
-            // Ép lịch Trả Phòng chỉ được chọn từ ngày kế tiếp (A+1) trở đi
-            checkoutPicker.set("minDate", nextDay);
-            
-            // Nếu khách lỡ chọn ngày trả trước đó nhỏ hơn hoặc bằng ngày nhận mới, tự động xóa đi bắt chọn lại
-            if (checkoutPicker.selectedDates[0] && checkoutPicker.selectedDates[0] <= selectedDates[0]) {
-                checkoutPicker.clear();
-            }
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang] && i18n[currentLang][key]) {
+                    if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+                        el.setAttribute('placeholder', i18n[currentLang][key]);
+                    } 
+                    else if (el.tagName === 'OPTION') {
+                        el.text = i18n[currentLang][key];
+                    } 
+                    else {
+                        el.innerHTML = i18n[currentLang][key];
+                    }
+                }
+            });
         }
-    }
-});
-        
-// HÀM XỬ LÝ ĐẶT PHÒNG DUY NHẤT & CHUẨN HÓA TIN NHẮN ZALO
-function handleBooking(e) {
-    // 1. Chặn hành vi tải lại trang mặc định của Form
-    e.preventDefault();
-    
-    // 2. Thu thập chính xác toàn bộ dữ liệu từ các ô input/select
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const room = document.getElementById('room').value;
-    const pets = document.getElementById('pets').value;
-    const checkin = document.getElementById('checkin').value;
-    const checkout = document.getElementById('checkout').value;
-    
-    // 3. Viết lại trạng thái vật nuôi sang chữ thực chiến để gửi đi
-    const petStatusText = (pets === 'yes') ? "Có mang theo vật nuôi (Cần báo phí phụ thu)" : "Không mang theo";
-    
-    // 4. Thiết lập nội dung tin nhắn cấu trúc sạch sẽ, gọn gàng
-    const msg = `[HẠ LINH HOTEL - ĐẶT PHÒNG NHANH]\n- Khách hàng: ${name}\n- Số điện thoại: ${phone}\n- Hạng phòng: ${room}\n- Vật nuôi: ${petStatusText}\n- Thời gian: Từ ${checkin} đến ${checkout}`;
-    
-    // 5. Kích hoạt sao chép ngầm vào bộ nhớ tạm (Giữ nguyên luồng đồng bộ chống chặn Popup)
-    try {
-        navigator.clipboard.writeText(msg);
-    } catch (err) {
-        console.log("Trình duyệt không hỗ trợ sao chép tự động ngầm");
-    }
-    
-    // 6. Mở tab chat Zalo mượt mà trên cả Mobile và PC
-    window.open(`https://zalo.me/4440001427389110674?text=${encodeURIComponent(msg)}`, '_blank');
-}
-        
-        // Back to top logic
-const btt = document.getElementById('backToTop');
-window.addEventListener('scroll', () => { 
-    if(window.scrollY > 300) { 
-        btt.style.opacity = '1'; 
-        btt.style.pointerEvents = 'auto'; // Thêm dòng này để bấm được
-    } else { 
-        btt.style.opacity = '0'; 
-        btt.style.pointerEvents = 'none'; // Thêm dòng này để ẩn hẳn
-    } 
-});
+
+        function changeImg(roomId, src, el) { 
+            document.getElementById(`img-${roomId}`).src = src; 
+            el.parentElement.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active')); 
+            el.classList.add('active'); 
+        }
+
+        function slideRev(dir) { 
+            const c = document.getElementById('review-container'); 
+            c.scrollBy({ left: dir * c.clientWidth, behavior: 'smooth' }); 
+        }
+
+        function selectRoom(name) { 
+            const roomSelect = document.getElementById('room');
+            if (roomSelect) { roomSelect.value = name; }
+            document.getElementById('booking').scrollIntoView({behavior: 'smooth'}); 
+        }
+                
+        // CẤU HÌNH LỊCH NHẬN PHÒNG & TRẢ PHÒNG
+        const checkoutPicker = flatpickr("#checkout", {
+            locale: "vn",
+            minDate: "today",
+            dateFormat: "d/m/Y",
+            disableMobile: true
+        });
+
+        const checkinPicker = flatpickr("#checkin", {
+            locale: "vn",
+            minDate: "today",
+            dateFormat: "d/m/Y",
+            disableMobile: true,
+            onChange: function(selectedDates, dateStr, instance) {
+                if (selectedDates[0]) {
+                    const nextDay = new Date(selectedDates[0]);
+                    nextDay.setDate(nextDay.getDate() + 1);
+                    checkoutPicker.set("minDate", nextDay);
+                    if (checkoutPicker.selectedDates[0] && checkoutPicker.selectedDates[0] <= selectedDates[0]) {
+                        checkoutPicker.clear();
+                    }
+                }
+            }
+        });
+                
+        function handleBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const room = document.getElementById('room').value;
+            const pets = document.getElementById('pets').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const petStatusText = (pets === 'yes') ? "Có mang theo vật nuôi (Cần báo phí phụ thu)" : "Không mang theo";
+            const msg = `[HẠ LINH HOTEL - ĐẶT PHÒNG NHANH]\n- Khách hàng: ${name}\n- Số điện thoại: ${phone}\n- Hạng phòng: ${room}\n- Vật nuôi: ${petStatusText}\n- Thời gian: Từ ${checkin} đến ${checkout}`;
+            
+            try {
+                navigator.clipboard.writeText(msg);
+            } catch (err) {
+                console.log("Trình duyệt không hỗ trợ sao chép tự động ngầm");
+            }
+            window.open(`https://zalo.me/4440001427389110674?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+                
+        // Back to top logic chuẩn chỉ
+        const btt = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { 
+            if(window.scrollY > 300) { 
+                btt.style.opacity = '1'; 
+                btt.style.pointerEvents = 'auto'; 
+            } else { 
+                btt.style.opacity = '0'; 
+                btt.style.pointerEvents = 'none'; 
+            } 
+        });
 
         // Tạo hiệu ứng sao lung linh & trăng bay mượt mà trên nền sáng
         const lunarContainer = document.getElementById('lunar-container');
@@ -870,22 +846,5 @@ window.addEventListener('scroll', () => {
             setTimeout(() => icon.remove(), 25000);
         }, 3000);
     </script>
-    
-<script>
-    // Logic xử lý Back to top ẩn hiện chuẩn chỉ
-    const btt = document.getElementById('backToTop');
-    if (btt) {
-        window.addEventListener('scroll', () => { 
-            if(window.scrollY > 300) { 
-                btt.style.opacity = '1'; 
-                btt.style.pointerEvents = 'auto'; 
-            } else { 
-                btt.style.opacity = '0'; 
-                btt.style.pointerEvents = 'none'; 
-            } 
-        });
-    }
-</script>
-    
 </body>
 </html>
