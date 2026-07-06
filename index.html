@@ -238,16 +238,16 @@
         </div>
     </nav>
 
-    <section class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center px-4 overflow-hidden">
-        <img src="https://i.ibb.co/NgTBh6vt/Mat-tien.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/30"></div>
-        <div class="relative z-10">
+    <section class="relative h-[50vh] md:h-[75vh] flex items-center justify-center text-center px-4 overflow-hidden bg-slate-900">
+        <img src="https://i.ibb.co/NgTBh6vt/Mat-tien.jpg" class="absolute inset-0 w-full h-full object-cover md:object-contain object-top opacity-30 md:opacity-40 mix-blend-luminosity transition-all duration-500">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-white/40"></div>
+        <div class="relative z-10 drop-shadow-md">
             <h1 class="text-4xl md:text-9xl font-black mirror-text tracking-tighter font-lucky">HẠ LINH HOTEL</h1>
             <div class="mt-4 space-y-2">
-                <p class="text-lg md:text-3xl italic text-purple-600 font-bold" data-i18n="hero_sub">
+                <p class="text-lg md:text-3xl italic text-pink-500 font-bold bg-slate-900/60 inline-block px-4 py-1 rounded-xl backdrop-blur-sm" data-i18n="hero_sub">
                     "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
                 </p>
-                <p class="text-xs md:text-base font-semibold text-indigo-950/60 uppercase tracking-widest" data-i18n="header_sub">Khách sạn giá tốt tại Bãi sau Vũng Tàu</p>
+                <p class="text-xs md:text-base font-semibold text-white uppercase tracking-widest block bg-indigo-950/40 max-w-max mx-auto px-3 py-0.5 rounded-md" data-i18n="header_sub">Khách sạn giá tốt tại Bãi sau Vũng Tàu</p>
             </div>
         </div>
     </section>
@@ -261,16 +261,21 @@
         </div>
 
         <div class="grid gap-12 md:gap-16">
-            <!-- PHÒNG ĐÔI TIÊU CHUẨN -->
+            <!-- PHÒNG ĐÔI TIẾT KIỆM -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner">
-                        <img id="img-new" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800" class="w-full h-full object-cover">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-100">
+                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 1 TẠI ĐÂY -->
+                        <img id="img-new" src="https://i.ibb.co/93sJNPX0/1G-101.jpg" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
-                        <img onclick="changeImg('new', this.src, this)" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400" class="thumb-img active">
-                        <img onclick="changeImg('new', this.src, this)" src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=400" class="thumb-img">
-                        <!-- Bro chèn thêm ảnh phòng 1 ở dưới này -->
+                        <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 1 TẠI ĐÂY (NÊN CÓ TỪ 3-4 ẢNH) -->
+                        <img onclick="changeImg('new', this.src, this)" src="https://i.ibb.co/Dmf24Yb/1G-101-3.jpg" class="thumb-img active">
+                        <img onclick="changeImg('new', this.src, this)" src="https://i.ibb.co/cK0d1YDc/1G-301.jpg" class="thumb-img">
+                        <img onclick="changeImg('new', this.src, this)" src="https://i.ibb.co/pCckhz9/1G-301-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('new', this.src, this)" src="https://i.ibb.co/GvY6FwXX/1G-301-4.jpg" class="thumb-img">
+                        <img onclick="changeImg('new', this.src, this)" src="https://i.ibb.co/bMRJdLxt/1G-201.jpg" class="thumb-img">
+                        <img onclick="changeImg('new', this.src, this)" src="https://i.ibb.co/qMxgRFt1/1G-201-3.jpg" class="thumb-img">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -291,17 +296,31 @@
                 </div>
             </div>
 
-            <!-- PHÒNG BỐN TIÊU CHUẨN -->
+            <!-- PHÒNG ĐÔI TIÊU CHUẨN (PHỔ BIẾN NHẤT) -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border-2 border-pink-400/70 relative shadow-xl shadow-pink-500/5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="absolute top-6 left-6 z-20 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest shadow-md" data-i18n="popular">PHỔ BIẾN NHẤT</div>
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner">
-                        <img id="img-half" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800" class="w-full h-full object-cover">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-100">
+                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 2 TẠI ĐÂY -->
+                        <img id="img-half" src="https://i.ibb.co/C50sxKBN/1G-205.jpg" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
-                        <img onclick="changeImg('half', this.src, this)" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=400" class="thumb-img active">
-                        <img onclick="changeImg('half', this.src, this)" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400" class="thumb-img">
-                        <!-- Bro chèn thêm ảnh phòng 2 ở dưới này -->
+                        <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 2 TẠI ĐÂY -->
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/k2L51b3p/1G-205-2.jpg" class="thumb-img active">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/Fbxf9sJp/1G-205-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/nMM6tdSG/1G-103.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/5W3fTZr4/1G-103-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/j9gc2PDz/1G-103-2.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/HfKYxhz4/1G-104.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/pj48vsrh/1G-104-2.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/1GCXHR4Y/1G-104-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/zTjFbggV/1G-104-4.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/kg7qL7QC/1G-105.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/39sPgLLc/1G-105-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/YM83W9T/1G-106.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/DP11shK3/1G-106-2.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/HTQJDX5w/1G-204-2.jpg" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="https://i.ibb.co/N2vssq3n/1G-204-3.jpg" class="thumb-img">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -322,16 +341,23 @@
                 </div>
             </div>
 
-            <!-- PHÒNG GIA ĐÌNH DELUXE -->
+            <!-- PHÒNG GIA ĐÌNH TIÊU CHUẨN -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-md">
-                        <img id="img-full" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800" class="w-full h-full object-cover">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-md bg-slate-100">
+                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 3 TẠI ĐÂY -->
+                        <img id="img-full" src="https://i.ibb.co/0V25p97Y/2G-102-2.jpg" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
-                        <img onclick="changeImg('full', this.src, this)" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400" class="thumb-img active">
-                        <img onclick="changeImg('full', this.src, this)" src="https://images.unsplash.com/photo-1582719478250-c89cae4df85b?w=400" class="thumb-img">
-                        <!-- Bro chèn thêm ảnh phòng 3 ở dưới này -->
+                        <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 3 TẠI ĐÂY -->
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/WW4ZrQn1/2G-102-3.jpg" class="thumb-img active">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/5hXfqRf3/2G-102.jpg" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/2fRjffc/2G-202.jpg" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/xSGZfjQC/2G-202-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/S75fW18H/2G-202-4.jpg" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/nWzsvLP/2G-302.jpg" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/1fGX95jP/2G-302-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="https://i.ibb.co/qM1TzgWW/2G-302-4.jpg" class="thumb-img">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -355,13 +381,15 @@
             <!-- PHÒNG ĐẠI GIA ĐÌNH -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner">
-                        <img id="img-supernova" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800" class="w-full h-full object-cover">
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-100">
+                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 4 TẠI ĐÂY -->
+                        <img id="img-supernova" src="https://i.ibb.co/zVR4BWHP/3G-304.jpg" class="w-full h-full object-cover">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
-                        <img onclick="changeImg('supernova', this.src, this)" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=400" class="thumb-img active">
-                        <img onclick="changeImg('supernova', this.src, this)" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400" class="thumb-img">
-                        <!-- Bro chèn thêm ảnh phòng 4 ở dưới này -->
+                        <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 4 TẠI ĐÂY -->
+                        <img onclick="changeImg('supernova', this.src, this)" src="https://i.ibb.co/9kGKHJTc/3G-304-2.jpg" class="thumb-img active">
+                        <img onclick="changeImg('supernova', this.src, this)" src="https://i.ibb.co/N2RP5Y8W/3G-304-3.jpg" class="thumb-img">
+                        <img onclick="changeImg('supernova', this.src, this)" src="https://i.ibb.co/s9rzm9Hm/3G-304-4.jpg" class="thumb-img">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
