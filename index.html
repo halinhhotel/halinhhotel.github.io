@@ -238,18 +238,18 @@
         </div>
     </nav>
 
-    <section class="relative h-[50vh] md:h-[75vh] flex items-center justify-center text-center px-4 overflow-hidden bg-slate-900">
-        <img src="./images/Mat tien - Cover Maps.webp" class="absolute inset-0 w-full h-full object-cover md:object-contain object-top opacity-30 md:opacity-40 mix-blend-luminosity transition-all duration-500">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-white/40"></div>
-        <div class="relative z-10 drop-shadow-md">
-            <h1 class="text-4xl md:text-9xl font-black mirror-text tracking-tighter font-lucky">HẠ LINH HOTEL</h1>
-            <div class="mt-4 space-y-2">
-                <p class="text-lg md:text-3xl italic text-pink-500 font-bold bg-slate-900/60 inline-block px-4 py-1 rounded-xl backdrop-blur-sm" data-i18n="hero_sub">
-                    "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
-                </p>
-                <p class="text-xs md:text-base font-semibold text-white uppercase tracking-widest block bg-indigo-950/40 max-w-max mx-auto px-3 py-0.5 rounded-md" data-i18n="header_sub">Khách sạn giá tốt tại Bãi sau Vũng Tàu</p>
-            </div>
+    <section class="relative min-h-[60vh] md:min-h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden bg-slate-950">
+    <img src="./images/Mat tien - Cover Maps.webp" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-lighten transition-all duration-500">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/20 to-white/10"></div>
+    <div class="relative z-10 max-w-4xl mx-auto space-y-6 px-2">
+        <h1 class="text-5xl md:text-8xl font-black mirror-text tracking-tighter font-lucky drop-shadow-2xl">HẠ LINH HOTEL</h1>
+        <div class="space-y-4">
+            <p class="text-xl md:text-3xl italic text-pink-400 font-extrabold tracking-wide" data-i18n="hero_sub">
+                "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
+            </p>
+            <p class="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-widest block bg-indigo-900/60 max-w-max mx-auto px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10" data-i18n="header_sub">Khách sạn giá tốt tại Bãi sau Vũng Tàu</p>
         </div>
+    </div>
     </section>
 
     <section id="rooms" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
@@ -263,21 +263,21 @@
         <div class="grid gap-12 md:gap-16">
             <!-- PHÒNG ĐÔI TIẾT KIỆM -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
-                <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-100">
-                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 1 TẠI ĐÂY -->
-                        <img id="img-new" src="./images/1G-101.webp" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex gap-2 overflow-x-auto pb-2">
-                        <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 1 TẠI ĐÂY (NÊN CÓ TỪ 3-4 ẢNH) -->
-                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-101_3.webp" class="thumb-img active">
-                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-301.webp" class="thumb-img">
-                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-301_3.webp" class="thumb-img">
-                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-301_4.webp" class="thumb-img">
-                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-201.webp" class="thumb-img">
-                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-201_3.webp" class="thumb-img">
+                
+            <div class="p-4 md:p-8 space-y-4">
+                <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-950/5 flex items-center justify-center">
+                    <img id="img-new" src="./images/1G-101.webp" class="w-full h-full object-contain transition-all duration-300" loading="lazy">
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-2">
+                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-101_3.webp" class="thumb-img active" loading="lazy">
+                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-301.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-301_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-301_4.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-201.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('new', this.src, this)" src="./images/1G-201_3.webp" class="thumb-img" loading="lazy">
                     </div>
                 </div>
+                
                 <div class="p-6 md:p-12 flex flex-col justify-center">
                     <h3 class="text-3xl font-extrabold text-indigo-950" data-i18n="r1_name">Phòng Đôi Tiết Kiệm</h3>
                     <p class="text-purple-600 font-bold mt-2 text-sm uppercase tracking-wide" data-i18n="r1_type">Phòng 1 Giường Đôi</p>
@@ -299,28 +299,28 @@
             <!-- PHÒNG ĐÔI TIÊU CHUẨN (PHỔ BIẾN NHẤT) -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 border-2 border-pink-400/70 relative shadow-xl shadow-pink-500/5 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="absolute top-6 left-6 z-20 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest shadow-md" data-i18n="popular">PHỔ BIẾN NHẤT</div>
+                
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-100">
-                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 2 TẠI ĐÂY -->
-                        <img id="img-half" src="./images/1G-205.webp" class="w-full h-full object-cover">
-                    </div>
+                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-950/5 flex items-center justify-center">
+                    <img id="img-half" src="./images/1G-205.webp" class="w-full h-full object-contain transition-all duration-300" loading="lazy">
+                </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 2 TẠI ĐÂY -->
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-205_2.webp" class="thumb-img active">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-205_3.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-103.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-103_3.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-103_2.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104_2.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104_3.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104_4.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-105.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-105_3.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-106.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-106_2.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-204_2.webp" class="thumb-img">
-                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-204_3.webp" class="thumb-img">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-205_2.webp" class="thumb-img active" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-205_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-103.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-103_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-103_2.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104_2.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-104_4.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-105.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-105_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-106.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-106_2.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-204_2.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('half', this.src, this)" src="./images/1G-204_3.webp" class="thumb-img" loading="lazy">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -343,21 +343,21 @@
 
             <!-- PHÒNG GIA ĐÌNH TIÊU CHUẨN -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
+                
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-md bg-slate-100">
-                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 3 TẠI ĐÂY -->
-                        <img id="img-full" src="./images/2G-102_2.webp" class="w-full h-full object-cover">
+                        <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-950/5 flex items-center justify-center">
+                        <img id="img-full" src="./images/2G-102_2.webp" class="w-full h-full object-contain transition-all duration-300" loading="lazy">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 3 TẠI ĐÂY -->
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-102_3.webp" class="thumb-img active">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-102.webp" class="thumb-img">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-202.webp" class="thumb-img">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-202_3.webp" class="thumb-img">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-202_4.webp" class="thumb-img">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-302.webp" class="thumb-img">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-302_3.webp" class="thumb-img">
-                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-302_4.webp" class="thumb-img">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-102_3.webp" class="thumb-img active" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-102.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-202.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-202_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-202_4.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-302.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-302_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('full', this.src, this)" src="./images/2G-302_4.webp" class="thumb-img" loading="lazy">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
@@ -381,15 +381,14 @@
             <!-- PHÒNG ĐẠI GIA ĐÌNH -->
             <div class="glass-box rounded-[30px] md:rounded-[40px] overflow-hidden grid lg:grid-cols-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500">
                 <div class="p-4 md:p-8 space-y-4">
-                    <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-100">
-                        <!-- THAY LINK ẢNH ĐẠI DIỆN PHÒNG 4 TẠI ĐÂY -->
-                        <img id="img-supernova" src="./images/3G-304.webp" class="w-full h-full object-cover">
+                        <div class="h-[250px] md:h-[350px] overflow-hidden rounded-2xl md:rounded-3xl shadow-inner bg-slate-950/5 flex items-center justify-center">
+                        <img id="img-supernova" src="./images/3G-304.webp" class="w-full h-full object-contain transition-all duration-300" loading="lazy">
                     </div>
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <!-- THAY CÁC ẢNH THUMBNAIL PHÒNG 4 TẠI ĐÂY -->
-                        <img onclick="changeImg('supernova', this.src, this)" src="./images/3G-304_2.webp" class="thumb-img active">
-                        <img onclick="changeImg('supernova', this.src, this)" src="./images/3G-304_3.webp" class="thumb-img">
-                        <img onclick="changeImg('supernova', this.src, this)" src="./images/3G-304_4.webp" class="thumb-img">
+                        <img onclick="changeImg('supernova', this.src, this)" src="./images/3G-304_2.webp" class="thumb-img active" loading="lazy">
+                        <img onclick="changeImg('supernova', this.src, this)" src="./images/3G-304_3.webp" class="thumb-img" loading="lazy">
+                        <img onclick="changeImg('supernova', this.src, this)" src="./images/3G-304_4.webp" class="thumb-img" loading="lazy">
                     </div>
                 </div>
                 <div class="p-6 md:p-12 flex flex-col justify-center">
