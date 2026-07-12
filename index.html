@@ -239,21 +239,25 @@
     </nav>
 
 <!-- HERO SECTION: Đã tối ưu căn chỉnh ảnh và text chống đè chữ trên Mobile -->
-    <section class="relative min-h-[50vh] md:min-h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden bg-slate-950 pt-12 md:pt-0">
-        <img src="./images/Mat tien - Cover Maps.webp" class="absolute inset-0 w-full h-full object-cover object-[center_35%] md:object-center opacity-20 mix-blend-lighten transition-all duration-500">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/30 to-white/5"></div>
+<div class="relative min-h-[60vh] md:min-h-[85vh] bg-[url('./images/Mat tien - Cover Maps.webp')] bg-cover bg-[position:32%_center] md:bg-center flex flex-col justify-between">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 pointer-events-none"></div>
         
-        <div class="relative z-10 max-w-4xl mx-auto space-y-4 md:space-y-6 px-2 mt-4 md:mt-0">
-            <h1 class="text-4xl md:text-8xl font-black mirror-text tracking-tighter font-lucky drop-shadow-2xl break-words whitespace-normal leading-tight">HẠ LINH HOTEL</h1>
-            <div class="space-y-3 md:space-y-4">
-                <p class="text-lg md:text-3xl italic text-pink-400 font-extrabold tracking-wide drop-shadow" data-i18n="hero_sub">
-                    "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
-                </p>
-                <p class="text-[10px] md:text-sm font-bold text-slate-300 uppercase tracking-widest block bg-indigo-900/70 max-w-max mx-auto px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10 shadow-sm" data-i18n="header_sub">
-                    Khách sạn giá tốt tại Bãi sau Vũng Tàu
-                </p>
+<div class="relative z-10 flex-grow flex flex-col items-center md:items-end justify-center px-4 max-w-7xl mx-auto w-full">
+        <div class="bg-black/30 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none p-6 md:p-0 rounded-2xl text-center md:text-right md:max-w-xl flex flex-col items-center md:items-end">
+            <h1 class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 tracking-wider mb-3 font-lucky uppercase drop-shadow-lg" data-i18n="hero_title">
+                HẠ LINH HOTEL
+            </h1>
+    
+            <p class="text-sm md:text-lg font-bold italic tracking-wide text-white drop-shadow-md mb-6" data-i18n="hero_subtitle">
+                "Nghỉ ngơi êm ái - Trọn vẹn niềm vui"
+            </p>
+
+            <div class="inline-block bg-indigo-950/80 backdrop-blur-md text-white px-6 py-3 rounded-2xl border border-indigo-500/30 text-xs md:text-sm font-bold tracking-wide shadow-xl" data-i18n="hero_badge">
+                KHÁCH SẠN GIÁ TỐT TẠI BÃI SAU VŨNG TÀU
             </div>
         </div>
+        
+    </div>
     </section>
 
     <section id="rooms" class="py-12 md:py-20 max-w-7xl mx-auto px-4 relative z-10">
