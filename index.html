@@ -245,12 +245,12 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION: Đã tối ưu căn chỉnh ảnh và text chống đè chữ trên Mobile -->
-    <section class="relative min-h-[65vh] md:min-h-[85vh] flex items-end md:items-center justify-center text-center px-4 overflow-hidden bg-slate-950 pb-10 md:pb-0">
-    <img src="./images/Mat tien.webp" class="absolute inset-0 w-full h-full object-cover object-top opacity-20 mix-blend-lighten transition-all duration-500">
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-white/5"></div>
-    
-        <div class="relative z-10 max-w-4xl mx-auto space-y-4 md:space-y-6 px-2 mt-6 md:mt-0">
+<!-- Đổi items-end thành items-start, thêm pt-24 để giãn cách mượt mà trên mobile -->
+    <section class="relative min-h-[65vh] md:min-h-[90vh] flex items-start pt-24 md:pt-0 md:items-center justify-center text-center px-4 overflow-hidden bg-slate-950 pb-10 md:pb-0">
+    <img src="./images/Mat tien.webp" class="absolute inset-0 w-full h-full object-cover object-[center_20%] opacity-25 mix-blend-lighten transition-all duration-500">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/50 to-white/5"></div>
+    <!-- Tăng khoảng cách mt-12 để đẩy chữ xuống một chút dưới Header nhưng vẫn nằm hoàn toàn phía trên bảng hiệu -->
+    <div class="relative z-10 max-w-4xl mx-auto space-y-4 md:space-y-6 px-2 mt-12 md:mt-0">
             <h1 class="text-4xl md:text-8xl font-black mirror-text tracking-tighter font-lucky drop-shadow-2xl break-words whitespace-normal leading-tight">HẠ LINH HOTEL</h1>
             <div class="space-y-3 md:space-y-4">
                 <p class="text-lg md:text-3xl italic text-pink-400 font-extrabold tracking-wide drop-shadow" data-i18n="hero_sub">
